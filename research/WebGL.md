@@ -19,7 +19,11 @@ Must be exported WebGL
 
 ## To do:
 > * Success, but has problem of load remote resource data by GF.
+>   Maybe should implement a new resource management to disperse resources for H5.
 > * Efficiency on mobile.
+> * WebGL project structure will be different with app modes on several aspect such as resource package, hotfix and networking.
+>> [GameFramework FAQ](http://gameframework.cn/faq/)
+>> WebGL 平台没有经过测试，需要自行尝试并做出一定地修改，交流群里有接入 WebGL 成功的同学。
 
 ## Embed to Android App
 https://blog.csdn.net/qq_41708811/article/details/122297182
