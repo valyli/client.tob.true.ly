@@ -16,7 +16,7 @@ Advantage
 Disadvantage
 > * Size of release. If publish to WebGL.
 
-## Embed to H5
+## Embed to H5(html page)
 Must be exported WebGL
 ### Achievable
 > * Generate native js script.
