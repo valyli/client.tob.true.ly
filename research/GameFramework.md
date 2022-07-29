@@ -7,3 +7,6 @@
 [GameFramework](https://github.com/EllanJiang/GameFramework)  
 [UnityGameFramework](https://github.com/EllanJiang/UnityGameFramework.git)  
 [StarForce(Demo Project)](https://github.com/EllanJiang/StarForce)  
+
+# DefaultTextHelper (UGF)
+Use StringBuilder & cache it to reduce memory allocations.
