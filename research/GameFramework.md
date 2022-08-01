@@ -57,6 +57,30 @@ Files:
 \StarForce\Assets\GameMain\Scripts\Base\GameEntry.Custom.cs
 ```
 
+## Flow chart
+```mermaid
+graph TB
+    1[BaseComponent.Awake] --> 1.1
+    subgraph Initialize all components extend GameFrameworkComponent in Random order
+    1.1[ProcedureComponent.Awake] --> 1.2[DebuggerComponent.Awake] --> 1.3[...]
+    end
+    1.3 --> 2.1[GameEntry.Start GameEntry.InitBuiltinComponents to bundle GameFrameworkComponents to GameEntry static members.]
+
+     --> 3
+    3[BaseComponent.Update] --> 4[GameFrameworkEntry.Update in GF] --> 5[Loop all GameFrameworkModule]
+```
+* All GameFrameworkComponent will register self in Awake with GameEntry.RegisterComponent(this)
+* All GameFrameworkModule will be created by GameFrameworkEntry.GetModule() at first invoked.
+* The order that Unity calls each GameObject's Awake is not deterministic. [ref](https://docs.unity3d.com/ScriptReference/MonoBehaviour.Awake.html)
+* Not recommend to set Awake order. (Edit>Project Settings>Script Execution Order)
+
+# ...Helper
+## DefaultTextHelper (UGF)
+Use StringBuilder & cache it to reduce memory allocations.
+
+# GameFrameworkComponent (UGF)
+class GameFrameworkComponent : MonoBehaviour
+
 ## ConfigComponent (UGF)
 |Attributes                   |                                 |
 |:----------------------------|:---------------------------------|
@@ -112,29 +136,5 @@ private void OnLoadDataTableFailure(object sender, GameEventArgs e){
 }
 ```
 the file can be text or byte stream
-
-## Flow chart
-```mermaid
-graph TB
-    1[BaseComponent.Awake] --> 1.1
-    subgraph Initialize all components extend GameFrameworkComponent in Random order
-    1.1[ProcedureComponent.Awake] --> 1.2[DebuggerComponent.Awake] --> 1.3[...]
-    end
-    1.3 --> 2.1[GameEntry.Start GameEntry.InitBuiltinComponents to bundle GameFrameworkComponents to GameEntry static members.]
-
-     --> 3
-    3[BaseComponent.Update] --> 4[GameFrameworkEntry.Update in GF] --> 5[Loop all GameFrameworkModule]
-```
-* All GameFrameworkComponent will register self in Awake with GameEntry.RegisterComponent(this)
-* All GameFrameworkModule will be created by GameFrameworkEntry.GetModule() at first invoked.
-* The order that Unity calls each GameObject's Awake is not deterministic. [ref](https://docs.unity3d.com/ScriptReference/MonoBehaviour.Awake.html)
-* Not recommend to set Awake order. (Edit>Project Settings>Script Execution Order)
-
-# ...Helper
-## DefaultTextHelper (UGF)
-Use StringBuilder & cache it to reduce memory allocations.
-
-# GameFrameworkComponent (UGF)
-class GameFrameworkComponent : MonoBehaviour
 
 ## ProcedureComponent
