@@ -21,6 +21,17 @@ Code standard
 * Static memeber's name start with **s_**
 
 # Common
+## FsmState<T>
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |GF                              |
+|Hierarchy                    ||
+
+|Funtions                     |                                 |
+|:----------------------------|:---------------------------------|
+|ChangeState()                |Invoke OnLeave() and OnEnter() internally. |
+* Could improve: Add changing conditions to check validity of changing rule.
+
 
 # Game Entry Flow
 ## BaseComponent
@@ -68,11 +79,31 @@ graph TB
 
      --> 3
     3[BaseComponent.Update] --> 4[GameFrameworkEntry.Update in GF] --> 5[Loop all GameFrameworkModule]
+    1.3-->6
+    6[ProcedureComponent.Start] --delay one frame--> 6.1[m_ProcedureManager.StartProcedure m_EntranceProcedure]
+    -->7[ProcedureLaunch]--OnUpdate-->8[ProcedureSplash]
+    8--EditorResourceMode-->9[ProcedurePreload]
+    8--Package-->10[ProcedureInitResources]
+    8--Updatable-->11[ProcedureCheckVersion]
 ```
-* All GameFrameworkComponent will register self in Awake with GameEntry.RegisterComponent(this)
-* All GameFrameworkModule will be created by GameFrameworkEntry.GetModule() at first invoked.
-* The order that Unity calls each GameObject's Awake is not deterministic. [ref](https://docs.unity3d.com/ScriptReference/MonoBehaviour.Awake.html)
-* Not recommend to set Awake order. (Edit>Project Settings>Script Execution Order)
+GameFramework can not promise order of:
+> GameFrameworkComponent in GameEntry.s_GameFrameworkComponents
+GameFrameworkModule in GameFrameworkEntry.s_GameFrameworkModules
+
+Because of :
+> * All **GameFrameworkComponent** will register self in **Awake** with GameEntry.RegisterComponent(this)
+> * All **GameFrameworkModule** will be created by GameFrameworkEntry.GetModule() at **first invoked**.
+>   ```csharp
+>   // Rule of module name.
+>   string moduleName = Utility.Text.Format("{0}.{1}", interfaceType.Namespace, interfaceType.Name.Substring(1));
+>   Type moduleType = Type.GetType(moduleName);
+>   ```
+> * The order that Unity calls each GameObject's Awake is not deterministic. [ref](https://docs.unity3d.com/ScriptReference/MonoBehaviour.Awake.html)
+
+Attention:
+>* Not recommend to set Awake order. (Edit>Project Settings>Script Execution Order)
+>* Modify order of **GameFrameworkModule** by **Priority** in it.
+![](assets/GameFramework-50d64811.png)
 
 # ...Helper
 ## DefaultTextHelper (UGF)
@@ -138,3 +169,20 @@ private void OnLoadDataTableFailure(object sender, GameEventArgs e){
 the file can be text or byte stream
 
 ## ProcedureComponent
+File:
+```
+\StarForce\Assets\GameFramework\Scripts\Runtime\Procedure\ProcedureComponent.cs
+```
+
+* Config procedures by name:
+![](assets/GameFramework-c040bc19.png)
+
+* Just allow one ProcedureManager. (Because class ProcedureManager : GameFrameworkModule)
+* Start entrance procedure at the second frame to promise all Awake() & Start() are executed.
+```csharp
+m_ProcedureManager.Initialize(GameFrameworkEntry.GetModule<IFsmManager>(), procedures);
+
+yield return new WaitForEndOfFrame();
+
+m_ProcedureManager.StartProcedure(m_EntranceProcedure.GetType());
+```
