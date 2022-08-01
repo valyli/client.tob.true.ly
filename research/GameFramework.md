@@ -16,25 +16,24 @@ Inspector useage
 Code standard
 
 # Code standard
-* Member name start with **m_**
+* Member's name start with **m_**
+* Static memeber's name start with **s_**
 
 # Common
-
 
 # Game Entry Flow
 ## BaseComponent
 |Attributes                   |                                 |
 |:----------------------------|:---------------------------------|
-|static class                 |False                              |
 |Namespace                    |UGF                              |
 |Hierarchy                    |GameFrameworkComponent : MonoBehaviour|
 
 |Funtions                     |                                 |
 |:----------------------------|:---------------------------------|
-|Awake()                      |First entry of GameFramework   |
+|Awake()                      |**[step 1]** First entry of GameFramework. Initialize Utilites, helpers and so on.  And RegisterComponent() |
 
 Attached to **Builtin** node.
-Component name is :
+Component name set with :
 ```csharp
 [AddComponentMenu("Game Framework/Base")]
 ```
@@ -42,11 +41,42 @@ Component name is :
 ## GameEntry (UGF)
 |Attributes                   |                                 |
 |:----------------------------|:---------------------------------|
-|static class                 |True                              |
-|Namespace                    |UGF                              |
-|Hierarchy                    |GameFrameworkComponent : MonoBehaviour|
+|Namespace                    |Game                              |
+|Hierarchy                    |MonoBehaviour|
 
+Use GameEntry as a static class to simplify invoking and reduce cost of looping in GetComponent(). Example:
+```csharp
+(ProcedureBase)GameEntry.Procedure.CurrentProcedure
+```
+Files:
+```
+\StarForce\Assets\GameFramework\Scripts\Runtime\Base\GameEntry.cs
+\StarForce\Assets\GameMain\Scripts\Base\GameEntry.cs
+\StarForce\Assets\GameMain\Scripts\Base\GameEntry.Builtin.cs
+\StarForce\Assets\GameMain\Scripts\Base\GameEntry.Custom.cs
+```
 
+## Flow chart
+```mermaid
+graph TB
+    1[BaseComponent.Awake] --> 1.1
+    subgraph Initialize all components extend GameFrameworkComponent in Random order
+    1.1[ProcedureComponent.Awake] --> 1.2[DebuggerComponent.Awake] --> 1.3[...]
+    end
+    1.3 --> 2.1[GameEntry.Start GameEntry.InitBuiltinComponents to bundle GameFrameworkComponents to GameEntry static members.]
 
-# DefaultTextHelper (UGF)
+     --> 3
+    3[BaseComponent.Update] --> 4[GameFrameworkEntry.Update in GF] --> 5[Loop all GameFrameworkModule]
+```
+* All GameFrameworkComponent will register self in Awake with GameEntry.RegisterComponent(this)
+* All GameFrameworkModule will be created by GameFrameworkEntry.GetModule() at first invoked.
+* The order that Unity calls each GameObject's Awake is not deterministic. [ref](https://docs.unity3d.com/ScriptReference/MonoBehaviour.Awake.html)
+
+# ...Helper
+## DefaultTextHelper (UGF)
 Use StringBuilder & cache it to reduce memory allocations.
+
+# GameFrameworkComponent (UGF)
+class GameFrameworkComponent : MonoBehaviour
+
+## ProcedureComponent
