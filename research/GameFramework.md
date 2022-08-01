@@ -2,6 +2,7 @@
 [Official](https://gameframework.cn/)  
 [FAQ](https://gameframework.cn/faq/)  
 [API Reference](https://gameframework.cn/api/index.html)  
+[video tutorial](https://www.bilibili.com/video/BV1sE411C7cu?spm_id_from=333.337.search-card.all.click)
 
 # Github
 [GameFramework](https://github.com/EllanJiang/GameFramework)  
@@ -55,6 +56,62 @@ Files:
 \StarForce\Assets\GameMain\Scripts\Base\GameEntry.Builtin.cs
 \StarForce\Assets\GameMain\Scripts\Base\GameEntry.Custom.cs
 ```
+
+## ConfigComponent (UGF)
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |UnityGameFramework.Runtime        |
+|Hierarchy                    |GameFrameworkComponent|
+
+Use ConfigComponent as a Component to simplify reading config information. Example:
+```csharp
+ConfigComponent Config = GameEntry.GetComponent<ConfigComponent>()
+Config.ReadData(configAssetName, this)
+
+ConfigComponent Config = GameEntry.GetComponent<ConfigComponent>()
+int id = Config.GetInt("Scene.Menu")
+```
+any function that delivers its result asynchronously, make sure your file have loaded Successfully. Example:
+```csharp
+GameEntry.GetComponent<ConfigComponent>().Subscribe(LoadConfigSuccessEventArgs.EventId, OnLoadConfigSuccess);
+GameEntry.GetComponent<ConfigComponent>().Subscribe(LoadConfigFailureEventArgs.EventId, OnLoadConfigFailure);
+private void OnLoadConfigSuccess(object sender, GameEventArgs e){
+    //TODO
+}
+private void OnLoadConfigFailure(object sender, GameEventArgs e){
+    //TODO
+}
+```
+the file can be text or byte stream
+
+## DataTableComponent (UGF)
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |UnityGameFramework.Runtime        |
+|Hierarchy                    |GameFrameworkComponent|
+
+Use DataTableComponent as a Component to reading Excel or other files. Example:
+```csharp
+DataTableComponent DataTable = GameEntry.GetComponent<DataTableComponent>()
+DataTable.LoadDataTable(dataTableName, dataTableAssetName, this)
+
+DataTableComponent DataTable = GameEntry.GetComponent<DataTableComponent>()
+IDataTable<DRAircraft> dtAircraft = GameEntry.DataTable.GetDataTable<DRAircraft>();
+DRAircraft drAircraft = dtAircraft.GetDataRow(TypeId);
+int ThrusterId = drAircraft.ThrusterId
+```
+any function that delivers its result asynchronously, make sure your file have loaded Successfully. Example:
+```csharp
+GameEntry.GetComponent<ConfigComponent>().Subscribe(LoadDataTableSuccessEventArgs.EventId, OnLoadDataTableSuccess);
+GameEntry.GetComponent<ConfigComponent>().Subscribe(LoadDataTableFailureEventArgs.EventId, OnLoadDataTableFailure);
+private void OnLoadDataTableSuccess(object sender, GameEventArgs e){
+    //TODO
+}
+private void OnLoadDataTableFailure(object sender, GameEventArgs e){
+    //TODO
+}
+```
+the file can be text or byte stream
 
 ## Flow chart
 ```mermaid
