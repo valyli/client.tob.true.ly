@@ -128,6 +128,7 @@ graph TB
 * All GameFrameworkComponent will register self in Awake with GameEntry.RegisterComponent(this)
 * All GameFrameworkModule will be created by GameFrameworkEntry.GetModule() at first invoked.
 * The order that Unity calls each GameObject's Awake is not deterministic. [ref](https://docs.unity3d.com/ScriptReference/MonoBehaviour.Awake.html)
+* Not recommend to set Awake order. (Edit>Project Settings>Script Execution Order)
 
 # ...Helper
 ## DefaultTextHelper (UGF)
