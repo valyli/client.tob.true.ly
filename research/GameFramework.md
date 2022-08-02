@@ -169,9 +169,24 @@ private void OnLoadDataTableFailure(object sender, GameEventArgs e){
 the file can be text or byte stream
 
 ## ProcedureComponent
-File:
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |UGF                              |
+|Hierarchy                    |GameFrameworkComponent|
+
+|Funtions                     |                                 |
+|:----------------------------|:---------------------------------|
+|Start()                |Start procedure delay one frame. |
+
+ProcedureComponentInspector:
+|Funtions                     |                                 |
+|:----------------------------|:---------------------------------|
+|RefreshTypeNames()          |Auto refresh procedures type after C# code compiled. |
+
+Files:
 ```
 \StarForce\Assets\GameFramework\Scripts\Runtime\Procedure\ProcedureComponent.cs
+\StarForce\Assets\GameFramework\Scripts\Editor\Inspector\ProcedureComponentInspector.cs
 ```
 
 * Config procedures by name:
