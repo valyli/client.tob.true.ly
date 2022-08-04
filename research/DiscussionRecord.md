@@ -17,6 +17,7 @@
 >>  Skeleton > 100  
 >>  Lights = 4 Point + 1 Directory  
 >>  Texture(Avator) = 3
+>>  Viewing angle 45°
 
 > ## To do & Result:
 > 1. 向HR跟进候选人信息。  
@@ -36,4 +37,4 @@
 |Topic                    |How to design a scalable server cluster|
 
 > ## Meeting Summary
-> 1. 
+> 1.
