@@ -22,6 +22,14 @@ Code standard
 * To keep an empty directory on Git, put a file in it for occupation. This file should be named **.gitkeep**.
 * Use string.ToLowerInvariant()
 
+# Compile
+## Build GameFramework.dll
+> 1. [Download .NET Framework 3.5 SP1](https://dotnet.microsoft.com/en-us/download/visual-studio-sdks?cid=msbuild-developerpacks)
+> 2. Install *dotnetfx35.exe*, Maybe should use VPN.
+> 3. Build dll, and copy .dll and .xml to \StarForce\Assets\GameFramework\Libraries\
+* Do not commit those dll to override existed in git.
+* Publish project package must use Release version of dll.
+
 # Common
 ## FsmState<T>
 |Attributes                   |                                 |
