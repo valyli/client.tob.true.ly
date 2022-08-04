@@ -19,6 +19,8 @@ Code standard
 # Code standard
 * Member's name start with **m_**
 * Static memeber's name start with **s_**
+* To keep an empty directory on Git, put a file in it for occupation. This file should be named **.gitkeep**.
+* Use string.ToLowerInvariant()
 
 # Common
 ## FsmState<T>
@@ -31,6 +33,22 @@ Code standard
 |:----------------------------|:---------------------------------|
 |ChangeState()                |Invoke OnLeave() and OnEnter() internally. |
 * Could improve: Add changing conditions to check validity of changing rule.
+
+## CommonFileSystemStream
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |GF                              |
+|Hierarchy                    |FileSystemStream, IDisposable|
+
+|Funtions                     |                                 |
+|:----------------------------|:---------------------------------|
+|Awake()                      |**[step 1]** First entry of GameFramework. Initialize Utilites, helpers and so on.  
+
+```csharp
+new CommonFileSystemStream(fullPath, access, createNew);
+```
+
+## AndroidFileSystemStream
 
 
 # Game Entry Flow
@@ -178,10 +196,10 @@ the file can be text or byte stream
 |:----------------------------|:---------------------------------|
 |Start()                |Start procedure delay one frame. |
 
-ProcedureComponentInspector:
-|Funtions                     |                                 |
-|:----------------------------|:---------------------------------|
-|RefreshTypeNames()          |Auto refresh procedures type after C# code compiled. |
+> **ProcedureComponentInspector: GameFrameworkInspector**
+> |Funtions                     |                                 |
+> |:----------------------------|:---------------------------------|
+> |RefreshTypeNames()          |Auto refresh procedures type after C# code compiled. |
 
 Files:
 ```
@@ -200,4 +218,33 @@ m_ProcedureManager.Initialize(GameFrameworkEntry.GetModule<IFsmManager>(), proce
 yield return new WaitForEndOfFrame();
 
 m_ProcedureManager.StartProcedure(m_EntranceProcedure.GetType());
+```
+
+# Resource Tools
+[vedio](https://www.bilibili.com/video/BV1sE411C7cu?p=4&vd_source=e68deb734011863d4a3f9f42402d920c)
+[ref 1](https://blog.csdn.net/qq_26999509/article/details/102758769)  (Some name has changed in this article, such as AssetBundleEditor.xml、AssetBundleCollection.xml、AssetBundleBuilder.xml, change from AssetBundleXXX to ResourcXXX)
+[ref 2](https://gameframework.cn/uncategorized/%e4%bd%bf%e7%94%a8-assetbundle-%e6%9e%84%e5%bb%ba%e5%b7%a5%e5%85%b7/)
+## Config Files
+### Editor
+Could modify config file path at here.
+```
+\StarForce\Assets\GameMain\Scripts\Editor\GameFrameworkConfigs.cs
+```
+Default config path is :
+```
+/Assets/GameFramework/Configs/
+```
+Config file list:
+```
+ResourceBuilder.xml
+ResourceCollection.xml
+ResourceEditor.xml
+```
+Just only allow one Asset in one Resource.
+```csharp
+ResourceCollection.SetResourceLoadType()
+if ((loadType == LoadType.LoadFromBinary || loadType == LoadType.LoadFromBinaryAndQuickDecrypt || loadType == LoadType.LoadFromBinaryAndDecrypt) && resource.GetAssets().Length > 1)
+{
+    return false;
+}
 ```
