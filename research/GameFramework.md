@@ -186,6 +186,26 @@ private void OnLoadDataTableFailure(object sender, GameEventArgs e){
 ```
 the file can be text or byte stream
 
+## EventComponent (UGF)
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |UnityGameFramework.Runtime        |
+|Hierarchy                    |GameFrameworkComponent|
+
+|Funtions                     |                                 |
+|:----------------------------|:---------------------------------|
+|Subscribe()                  |add callback to event. |
+|Unsubscribe()                |cancel the callback. |
+|Fire()                       |send event. |
+|FireNow()                    |send event immediately. |
+
+Files:
+```
+\StarForce\Assets\GameFramework\Scripts\Runtime\Event\EventComponent.cs
+```
+* Fire() send event at the second frame ,handle in the main thread.
+* FireNow() send event immediately, it is not a thread-safe way.
+
 ## ProcedureComponent
 |Attributes                   |                                 |
 |:----------------------------|:---------------------------------|
