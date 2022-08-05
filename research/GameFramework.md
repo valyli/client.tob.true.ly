@@ -306,7 +306,6 @@ m_ProcedureManager.StartProcedure(m_EntranceProcedure.GetType());
 * AssetDatabase is verison 2 that use LMDB.
 
 ## Config Files
-### Editor
 Could modify config file path at here.
 ```
 \StarForce\Assets\GameMain\Scripts\Editor\GameFrameworkConfigs.cs
@@ -315,7 +314,141 @@ Default config path is :
 ```
 /Assets/GameFramework/Configs/
 ```
-Config file list:
+## ResourceEditor
+```csharp
+class ResourceEditorController
+class ResourceEditor : EditorWindow
+```
+
+### Step
+1. Config mapping in Editor: Game Framework->Resource Tools->Resource Editor.
+2. Set asset filter. ***ScanSourceAssets()*** will execute this filer.
+  a. Based on guids of AssetDatabase(U3D).
+  b. Skip folder(empty).
+3. Organize relationship with Resource and Assets in editor.
+4. Click Save button, save files:
+  a. ResourceEditor.xml
+  b. ResourceCollection.xml
+
+### ResourceCollection.xml
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<UnityGameFramework>
+  <ResourceCollection>
+    <Resources>
+      <Resource Name="Configs" FileSystem="GameData" LoadType="0" Packed="True" ResourceGroups="Base" />
+    </Resources>
+    <Assets>
+      <Asset Guid="44c8db52241385c45bbb14a1718f17bf" ResourceName="Configs" />
+      <Asset Guid="7fd11dc5d29076d469d414dec2818f11" ResourceName="Configs" />
+      </Assets>
+    </ResourceCollection>
+  </UnityGameFramework>
+```
+```csharp
+class ResourceCollection
+  private readonly SortedDictionary<string, Resource> m_Resources;
+  private readonly SortedDictionary<string, Asset> m_Assets;
+```
+
+## Resource Builder
+```csharp
+class ResourceBuilder
+class ResourceBuilderController
+```
+### Step
+1. Set output path. Must set it outside the U3D project.
+2. Click build button. Wait processing.
+3. Check output files:
+  a. Build report:
+  ![](assets/GameFramework-cf4601ab.png)
+  b. Output packages:
+  ![](assets/GameFramework-0b5f80a0.png)
+  c. Output & Resource Editor relation:
+  ![](assets/GameFramework-79619e8c.png)
+## Core Code of Resource Builder
+```csharp
+class ResourceBuilderController:
+  public bool BuildResources()
+```
+### Step
+1. Remove files in StreamingAssets. Will keep **.gitkeep**.
+2. Remove empty directories at all.
+3. Analyze asset dependency.
+  a. Ignore dependency of Scene(.untiy).
+  b. Ignore all Scripts.
+  c. Ignore analyzied one.
+4. Generate *m_DependencyResources* and *m_DependencyAssets*.
+5. PrepareBuildData()
+  - a. Get Resource and Assets data from: *m_Resources & m_Assets*.
+  - b. Loop each asset:
+    - 1. Read asset file to bytes.
+    - 2. Calculate bytes CRC32.
+    - 3. Get dependency data from *m_ResourceAnalyzerController*
+    - 4. Add asset guid, len, hash code(CRC32), dependency asset names to *m_ResourceDatas*
+  - c. Loop with *m_ResourceDatas*:
+    - 1. Not allow Resource data without any asset.
+    - 2. If IsLoadFromBinary, add to *binaryResourceDatas*.
+    - 3. else generate AssetBundleBuild(U3D), add to *assetBundleBuildDatas* and *assetBundleResourceDatas*.
+6. BuildResources() on target platforms.
+  - a. Create and Clean output directories.
+  - b. Clean files not relate with *assetBundleResourceDatas*. (Keep all .manifest).
+  - c. Delete all .manifest without pair of data files.
+  - d. At here will keep all data and manifest files at lastest building.
+  - e. Call *BuildPipeline.BuildAssetBundles()*, build data and manifest to working path.
+  - f. Create *FileSystem*(GF) for saving data in this file structure in furture, and gourp by *m_ResourceDatas*.
+    - i. For *m_OutputPackageFileSystems*
+    - ii. For *m_OutputPackedFileSystems*  
+  - g. Call *ProcessAssetBundle()* for each *ResourceData*:
+    - 1. Read bytes from assetbundle file built with U3D.
+    - 2. Encrypt bytes by XOR.
+    >> There has a question:
+    >> *Utility.Encryption.GetQuickXorBytes()* and *Utility.Encryption.GetXorBytes()* are not differency. Why?
+    - 3. Call *ProcessOutput()* to write bytes in to *m_OutputPackageFileSystems*.( -> .dat)
+    >> i. For *OutputPackageSelected*
+    >> ii. For *OutputPackedSelected && resourceData.Packed*
+    >> iii. For *OutputFullSelected*. ( -> {CRC32 x8}.dat)
+    >>> Just this mode support compress.
+    >>> ? Should find which kind of compress.
+    - 4. Generate and Add *ResourceCode* to *ResourceData* in *m_ResourceDatas*.
+  - h. Call *ProcessBinary()* :
+    > Like *ProcessAssetBundle()*.
+    > Differency is load bytes from asset file.
+  - i. Call *ProcessPackageVersionList()*:
+    - 1. Generate *PackageVersionList.Asset* with asset name and dependency asset index.
+    - 2. Generate *PackageVersionList.Resource* from *m_ResourceDatas*.
+    - 3. Generate *PackageVersionList.FileSystem* from *GetFileSystemNames(resourceDatas)*.
+    - 4. Generate *PackageVersionList.ResourceGroup* from *GetResourceGroupNames(resourceDatas)*.
+    - 5. Build versions: V0~2 for Package.
+
+
+
+
+
+
+
+
+  AssetBundleManifest assetBundleManifest = BuildPipeline.BuildAssetBundles(workingPath, assetBundleBuildDatas, buildAssetBundleOptions, GetBuildTarget(platform));
+
+
+How to generate working path data?
+
+IsLoadFromBinary?
+m_ScatteredAssets?
+
+assetBundleResourceData.Variant? I know: it is like sub name of Resource.
+validNames.Add(GetResourceFullName(assetBundleResourceData.Name, assetBundleResourceData.Variant).ToLowerInvariant());
+
+
+
+
+
+
+| Config file      |  Description   |
+| :-- | :-- |
+|  ResourceEditor.xml   |  1. Config Game Framework->Resource Tools->Resource Editor   |
+|     |     |
+|     |     |
 ```
 ResourceBuilder.xml
 ResourceCollection.xml
