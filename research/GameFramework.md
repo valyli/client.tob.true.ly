@@ -316,7 +316,7 @@ Upload *Output Full Path* to http server.
 This mode generate full files for Updatable Game.
 3. Packed
 Build out partial data to *Output Packed Path* which was set *Packed* flag in *Resource Editor*.
-Copy *Output Package Path* to *StreamingAssets*.
+Copy *Output Packed Path* to *StreamingAssets*.
 This mode generate files which should be published with Updatable Game.
 * We always choose mode *Full Path* and *Packed* together for our game need resource update feature.
 
@@ -412,6 +412,9 @@ class ResourceBuilderController:
   - c. Delete all .manifest without pair of data files.
   - d. At here will keep all data and manifest files at lastest building.
   - e. Call *BuildPipeline.BuildAssetBundles()*, build data and manifest to working path.
+    > ```csharp
+    > AssetBundleManifest assetBundleManifest = BuildPipeline.BuildAssetBundles(workingPath, assetBundleBuildDatas, buildAssetBundleOptions, GetBuildTarget(platform));
+    > ```
   - f. Create *FileSystem*(GF) for saving data in this file structure in furture, and gourp by *m_ResourceDatas*.
     - i. For *m_OutputPackageFileSystems*
     - ii. For *m_OutputPackedFileSystems*  
@@ -429,48 +432,50 @@ class ResourceBuilderController:
     - 4. Generate and Add *ResourceCode* to *ResourceData* in *m_ResourceDatas*.
   - h. Call *ProcessBinary()* :
     > Like *ProcessAssetBundle()*.
-    > Differency is load bytes from asset file.
+    > Differency is read bytes from asset file at first step.
   - i. Call *ProcessPackageVersionList()*:
     - 1. Generate *PackageVersionList.Asset* with asset name and dependency asset index.
     - 2. Generate *PackageVersionList.Resource* from *m_ResourceDatas*.
     - 3. Generate *PackageVersionList.FileSystem* from *GetFileSystemNames(resourceDatas)*.
     - 4. Generate *PackageVersionList.ResourceGroup* from *GetResourceGroupNames(resourceDatas)*.
-    - 5. Build versions: V0~2 for Package.
+    - 5. Build version with callback: V0~2.
+    - 6. Write to *Output Package Path* / *GameFrameworkVersion.dat*
+  - j. Call *ProcessUpdatableVersionList()*:
+    > Like *ProcessPackageVersionList()*.
+    > Write to *Output Full Path* / *GameFrameworkVersion. {CRC32 x8}.dat*
+  - k. Call *ProcessReadOnlyVersionList()*:
+    - 1. Get all packaged Resource Data.
+    - 2. Generate *LocalVersionList.Resource* and *LocalVersionList.FileSystem*.
+    - 3. Write to *Output Packed Path* / *GameFrameworkList.dat*
+  - l. Call *OnPostprocessPlatform()*. If platform is *Windows* and *outputPackageSelected* is true, copy data files to *StreamingAssets* automatically.
+  - m. Call *StarForceBuildEventHandler.OnPostprocessAllPlatforms()*. We could add some operation at here.
+
+### Principle Files  
+#### XML  
+* ResourceEditor.xml  
+*Resource Editor* settings. Include filter of assets.
+* ResourceBuilder.xml
+*Resource Builder* settings.
+* ResourceCollection.xml
+Output of *Resource Editor* operation.
+
+#### Output of Builder
+* GameFrameworkVersion.dat / GameFrameworkVersion. {CRC32 x8}.dat
+Information of resource at all. Include: Asset, Resource, FileSystem, ResourceGroup.
+* GameFrameworkList.dat
+Partial information of resource. Just Include: Resource, FileSystem.
 
 
 
-
-
-
-
-
-  AssetBundleManifest assetBundleManifest = BuildPipeline.BuildAssetBundles(workingPath, assetBundleBuildDatas, buildAssetBundleOptions, GetBuildTarget(platform));
-
-
-How to generate working path data?
-
-IsLoadFromBinary?
-m_ScatteredAssets?
-
-assetBundleResourceData.Variant? I know: it is like sub name of Resource.
+### Tips  
+* What is assetBundleResourceData.Variant?
+It is like sub name of Resource to distinguish resource.
+![](assets/GameFramework-3001ef8c.png)
+```csharp
 validNames.Add(GetResourceFullName(assetBundleResourceData.Name, assetBundleResourceData.Variant).ToLowerInvariant());
-
-
-
-
-
-
-| Config file      |  Description   |
-| :-- | :-- |
-|  ResourceEditor.xml   |  1. Config Game Framework->Resource Tools->Resource Editor   |
-|     |     |
-|     |     |
 ```
-ResourceBuilder.xml
-ResourceCollection.xml
-ResourceEditor.xml
-```
-Just only allow one Asset in one Resource.
+
+* Just only allow one Asset in one Resource.
 ```csharp
 ResourceCollection.SetResourceLoadType()
 if ((loadType == LoadType.LoadFromBinary || loadType == LoadType.LoadFromBinaryAndQuickDecrypt || loadType == LoadType.LoadFromBinaryAndDecrypt) && resource.GetAssets().Length > 1)
@@ -478,3 +483,7 @@ if ((loadType == LoadType.LoadFromBinary || loadType == LoadType.LoadFromBinaryA
     return false;
 }
 ```
+
+### To do
+* What's the effect of m_ScatteredAssets?
+I find author wrote it is not finished yet. It is designed for testing.
