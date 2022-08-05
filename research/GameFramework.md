@@ -214,6 +214,57 @@ Files:
 * Fire() send event at the second frame ,handle in the main thread.
 * FireNow() send event immediately, it is not a thread-safe way.
 
+## EntityComponent (UGF)
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |UnityGameFramework.Runtime        |
+|Hierarchy                    |GameFrameworkComponent|
+
+|Funtions                     |                                 |
+|:----------------------------|:---------------------------------|
+|ShowEntity()                 |add Entity to EntityManager and Scene.|
+|HideEntity()                 |hide Entity from manager and Scene.|
+|InternalHideEntity()         |hide all Entitis from manager and Scene.|
+|GetEntityGroup()             |find EntityGroup from EntityManager. |
+|GetEntity()                  |find Entiy from EntityManager. |
+
+Files:
+```
+\StarForce\Assets\GameFramework\Scripts\Runtime\Entity\EntityComponent.cs
+```
+
+* Hide entity means putting a entity into the recycle queue.
+* Entitis in the recycle queue will be released on Update() in EntityManager.
+
+### EntityLogic
+
+Use EntityLogic to write entity game logic.
+
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |UnityGameFramework.Runtime        |
+|Hierarchy                    |MonoBehaviour|
+
+|Funtions                     |                                 |
+|:----------------------------|:---------------------------------|
+|OnInit()                     |be called when it is being loaded.|
+|OnRecycle()                  |be called when it is in Recycle Queue.|
+|OnShow()                     |be called when it is added to Scene. |
+|OnHide()                     |be called when it is removed from Scene. |
+|OnAttached()                 |be called when a entity is attached to it. |
+|OnDetached()                 |be called when a entity is detached from it. |
+|OnAttachTo()                 |be called when it is attached to a entity. |
+|OnDetachFrom()               |be called when it is detached from a entity. |
+|OnUpdate()                   |be called every frame, if it is enabled. |
+
+* Use Visible to Activate or deactivate the entity.
+* Use CachedTransform to modify Position, rotation and scale of an entity.
+
+Files:
+```
+\StarForce\Assets\GameFramework\Scripts\Runtime\Entity\EntityLogic.cs
+```
+
 ## ProcedureComponent
 |Attributes                   |                                 |
 |:----------------------------|:---------------------------------|
