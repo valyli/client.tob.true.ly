@@ -305,6 +305,22 @@ m_ProcedureManager.StartProcedure(m_EntranceProcedure.GetType());
 [ref 2](https://gameframework.cn/uncategorized/%e4%bd%bf%e7%94%a8-assetbundle-%e6%9e%84%e5%bb%ba%e5%b7%a5%e5%85%b7/)
 * AssetDatabase is verison 2 that use LMDB.
 
+## Mode of Package  
+1. Package
+Build out all data files to: *Output Package Path*.
+Copy *Output Package Path* to *StreamingAssets*.
+This mode generate full files for Standalone Game.
+2. Full Path
+Build out all data and version list files to: *Output Full Path*.
+Upload *Output Full Path* to http server.
+This mode generate full files for Updatable Game.
+3. Packed
+Build out partial data to *Output Packed Path* which was set *Packed* flag in *Resource Editor*.
+Copy *Output Package Path* to *StreamingAssets*.
+This mode generate files which should be published with Updatable Game.
+* We always choose mode *Full Path* and *Packed* together for our game need resource update feature.
+
+
 ## Config Files
 Could modify config file path at here.
 ```
@@ -402,14 +418,14 @@ class ResourceBuilderController:
   - g. Call *ProcessAssetBundle()* for each *ResourceData*:
     - 1. Read bytes from assetbundle file built with U3D.
     - 2. Encrypt bytes by XOR.
-    >> There has a question:
-    >> *Utility.Encryption.GetQuickXorBytes()* and *Utility.Encryption.GetXorBytes()* are not differency. Why?
+      > There has a question:
+      > *Utility.Encryption.GetQuickXorBytes()* and *Utility.Encryption.GetXorBytes()* are not differency. Why?
     - 3. Call *ProcessOutput()* to write bytes in to *m_OutputPackageFileSystems*.( -> .dat)
-    >> i. For *OutputPackageSelected*
-    >> ii. For *OutputPackedSelected && resourceData.Packed*
-    >> iii. For *OutputFullSelected*. ( -> {CRC32 x8}.dat)
-    >>> Just this mode support compress.
-    >>> ? Should find which kind of compress.
+      - i. For *OutputPackageSelected*
+      - ii. For *OutputPackedSelected && resourceData.Packed*
+      - iii. For *OutputFullSelected*. ( -> {CRC32 x8}.dat)
+        > Just this mode support compress.
+        > ? Should find which kind of compress.
     - 4. Generate and Add *ResourceCode* to *ResourceData* in *m_ResourceDatas*.
   - h. Call *ProcessBinary()* :
     > Like *ProcessAssetBundle()*.
