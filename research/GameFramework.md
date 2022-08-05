@@ -252,6 +252,8 @@ m_ProcedureManager.StartProcedure(m_EntranceProcedure.GetType());
 [vedio](https://www.bilibili.com/video/BV1sE411C7cu?p=4&vd_source=e68deb734011863d4a3f9f42402d920c)
 [ref 1](https://blog.csdn.net/qq_26999509/article/details/102758769)  (Some name has changed in this article, such as AssetBundleEditor.xml、AssetBundleCollection.xml、AssetBundleBuilder.xml, change from AssetBundleXXX to ResourcXXX)
 [ref 2](https://gameframework.cn/uncategorized/%e4%bd%bf%e7%94%a8-assetbundle-%e6%9e%84%e5%bb%ba%e5%b7%a5%e5%85%b7/)
+* AssetDatabase is verison 2 that use LMDB.
+
 ## Config Files
 ### Editor
 Could modify config file path at here.
