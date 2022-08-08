@@ -80,6 +80,7 @@ new CommonFileSystemStream(fullPath, access, createNew);
 * Use this class to work with such data types in collections (such as List and Dictionary), Key-value coding, and other calls that require IReference. 
 * Variable objects are always immutable.
 ```csharp
+public sealed class VarInt32 : Variable<int>{...}
 procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
 ```
 Files:
@@ -87,6 +88,49 @@ Files:
 \StarForce\Assets\GameFramework\Scripts\Runtime\Variable\VarInt32.cs
 ```
 
+## ReferencePool
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |GF                              |
+|Hierarchy                    ||
+
+| Funtions  |                                |
+| :-------- | :----------------------------- |
+| Acquire() | Get an instance from the pool. |
+* ReferencePool is a way to optimize game and lower the burden that is placed on the CPU when having to rapidly create and destroy new objects.
+
+```csharp
+LoadConfigFailureEventArgs loadConfigFailureEventArgs = ReferencePool.Acquire<LoadConfigFailureEventArgs>();
+```
+
+## ObjectPool
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |GF                              |
+|Hierarchy                    ||
+
+### ObjectPoolManager
+| Funtions                      |                                                               |
+| :---------------------------- | :------------------------------------------------------------ |
+| CreateSingleSpawnObjectPool() | Get an objectPool that objects can be spawned only one time.  |
+| CreateMultiSpawnObjectPool()  | Get an objectPool that objects can be spawned multiple times. |
+
+### ObjectPool
+| Funtions   |                                                   |
+| :--------- | :------------------------------------------------ |
+| Spawn()    | Get an object from the ObjectPool.                |
+| Unspawn()  | Release an object.                                |
+| CanSpawn() | Check whether the objectPool can spawn an object. |
+| Register() | add a object to the the objectPool.               |
+
+* ObjectPool is similar with ReferencePool, the differences is ObjectPool often used to manage unity object.
+* whether an object can be spawned in multiple times depended on the "AllowMultiSpawn" propertie
+
+```csharp
+m_HPBarItemObjectPool = GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HPBarItemObject>("HPBarItem", 16);
+m_HPBarItemObjectPool.Register(HPBarItemObject.Create(hpBarItem), true);
+HPBarItemObject hpBarItemObject = m_HPBarItemObjectPool.Spawn();
+```
 
 # Game Entry Flow
 ## BaseComponent
