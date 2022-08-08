@@ -97,6 +97,7 @@ Files:
 ## Flow chart
 ```mermaid
 graph TB
+graph TB
     1[BaseComponent.Awake] --> 1.1
     subgraph Initialize all components extend GameFrameworkComponent in Random order
     1.1[ProcedureComponent.Awake] --> 1.2[DebuggerComponent.Awake] --> 1.3[...]
@@ -110,7 +111,12 @@ graph TB
     -->7[ProcedureLaunch]--OnUpdate-->8[ProcedureSplash]
     8--EditorResourceMode-->9[ProcedurePreload]
     8--Package-->10[ProcedureInitResources]
-    8--Updatable-->11[ProcedureCheckVersion]
+    8--Updatable-->11[ProcedureCheckVersion]-->12{m_NeedUpdateVersion}
+    12--true-->13[ProcedureUpdateVersion]
+    12--false-->14[ProcedureVerifyResources]
+    14-->15[ProcedureCheckResources]-->16{m_NeedUpdateResources}
+    16--true-->17[ProcedureUpdateResources]
+    16--false-->18[ProcedurePreload]-->19[ProcedureChangeScene]
 ```
 GameFramework can not promise order of:
 > GameFrameworkComponent in GameEntry.s_GameFrameworkComponents
@@ -489,10 +495,144 @@ if ((loadType == LoadType.LoadFromBinary || loadType == LoadType.LoadFromBinaryA
 I find author wrote it is not finished yet. It is designed for testing.
 
 
-## Resource Load
-### ProcedureCheckVersion Flow
-#### Open This Mode
+## Resource Flow (ProcedureCheckVersion->ProcedureVerifyResources->ProcedureCheckResources->ProcedurePreload)
+### Open This Mode
 1. Disable Resource Mode
 ![](vx_images/421341010239275.png)
 2. Change Resource Mode to Updatable
 ![](vx_images/232320810220849.png)
+
+### Step
+1. Http Get version file from: https://starforce.gameframework.cn/Resources/{Platform}Version.txt
+Example: https://starforce.gameframework.cn/Resources/WindowsVersion.txt  
+Return a json file:
+```json
+{
+  "ForceUpdateGame": false,
+  "LatestGameVersion": "0.1.0",
+  "InternalGameVersion": 1,
+  "InternalResourceVersion": 1,
+  "UpdatePrefixUri": "https://starforce.gameframework.cn/Resources/0_1_0_1/Windows",
+  "VersionListLength": 7158,
+  "VersionListHashCode": 1985842577,
+  "VersionListCompressedLength": 2643,
+  "VersionListCompressedHashCode": 288676703,
+  "END_OF_JSON": ""
+}
+```
+Set *m_CheckVersionComplete* = true
+
+2. Compare version in *VersionListProcessor.CheckVersionList()*.
+Local version file path: It is read/write path.
+Example on windows10:
+```
+C:/Users/Administrator/AppData/LocalLow/Game Framework/Star Force/GameFrameworkVersion.dat
+```
+Load local *internalResourceVersion* from *GameFrameworkVersion.dat*.
+Compare *internalResourceVersion*(local) with *latestInternalResourceVersion*(remote)
+Set *m_NeedUpdateVersion*
+
+3. Judge m_NeedUpdateVersion in Update().
+If *m_NeedUpdateVersion* is false, Jump to 4??.
+If *m_NeedUpdateVersion* is false, Jump to 4.
+
+4. Change state to *ProcedureVerifyResources*.
+5. *ResourceManager.ResourceVerifier.VerifyResources()*:
+  - a. Call *m_ResourceManager.m_ResourceHelper.LoadBytes()* asynchronously.
+    ```
+    C:/Users/Administrator/AppData/LocalLow/Game Framework/Star Force/GameFrameworkList.dat
+    ```
+  - b. Callback *OnLoadReadWriteVersionListSuccess()*
+6. *OnLoadReadWriteVersionListSuccess()*
+  - a. Deserialize *GameFrameworkList.dat* to *LocalVersionList*
+  - b. Analyze *LocalVersionList.Resource[]* and *LocalVersionList.FileSystem[]*
+  - c. Combine *m_VerifyInfos*
+  - d. *m_LoadReadWriteVersionListComplete* = true
+7. Wait entry *ResourceManager.ResourceVerifier.Update()* in GameFramework.
+  - a. Loop *m_VerifyInfos*, check each by *VerifyResource()*
+    - Read from *FileSystem*
+    - Compare length between file and *verifyInfo.Length*
+    - Compare hashcode between file and verifyInfo.HashCode. Read from stream and step size is 4K bytes.
+  - b. One loop just verify one *VersionInfo* only. And wait next Update() to check the next one.
+  - c. After each loop, will refresh *EventManager* to trigger such as *ProcedureVerifyResources.OnResourceVerifySuccess()* refreshing UI.
+  - d. If loop all finished, then:
+    - d.1 If verify failed. Will call *GenerateReadWriteVersionList()* to fix 'GameFrameworkList.dat'
+    - d.2 else verify successed. Set *ProcedureVerifyResources.m_VerifyResourcesComplete* = true
+  - e. Wait Update() change state to *ProcedureCheckResources*
+8. *ResourceManager.CheckResources()*
+  - a. Load files asynchronously:
+
+    | Directory                   | FileName          | LoadBytesCallbacks                      |
+    |:----------------------------|:------------------|:---------------|
+    |Persistence Path            |GameFrameworkVersion.dat  | OnLoadUpdatableVersionListSuccess |
+    |StreamingAssets            |GameFrameworkList.dat| OnLoadReadOnlyVersionListSuccess or OnLoadReadOnlyVersionListFailure |
+    |Persistence Path            |GameFrameworkList.dat| OnLoadReadWriteVersionListSuccess |
+    Above functions executed in random order.
+  - b. *OnLoadUpdatableVersionListSuccess()*
+      - b.1. Deserialize to *UpdatableVersionList*
+      - b.2. Combine *m_CheckInfos*, *m_ResourceGroups*, *m_ResourceManager.m_AssetInfos*  with *UpdatableVersionList* data.
+  - c. *OnLoadReadWriteVersionListSuccess()*
+  - d. *OnLoadReadOnlyVersionListFailure()*
+  - e. execute *RefreshCheckInfoStatus()*.  Loop for *m_CheckInfos*
+      - e.1. *RefreshStatus()*, Check resource has exist in file system in persistence path or StreamingAssets, to decide how to deal with it (Diverge to *CheckStatus* [Disuse, StorageInReadOnly, StorageInReadWrite, Update, Unavailable]).
+       - e.2. Tidy (move or remove) file in *FileSystem* with results generated above.
+       - e.3. Add result to *m_ResourceManager.m_ResourceInfos* and *m_ResourceManager.m_ReadWriteResourceInfos*
+   - f. Remove empty FileSystem and Directory.
+   - g. Set *m_CheckResourcesComplete* = true, set *m_NeedUpdateResources*
+   - h. Wait Update() change state to:
+        - h.1 If m_NeedUpdateResources is true, *ProcedureCheckResources*
+        - h.2 else, *ProcedurePreload*
+9. In *ProcedurePreload*:
+  - a. LoadConfig, LoadDataTable, LoadDictionary, LoadFont and so on.
+  Example:
+    ```csharp
+    string configAssetName = AssetUtility.GetConfigAsset(configName, false);
+    m_LoadedFlag.Add(configAssetName, false);
+    GameEntry.Config.ReadData(configAssetName, this);
+    ```
+    ```csharp
+    string configAssetName = AssetUtility.GetConfigAsset(configName, false);
+    m_LoadedFlag.Add(configAssetName, false);
+    GameEntry.Config.ReadData(configAssetName, this);
+    ```
+  - b. add to *m_LoadedFlag*, and set *false*.
+  - c. Check all is *true* in *m_LoadedFlag* in *Update()*
+  - d. Change state to *ProcedureChangeScene*. That's all !
+
+
+## Load Resource
+All resources (asset and binary) informations are managed by *ResourceManager.ResourceLoader*.
+```csharp
+private ResourceInfo GetResourceInfo(string assetName)
+{
+    if (string.IsNullOrEmpty(assetName))
+    {
+        return null;
+    }
+
+    AssetInfo assetInfo = m_ResourceManager.GetAssetInfo(assetName);
+    if (assetInfo == null)
+    {
+        return null;
+    }
+
+    return m_ResourceManager.GetResourceInfo(assetInfo.ResourceName);
+}
+```
+
+### Step  
+1. *ResourceManager.LoadAsset()*
+2. *ResourceLoader.CheckAsset()*
+3. Create *LoadAssetTask* and search / create *LoadDependencyAssetTask*, add to *m_TaskPool*
+4. If *resourceInfo.Ready*, m_ResourceManager.UpdateResource(). Control by *ResourceUpdater.m_UpdateCandidateInfo*
+```csharp
+if (!resourceInfo.Ready)
+{
+    m_ResourceManager.UpdateResource(resourceInfo.ResourceName);
+}
+```
+
+....Should analysize again...
+```csharp
+LoadAssetTask mainTask = LoadAssetTask.Create(assetName, assetType, priority, resourceInfo, dependencyAssetNames, loadAssetCallbacks, userData);
+```
