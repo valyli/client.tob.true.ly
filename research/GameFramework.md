@@ -462,3 +462,11 @@ if ((loadType == LoadType.LoadFromBinary || loadType == LoadType.LoadFromBinaryA
     return false;
 }
 ```
+
+## Resource Load
+### ProcedureCheckVersion Flow
+#### Open This Mode
+1. Disable Resource Mode
+![](vx_images/421341010239275.png)
+2. Change Resource Mode to Updatable
+![](vx_images/232320810220849.png)
