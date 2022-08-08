@@ -103,19 +103,13 @@ Files:
 LoadConfigFailureEventArgs loadConfigFailureEventArgs = ReferencePool.Acquire<LoadConfigFailureEventArgs>();
 ```
 
-## ObjectPool
-|Attributes                   |                                 |
-|:----------------------------|:---------------------------------|
-|Namespace                    |GF                              |
-|Hierarchy                    ||
-
-### ObjectPoolManager
+## ObjectPoolManager
 | Funtions                      |                                                               |
 | :---------------------------- | :------------------------------------------------------------ |
 | CreateSingleSpawnObjectPool() | Get an objectPool that objects can be spawned only one time.  |
 | CreateMultiSpawnObjectPool()  | Get an objectPool that objects can be spawned multiple times. |
 
-### ObjectPool
+## ObjectPool
 | Funtions   |                                                   |
 | :--------- | :------------------------------------------------ |
 | Spawn()    | Get an object from the ObjectPool.                |
