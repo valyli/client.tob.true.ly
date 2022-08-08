@@ -58,6 +58,29 @@ new CommonFileSystemStream(fullPath, access, createNew);
 
 ## AndroidFileSystemStream
 
+## Variable
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |GF                              |
+|Hierarchy                    ||
+
+| Funtions   |                                           |
+| :--------- | :---------------------------------------- |
+| GetValue() | Return the current value.                 |
+| SetValue() | set value with any of the scalar types.   |
+| Clear()    | Clear the current.                        |
+| ToString() | Returns a formatted string of this color. |
+* An Variable object can hold any of the scalar types such as int, float, and char, as well as      pointers, structures, and object id references. 
+* Use this class to work with such data types in collections (such as List and Dictionary), Key-value coding, and other calls that require IReference. 
+* Variable objects are always immutable.
+```csharp
+procedureOwner.SetData<VarInt32>("NextSceneId", GameEntry.Config.GetInt("Scene.Menu"));
+```
+Files:
+```
+\StarForce\Assets\GameFramework\Scripts\Runtime\Variable\VarInt32.cs
+```
+
 
 # Game Entry Flow
 ## BaseComponent
