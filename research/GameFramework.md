@@ -70,6 +70,12 @@ new CommonFileSystemStream(fullPath, access, createNew);
 | SetValue() | set value with any of the scalar types.   |
 | Clear()    | Clear the current.                        |
 | ToString() | Returns a formatted string of this color. |
+
+| Properties |                              |
+| :--------- | :--------------------------- |
+| Type       | The type of the scalar data. |
+| Value      | The value of the scalar data |
+
 * An Variable object can hold any of the scalar types such as int, float, and char, as well as      pointers, structures, and object id references. 
 * Use this class to work with such data types in collections (such as List and Dictionary), Key-value coding, and other calls that require IReference. 
 * Variable objects are always immutable.
