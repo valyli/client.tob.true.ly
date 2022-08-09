@@ -307,6 +307,10 @@ private void OnLoadDictionaryFailure(object sender, GameEventArgs e){
 | SetInt()        | Sets a single integer value for the preference identified by the given key. |
 | GetInt()        | Returns the value corresponding to key in the preference file if it exists. |
 * Stores player preferences between game sessions. It can store string, float and integer values into the user’s platform registry just like PlayerPrefs.
+```csharp
+GameEntry.Setting.SetString(Constant.Setting.Language, m_SelectedLanguage.ToString());
+GameEntry.Setting.Save();
+```
 
 ## EventComponent (UGF)
 | Attributes |                            |
