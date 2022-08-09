@@ -267,18 +267,33 @@ private void OnLoadDataTableFailure(object sender, GameEventArgs e){
 ```
 the file can be text or byte stream
 
-## EventComponent (UGF)
-|Attributes                   |                                 |
-|:----------------------------|:---------------------------------|
-|Namespace                    |UnityGameFramework.Runtime        |
-|Hierarchy                    |GameFrameworkComponent|
+## SettingComponent (UGF)
+| Attributes |                            |
+| :--------- | :------------------------- |
+| Namespace  | UnityGameFramework.Runtime |
+| Hierarchy  | GameFrameworkComponent     |
 
-|Funtions                     |                                 |
-|:----------------------------|:---------------------------------|
-|Subscribe()                  |add callback to event. |
-|Unsubscribe()                |cancel the callback. |
-|Fire()                       |send event. |
-|FireNow()                    |send event immediately. |
+| Funtions        |                                                                             |
+| :-------------- | :-------------------------------------------------------------------------- |
+| Save()          | Writes all modified preferences to disk.                                    |
+| HasSetting()    | Returns true if the given key exists, otherwise returns false.              |
+| RemoveSetting() | Removes the given key.                                                      |
+| SetInt()        | Sets a single integer value for the preference identified by the given key. |
+| GetInt()        | Returns the value corresponding to key in the preference file if it exists. |
+* stores Player preferences between game sessions. It can store string, float and integer values into the user’s platform registry just like PlayerPrefs
+
+## EventComponent (UGF)
+| Attributes |                            |
+| :--------- | :------------------------- |
+| Namespace  | UnityGameFramework.Runtime |
+| Hierarchy  | GameFrameworkComponent     |
+
+| Funtions      |                         |
+| :------------ | :---------------------- |
+| Subscribe()   | add callback to event.  |
+| Unsubscribe() | cancel the callback.    |
+| Fire()        | send event.             |
+| FireNow()     | send event immediately. |
 
 Files:
 ```
