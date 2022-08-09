@@ -76,8 +76,8 @@ new CommonFileSystemStream(fullPath, access, createNew);
 | Type       | The type of the scalar data. |
 | Value      | The value of the scalar data |
 
-* An Variable object can hold any of the scalar types such as int, float, and char, as well as      pointers, structures, and object id references. 
-* Use this class to work with such data types in collections (such as List and Dictionary), Key-value coding, and other calls that require IReference. 
+* An Variable object can hold any of the scalar types such as int, float, and char, as well as      pointers, structures, and object id references.
+* Use this class to work with such data types in collections (such as List and Dictionary), Key-value coding, and other calls that require IReference.
 * Variable objects are always immutable.
 ```csharp
 public sealed class VarInt32 : Variable<int>{...}
@@ -668,38 +668,180 @@ If *m_NeedUpdateVersion* is false, Jump to 4.
 
 
 ## Load Resource
-All resources (asset and binary) informations are managed by *ResourceManager.ResourceLoader*.
+* All resources (asset and binary) informations are managed by *ResourceManager*.
 ```csharp
-private ResourceInfo GetResourceInfo(string assetName)
+internal sealed partial class ResourceManager : GameFrameworkModule, IResourceManager
 {
-    if (string.IsNullOrEmpty(assetName))
-    {
-        return null;
-    }
+  private Dictionary<string, AssetInfo> m_AssetInfos;
+  private Dictionary<ResourceName, ResourceInfo> m_ResourceInfos;
+}
+{
+  private ResourceInfo GetResourceInfo(string assetName)
+  {
+      if (string.IsNullOrEmpty(assetName))
+      {
+          return null;
+      }
 
-    AssetInfo assetInfo = m_ResourceManager.GetAssetInfo(assetName);
-    if (assetInfo == null)
-    {
-        return null;
-    }
+      AssetInfo assetInfo = m_ResourceManager.GetAssetInfo(assetName);
+      if (assetInfo == null)
+      {
+          return null;
+      }
 
-    return m_ResourceManager.GetResourceInfo(assetInfo.ResourceName);
+      return m_ResourceManager.GetResourceInfo(assetInfo.ResourceName);
+  }
+}
+```
+
+* All assets and resources pool are managed by *ResourceManager.ResourceLoader*.
+```csharp
+internal sealed partial class ResourceManager : GameFrameworkModule, IResourceManager
+{
+  private sealed partial class ResourceLoader
+  {
+    private IObjectPool<AssetObject> m_AssetPool;
+    private IObjectPool<ResourceObject> m_ResourcePool;
+  }
 }
 ```
 
 ### Step  
 1. *ResourceManager.LoadAsset()*
-2. *ResourceLoader.CheckAsset()*
-3. Create *LoadAssetTask* and search / create *LoadDependencyAssetTask*, add to *m_TaskPool*
-4. If *resourceInfo.Ready*, m_ResourceManager.UpdateResource(). Control by *ResourceUpdater.m_UpdateCandidateInfo*
+```csharp
+m_ResourceManager.LoadAsset(dataAssetName, priority, m_LoadAssetCallbacks, userData);
+```
+2. *ResourceLoader.LoadAsset()*
+```csharp
+m_ResourceLoader.LoadAsset(assetName, null, priority, loadAssetCallbacks, userData);
+```
+3. *ResourceLoader.CheckAsset()*
+4. Create *LoadAssetTask* and search / create *LoadDependencyAssetTask*, add to *m_TaskPool*
+```csharp
+LoadAssetTask mainTask = LoadAssetTask.Create(assetName, assetType, priority, resourceInfo, dependencyAssetNames, loadAssetCallbacks, userData);
+m_TaskPool.AddTask(mainTask);
+```
+5. If not *resourceInfo.Ready*, call m_ResourceManager.UpdateResource(). Control by *ResourceUpdater.m_UpdateCandidateInfo*
 ```csharp
 if (!resourceInfo.Ready)
 {
     m_ResourceManager.UpdateResource(resourceInfo.ResourceName);
 }
 ```
-
-....Should analysize again...
+6. Wait execute *TaskPool.Update()*:
+  - 6.1 *ProcessWaitingTasks()*
+    Get one free *LoadResourceAgent*
+    Add to *m_WorkingAgents*
+    Call *LoadResourceAgent.Start()*
+    If this asset has exist in *m_ResourceLoader.m_AssetPool*, call *7.4 LoadResourceAgent.OnAssetObjectReady()*
+    Call *m_Helper.ReadFile()*, load **AssetBundle** from:
+    ```csharp
+    m_FileAssetBundleCreateRequest = AssetBundle.LoadFromFileAsync(fullPath);
+    ```
+  - 6.2 *ProcessRunningTasks()*, no more important for this processing.
+7. *DefaultLoadResourceAgentHelper.Update()*
 ```csharp
-LoadAssetTask mainTask = LoadAssetTask.Create(assetName, assetType, priority, resourceInfo, dependencyAssetNames, loadAssetCallbacks, userData);
+private void Update()
+{
+#if UNITY_5_4_OR_NEWER
+    UpdateUnityWebRequest();
+#else
+    UpdateWWW();
+#endif
+    UpdateFileAssetBundleCreateRequest();
+    UpdateBytesAssetBundleCreateRequest();
+    UpdateAssetBundleRequest();
+    UpdateAsyncOperation();
+}
 ```
+  - 7.1 *UpdateFileAssetBundleCreateRequest()*
+      (*AssetBundleCreateRequest*) m_FileAssetBundleCreateRequest.**isDone**
+      ```csharp
+      private void OnLoadResourceAgentHelperReadFileComplete(object sender, LoadResourceAgentHelperReadFileCompleteEventArgs e)
+      {
+          ResourceObject resourceObject = ResourceObject.Create(m_Task.ResourceInfo.ResourceName.Name, e.Resource, m_ResourceHelper, m_ResourceLoader);
+          m_ResourceLoader.m_ResourcePool.Register(resourceObject, true);
+          s_LoadingResourceNames.Remove(m_Task.ResourceInfo.ResourceName.Name);
+          OnResourceObjectReady(resourceObject);
+      }
+      ```
+  - 7.2 *LoadResourceAgent.OnResourceObjectReady()*
+      ```csharp
+      private void OnResourceObjectReady(ResourceObject resourceObject)
+      {
+          m_Task.LoadMain(this, resourceObject);
+      }
+      public void LoadMain(LoadResourceAgent agent, ResourceObject resourceObject)
+      {
+          m_ResourceObject = resourceObject;
+          agent.Helper.LoadAsset(resourceObject.Target, AssetName, AssetType, IsScene);
+      }
+
+      class DefaultLoadResourceAgentHelper
+      {
+        public override void LoadAsset(object resource, string assetName, Type assetType, bool isScene)
+        {
+          AssetBundle assetBundle = resource as AssetBundle;
+          m_AssetBundleRequest = assetBundle.LoadAssetAsync(assetName);
+        }
+      }
+      ```
+  - 7.3 *UpdateAssetBundleRequest()*
+    (*AssetBundleCreateRequest*) m_AssetBundleRequest.**isDone**
+    ```csharp
+    private void OnLoadResourceAgentHelperLoadComplete(object sender, LoadResourceAgentHelperLoadCompleteEventArgs e)
+    {
+      OnAssetObjectReady()
+    }
+    ```
+  - 7.4 *OnAssetObjectReady()*
+    Callback which set at **Step 1**
+    ```csharp
+    public override void OnLoadAssetSuccess(LoadResourceAgent agent, object asset, float duration)
+    {
+        base.OnLoadAssetSuccess(agent, asset, duration);
+        if (m_LoadAssetCallbacks.LoadAssetSuccessCallback != null)
+        {
+            m_LoadAssetCallbacks.LoadAssetSuccessCallback(AssetName, asset, duration, UserData);
+        }
+    }
+    ```
+8. Load Scene Step
+  It like paragraph 7. But judged if scene, will use special API for it in Unity3D.
+  ```csharp
+  m_AsyncOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+  ```
+  ```csharp
+  UpdateAsyncOperation()
+
+  if (m_Task.IsScene)
+  {
+    m_ResourceLoader.m_SceneToAssetMap.Add(m_Task.AssetName, asset);
+  }
+
+  class ResourceManager.ResourceLoader
+  {
+    private void OnLoadResourceAgentHelperLoadComplete(object sender, LoadResourceAgentHelperLoadCompleteEventArgs e)
+    {
+      if (m_Task.IsScene)
+      {
+          assetObject = m_ResourceLoader.m_AssetPool.Spawn(m_Task.AssetName);
+      }
+      OnAssetObjectReady(assetObject);
+    }
+  }
+
+  private void OnAssetObjectReady(AssetObject assetObject)
+  {
+      m_Helper.Reset();
+
+      object asset = assetObject.Target;
+      if (m_Task.IsScene)
+      {
+          m_ResourceLoader.m_SceneToAssetMap.Add(m_Task.AssetName, asset);
+      }
+
+      m_Task.OnLoadAssetSuccess(this, asset, (float)(DateTime.UtcNow - m_Task.StartTime).TotalSeconds);
+      m_Task.Done = true;
+  }
+  ```
