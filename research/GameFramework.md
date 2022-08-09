@@ -164,26 +164,32 @@ Files:
 ## Flow chart
 ```mermaid
 graph TB
-graph TB
     1[BaseComponent.Awake] --> 1.1
+
     subgraph Initialize all components extend GameFrameworkComponent in Random order
     1.1[ProcedureComponent.Awake] --> 1.2[DebuggerComponent.Awake] --> 1.3[...]
     end
-    1.3 --> 2.1[GameEntry.Start GameEntry.InitBuiltinComponents to bundle GameFrameworkComponents to GameEntry static members.]
+
+    subgraph Framework Update
+    1.3 --> 2.1[GameEntry.Start<br/>GameEntry.InitBuiltinComponents<br/>bundle GameFrameworkComponents to GameEntry static members.]
 
      --> 3
     3[BaseComponent.Update] --> 4[GameFrameworkEntry.Update in GF] --> 5[Loop all GameFrameworkModule]
+    end
+
+    subgraph Resource Flow
     1.3-->6
     6[ProcedureComponent.Start] --delay one frame--> 6.1[m_ProcedureManager.StartProcedure m_EntranceProcedure]
     -->7[ProcedureLaunch]--OnUpdate-->8[ProcedureSplash]
-    8--EditorResourceMode-->9[ProcedurePreload]
+    8--EditorResourceMode-->18[ProcedurePreload]
     8--Package-->10[ProcedureInitResources]
     8--Updatable-->11[ProcedureCheckVersion]-->12{m_NeedUpdateVersion}
-    12--true-->13[ProcedureUpdateVersion]
+    12--true-->13[ProcedureUpdateVersion]-->14
     12--false-->14[ProcedureVerifyResources]
-    14-->15[ProcedureCheckResources]-->16{m_NeedUpdateResources}
-    16--true-->17[ProcedureUpdateResources]
+    14-->15[ProcedureCheckResources]-->16{m_NeedUpdateResources = <br/>updateCount > 0}
+    16--true-->17[ProcedureUpdateResources]--m_UpdateResourcesComplete=true-->18
     16--false-->18[ProcedurePreload]-->19[ProcedureChangeScene]
+    end
 ```
 GameFramework can not promise order of:
 > GameFrameworkComponent in GameEntry.s_GameFrameworkComponents
@@ -592,8 +598,9 @@ Set *m_CheckVersionComplete* = true
 2. Compare version in *VersionListProcessor.CheckVersionList()*.
 Local version file path: It is read/write path.
 Example on windows10:
-```
+```shell
 C:/Users/Administrator/AppData/LocalLow/Game Framework/Star Force/GameFrameworkVersion.dat
+# If you want to test Update processing again and again, just remove those files in this directory [Persistence Path]
 ```
 Load local *internalResourceVersion* from *GameFrameworkVersion.dat*.
 Compare *internalResourceVersion*(local) with *latestInternalResourceVersion*(remote)
@@ -665,6 +672,88 @@ If *m_NeedUpdateVersion* is false, Jump to 4.
   - b. add to *m_LoadedFlag*, and set *false*.
   - c. Check all is *true* in *m_LoadedFlag* in *Update()*
   - d. Change state to *ProcedureChangeScene*. That's all !
+
+## Resource Update Flow
+### Step
+1. GameEntry.Resource.CheckVersionList(m_VersionInfo.InternalResourceVersion)
+  - If versionListFile not exist, *CheckVersionListResult.NeedUpdate*
+    ```shell
+    C:/Users/Administrator/AppData/LocalLow/Game Framework/Star Force/GameFrameworkVersion.dat
+    ```
+  - ...other way
+2. set *m_NeedUpdateVersion* = true
+3. *OnUpdate()*
+    ```csharp
+    ChangeState<ProcedureUpdateVersion>(procedureOwner);
+    ```
+4. *GameEntry.Resource.UpdateVersionList()* -> *ResourceManager.VersionListProcessor.UpdateVersionList()*
+  Download remote version list file to local file.
+    ```csharp
+    string latestVersionListFullNameWithCrc32 = Utility.Text.Format("{0}.{2:x8}.{1}", RemoteVersionListFileName.Substring(0, dotPosition), RemoteVersionListFileName.Substring(dotPosition + 1), m_VersionListHashCode);
+    m_DownloadManager.AddDownload(localVersionListFilePath, Utility.Path.GetRemotePath(Path.Combine(m_ResourceManager.m_UpdatePrefixUri, latestVersionListFullNameWithCrc32)), this);
+    ```
+    ```shell
+    C:/Users/Administrator/AppData/LocalLow/Game Framework/Star Force/GameFrameworkVersion.dat
+    https://starforce.gameframework.cn/Resources/0_1_0_1/Windows/GameFrameworkVersion.765d8d91.dat
+    ```
+5. Add download task
+    ```csharp
+    DownloadTask downloadTask = DownloadTask.Create(downloadPath, downloadUri, tag, priority, m_FlushSize, m_Timeout, userData);
+    m_TaskPool.AddTask(downloadTask);
+    ```
+6. *DownloadManager.m_TaskPool.Update()*
+  *UnityWebRequestDownloadAgentHelper.Download()*
+    ```csharp
+    public override void Download(string downloadUri, object userData)
+    {
+        m_UnityWebRequest = new UnityWebRequest(downloadUri);
+        m_UnityWebRequest.downloadHandler = new DownloadHandler(this);
+        m_UnityWebRequest.SendWebRequest();
+    }
+    ```
+    *UnityWebRequestDownloadAgentHelper.Update()*
+    If *m_UnityWebRequest.isDone*, go *DownloadManager.DownloadAgent.OnDownloadAgentHelperComplete()*
+      - 6.1 Remove old file.
+      - 6.2 Move new download file ({0}.download) to replace old file.
+7. *ResourceManager.VersionListProcessor.OnDownloadSuccess()*
+
+8. *ResourceManager.ResourceChecker.OnLoadUpdatableVersionListSuccess()*
+    ```csharp
+    ResourceManager.ResourceChecker.RefreshCheckInfoStatus()
+    {
+      if (ci.Status == CheckInfo.CheckStatus.Update)
+      {
+        ResourceNeedUpdate(ci.ResourceName, ci.FileSystemName, ci.LoadType, ci.Length, ci.HashCode, ci.CompressedLength, ci.CompressedHashCode)
+        {
+          ResourceManager.ResourceUpdater.AddResourceUpdate()
+          {
+            m_UpdateCandidateInfo.Add()
+          }
+        }
+      }
+    }
+    ```
+9. *ResourceManager.ResourceUpdater.OnDownloadSuccess()* for each.
+  Remove old file.
+  Remove from *m_UpdateCandidateInfo*
+  m_ResourceManager.m_ResourceInfos[updateInfo.ResourceName].MarkReady();
+10. Finished all of one Resource, *GenerateReadWriteVersionList()*
+11. Finished all
+    ```csharp
+    if (m_UpdateCandidateInfo.Count <= 0 && ResourceUpdateAllComplete != null)
+    {
+        ResourceUpdateAllComplete();
+    }
+    ```
+    ```csharp
+    ProcedureUpdateResources.OnUpdateResourcesComplete()
+    {
+      m_UpdateResourcesComplete = true
+      {
+        ChangeState<ProcedurePreload>(procedureOwner);
+      }
+    }
+    ```
 
 
 ## Load Resource
