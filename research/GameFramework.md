@@ -859,10 +859,78 @@ GameEntry.Scene.LoadScene(AssetUtility.GetSceneAsset(drScene.AssetName), Constan
       {
         LoadSceneTask mainTask = LoadSceneTask.Create(sceneAssetName, priority, resourceInfo, dependencyAssetNames, loadSceneCallbacks, userData);
         m_TaskPool.AddTask(mainTask);
-        # Change to
+        # Change to paragraph 6.
       }
     }
   }
 }
+```
 
+## Unload Scene  
+### Step
+```csharp
+GameEntry.Scene.UnloadScene()
+{
+  SceneManager.UnloadScene()
+  {
+    ResourceManager.UnloadScene()
+    {
+      ResourceLoader.UnloadScene()
+      {
+        m_SceneToAssetMap.Remove(sceneAssetName);
+        m_AssetPool.Unspawn(asset);
+        m_AssetPool.ReleaseObject(asset);
+        ResourceManager.m_ResourceHelper.UnloadScene(sceneAssetName, unloadSceneCallbacks, userData)
+        {
+          AsyncOperation asyncOperation = SceneManager.UnloadSceneAsync(SceneComponent.GetSceneName(sceneAssetName));
+        }
+      }
+    }
+  }
+}
+```
+
+## Unload Resource
+### Step
+1. Unspawn from ObjectPool
+```csharp
+ResourceComponent.UnloadAsset()
+{
+  ResourceManager.UnloadAsset()
+  {
+    ResourceLoader.UnloadAsset()
+    {
+      m_AssetPool.Unspawn(asset)
+      {
+        internalObject.Unspawn();
+        if (Count > m_Capacity && internalObject.SpawnCount <= 0)
+        {
+            Release();
+        }
+      }
+    }
+  }
+}
+```
+2. Release from ObjectPool in Update()
+```csharp
+ObjectPoolManager.Update()
+{
+  ObjectPoolManager.ObjectPool.Release()
+  {
+    # Find each could released
+    ReleaseObject()
+    {
+      internalObject.Release(false)
+      {
+        m_EntityHelper.ReleaseEntity(m_EntityAsset, Target)
+        {
+          m_ResourceComponent.UnloadAsset(entityAsset);
+          Destroy((Object)entityInstance);
+        }
+      }
+      ReferencePool.Release(internalObject);
+    }
+  }
+}
 ```
