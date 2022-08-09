@@ -845,3 +845,24 @@ private void Update()
       m_Task.Done = true;
   }
   ```
+
+## Load Scene
+### Step
+```csharp
+GameEntry.Scene.LoadScene(AssetUtility.GetSceneAsset(drScene.AssetName), Constant.AssetPriority.SceneAsset, this)
+{
+  m_SceneManager.LoadScene(sceneAssetName, priority, userData)
+  {
+    m_ResourceManager.LoadScene(sceneAssetName, priority, m_LoadSceneCallbacks, userData);
+    {
+      m_ResourceLoader.LoadScene(sceneAssetName, priority, loadSceneCallbacks, userData);
+      {
+        LoadSceneTask mainTask = LoadSceneTask.Create(sceneAssetName, priority, resourceInfo, dependencyAssetNames, loadSceneCallbacks, userData);
+        m_TaskPool.AddTask(mainTask);
+        # Change to
+      }
+    }
+  }
+}
+
+```
