@@ -118,7 +118,7 @@ LoadConfigFailureEventArgs loadConfigFailureEventArgs = ReferencePool.Acquire<Lo
 | Register() | add a object to the the objectPool.               |
 
 * ObjectPool is similar with ReferencePool, the differences is ObjectPool often used to manage unity object.
-* whether an object can be spawned in multiple times depended on the "AllowMultiSpawn" propertie
+* Whether an object can be spawned in multiple times depended on the "AllowMultiSpawn" propertie
 
 ```csharp
 m_HPBarItemObjectPool = GameEntry.ObjectPool.CreateSingleSpawnObjectPool<HPBarItemObject>("HPBarItem", 16);
@@ -219,11 +219,11 @@ class GameFrameworkComponent : MonoBehaviour
 
 Use ConfigComponent as a Component to simplify reading config information. Example:
 ```csharp
-ConfigComponent Config = GameEntry.GetComponent<ConfigComponent>()
-Config.ReadData(configAssetName, this)
+ConfigComponent Config = GameEntry.GetComponent<ConfigComponent>();
+Config.ReadData(configAssetName, this);
 
-ConfigComponent Config = GameEntry.GetComponent<ConfigComponent>()
-int id = Config.GetInt("Scene.Menu")
+ConfigComponent Config = GameEntry.GetComponent<ConfigComponent>();
+int id = Config.GetInt("Scene.Menu");
 ```
 any function that delivers its result asynchronously, make sure your file have loaded Successfully. Example:
 ```csharp
@@ -246,13 +246,13 @@ the file can be text or byte stream
 
 Use DataTableComponent as a Component to reading Excel or other files. Example:
 ```csharp
-DataTableComponent DataTable = GameEntry.GetComponent<DataTableComponent>()
-DataTable.LoadDataTable(dataTableName, dataTableAssetName, this)
+DataTableComponent DataTable = GameEntry.GetComponent<DataTableComponent>();
+DataTable.LoadDataTable(dataTableName, dataTableAssetName, this);
 
-DataTableComponent DataTable = GameEntry.GetComponent<DataTableComponent>()
+DataTableComponent DataTable = GameEntry.GetComponent<DataTableComponent>();
 IDataTable<DRAircraft> dtAircraft = GameEntry.DataTable.GetDataTable<DRAircraft>();
 DRAircraft drAircraft = dtAircraft.GetDataRow(TypeId);
-int ThrusterId = drAircraft.ThrusterId
+int ThrusterId = drAircraft.ThrusterId;
 ```
 any function that delivers its result asynchronously, make sure your file have loaded Successfully. Example:
 ```csharp
@@ -265,7 +265,33 @@ private void OnLoadDataTableFailure(object sender, GameEventArgs e){
     //TODO
 }
 ```
-the file can be text or byte stream
+the file can be text or byte stream.
+
+## LocalizationComponent (UGF)
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |UnityGameFramework.Runtime        |
+|Hierarchy                    |GameFrameworkComponent|
+
+Use LocalizationComponent as a Component to simplify reading localization information. Example:
+```csharp
+LocalizationComponent Localization = GameEntry.GetComponent<LocalizationComponent>();
+Localization.ReadData(dictionaryAssetName, this);
+
+LocalizationComponent Localization = GameEntry.GetComponent<LocalizationComponent>();
+string Title = GameEntry.Localization.GetString("AskQuitGame.Title");
+```
+any function that delivers its result asynchronously, make sure your file have loaded Successfully. Example:
+```csharp
+GameEntry.GetComponent<ConfigComponent>().Subscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
+GameEntry.GetComponent<ConfigComponent>().Subscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
+private void OnLoadDictionarySuccess(object sender, GameEventArgs e){
+    //TODO
+}
+private void OnLoadDictionaryFailure(object sender, GameEventArgs e){
+    //TODO
+}
+```
 
 ## SettingComponent (UGF)
 | Attributes |                            |
@@ -280,7 +306,7 @@ the file can be text or byte stream
 | RemoveSetting() | Removes the given key.                                                      |
 | SetInt()        | Sets a single integer value for the preference identified by the given key. |
 | GetInt()        | Returns the value corresponding to key in the preference file if it exists. |
-* stores Player preferences between game sessions. It can store string, float and integer values into the user’s platform registry just like PlayerPrefs
+* Stores player preferences between game sessions. It can store string, float and integer values into the user’s platform registry just like PlayerPrefs.
 
 ## EventComponent (UGF)
 | Attributes |                            |
