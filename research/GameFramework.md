@@ -75,10 +75,6 @@ Read / Write file by *System.IO*
 |Namespace                    |GF                              |
 |Hierarchy                    |IFileSystem|
 
-|Funtions                     |                                 |
-|:----------------------------|:---------------------------------|
-|Load()                      | |
-|Load()                      | |
 * It combine some files in one physical file. It descript the organization of those files storage structure.
   ```mermaid
   classDiagram
@@ -110,6 +106,7 @@ Read / Write file by *System.IO*
   ```csharp
   System.Runtime.InteropServices.Marshal
   ```
+* *FileSystem* could combine fragments by *TryCombineFreeBlocks()* then delete or write a file.
 
 ## AndroidFileSystemStream
 
