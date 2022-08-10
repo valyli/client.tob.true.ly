@@ -1121,3 +1121,81 @@ ObjectPoolManager.Update()
   }
 }
 ```
+
+## Resource Update Operation Flow
+#### Install Http Server
+1. Java
+[jdk-1.8](http://10.60.80.2/data/d/soft/java/)
+
+2. Tomcat
+[download](http://10.60.80.2/data/d/soft/apache-tomcat-7.0.72.exe)
+    - Modify config:
+      - Add below line before *</Host>* in *conf/server.xml*
+        ```xml
+        <Context path="" docBase="D:/output/" debug="0" reloadable="true" crossContext="true" />
+        ```
+      - Open directory listing in *conf/web.xml*
+        ```XML
+        <param-name>listings</param-name>
+        <param-value>true</param-value>
+        ```
+    - Restart Tomcat service.
+
+### Prepare Environment for Project  
+1. Set *Output Directory* path to *D:/output/StarForceAssetBundle*:
+![](assets/GameFramework-92a0480c.png)
+
+2. Build project and check results.
+![](assets/GameFramework-3ea8de7b.png)
+
+3. Build *WindowsVersion.txt* file in:
+    ```shell
+    D:\output\StarForceAssetBundle\Full\WindowsVersion.txt
+    ```
+    Content is:
+    ```json
+    {
+      "ForceUpdateGame": false,
+      "LatestGameVersion": "0.1.0",
+      "InternalGameVersion": 1,
+      "InternalResourceVersion": 1,
+      "UpdatePrefixUri": "http://127.0.0.1:8080/StarForceAssetBundle/Full/0_1_0_1/Windows",
+      "VersionListLength": 7161,
+      "VersionListHashCode": -851609584,
+      "VersionListCompressedLength": 2671,
+      "VersionListCompressedHashCode": 1901795202,
+      "END_OF_JSON": ""
+    }
+    ```
+    - **Attention**: Address url of *UpdatePrefixUri* is used for updatable files(.dat)
+    - Setting value is copied from *BuildLog.txt* manually.
+      ![](assets/GameFramework-35e23efb.png)
+      ![](assets/GameFramework-d33b1074.png)
+
+4. Edit *\StarForce\Assets\GameMain\Configs\BuildInfo.txt*
+  - Change url to your local host.
+  - Change *https* to *http* for local test.
+    ```json
+    {
+      "GameVersion": "0.1.0",
+      "InternalGameVersion": 0,
+      "CheckVersionUrl": "http://127.0.0.1:8080/StarForceAssetBundle/Full/{0}Version.txt",
+      "WindowsAppUrl": "http://127.0.0.1:8080",
+      "MacOSAppUrl": "http://127.0.0.1:8080",
+      "IOSAppUrl": "http://127.0.0.1:8080",
+      "AndroidAppUrl": "http://127.0.0.1:8080",
+      "END_OF_JSON": ""
+    }
+    ```
+
+5. Check and Clear files(.dat) in *persistentPath*
+    ```
+    C:\Users\Administrator\AppData\LocalLow\Game Framework\Star Force
+    ```
+
+6. Run project in *updatable* Resource Mode. If could see below picture, you win.
+![](assets/GameFramework-5e685b00.png)
+
+7. Double check in Tomcat log file:
+![](assets/GameFramework-a0869894.png)
+![](assets/GameFramework-2428db8f.png)
