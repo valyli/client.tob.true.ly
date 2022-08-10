@@ -1199,3 +1199,12 @@ ObjectPoolManager.Update()
 7. Double check in Tomcat log file:
 ![](assets/GameFramework-a0869894.png)
 ![](assets/GameFramework-2428db8f.png)
+
+### Update Resource Version
+1. Build & deploy resource files(.dat) into http server content directory.
+2. Modify *WindowsVersion.txt*:
+    ```
+    "InternalResourceVersion": 4,
+    "UpdatePrefixUri": "http://127.0.0.1:8080/StarForceAssetBundle/Full/0_1_0_4/Windows",
+    ```
+3. Run project & check result in Game View & http logs.
