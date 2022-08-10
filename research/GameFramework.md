@@ -51,10 +51,65 @@ Code standard
 |Funtions                     |                                 |
 |:----------------------------|:---------------------------------|
 |Awake()                      |**[step 1]** First entry of GameFramework. Initialize Utilites, helpers and so on.  
+Read / Write file by *System.IO*
+  ```csharp
+  class DefaultFileSystemHelper
+  {
+    public override FileSystemStream CreateFileSystemStream(string fullPath, FileSystemAccess access, bool createNew)
+    {
+        if (fullPath.StartsWith(AndroidFileSystemPrefixString, StringComparison.Ordinal))
+        {
+            return new AndroidFileSystemStream(fullPath, access, createNew);
+        }
+        else
+        {
+            return new CommonFileSystemStream(fullPath, access, createNew);
+        }
+    }
+  }
+  ```
 
-```csharp
-new CommonFileSystemStream(fullPath, access, createNew);
-```
+## FileSystem
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |GF                              |
+|Hierarchy                    |IFileSystem|
+
+|Funtions                     |                                 |
+|:----------------------------|:---------------------------------|
+|Load()                      | |
+|Load()                      | |
+* It combine some files in one physical file. It descript the organization of those files storage structure.
+  ```mermaid
+  classDiagram
+
+  class FileInfo {
+      <<struct>>
+      string m_Name   # File name
+      long m_Offset
+      int m_Length
+  }
+
+  class FileSystem {
+      <<class>>
+      Dictionary<string, int> m_FileDatas
+      List<BlockData> m_BlockDatas
+      SortedDictionary<int, StringData> m_StringDatas
+
+      FileInfo  GetFileInfo(string name)
+  }
+
+  FileSystem--*FileInfo
+  ```
+  ```csharp
+  StringData stringData = fileSystem.ReadStringData(blockData.StringIndex);
+  fileSystem.m_StringDatas.Add(blockData.StringIndex, stringData);
+  fileSystem.m_FileDatas.Add(stringData.GetString(fileSystem.m_HeaderData.GetEncryptBytes()), i);
+  ```
+* Allocates memory from the unmanaged memory of the process.
+  ```csharp
+  System.Runtime.InteropServices.Marshal
+  ```
 
 ## AndroidFileSystemStream
 
@@ -422,6 +477,7 @@ yield return new WaitForEndOfFrame();
 
 m_ProcedureManager.StartProcedure(m_EntranceProcedure.GetType());
 ```
+
 
 # Resource Tools
 [vedio](https://www.bilibili.com/video/BV1sE411C7cu?p=4&vd_source=e68deb734011863d4a3f9f42402d920c)
