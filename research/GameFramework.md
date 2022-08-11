@@ -21,6 +21,8 @@ Code standard
 * Static memeber's name start with **s_**
 * To keep an empty directory on Git, put a file in it for occupation. This file should be named **.gitkeep**.
 * Use string.ToLowerInvariant()
+* Never remove / delete **.meta** files in project manually.
+* Should set texture export format when importing. Set by hand or xxxImporter.
 
 # Compile
 ## Build GameFramework.dll
