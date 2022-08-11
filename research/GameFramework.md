@@ -292,8 +292,8 @@ int id = Config.GetInt("Scene.Menu");
 ```
 any function that delivers its result asynchronously, make sure your file have loaded Successfully. Example:
 ```csharp
-GameEntry.GetComponent<ConfigComponent>().Subscribe(LoadConfigSuccessEventArgs.EventId, OnLoadConfigSuccess);
-GameEntry.GetComponent<ConfigComponent>().Subscribe(LoadConfigFailureEventArgs.EventId, OnLoadConfigFailure);
+GameEntry.GetComponent<EventComponent>().Subscribe(LoadConfigSuccessEventArgs.EventId, OnLoadConfigSuccess);
+GameEntry.GetComponent<EventComponent>().Subscribe(LoadConfigFailureEventArgs.EventId, OnLoadConfigFailure);
 private void OnLoadConfigSuccess(object sender, GameEventArgs e){
     //TODO
 }
@@ -321,8 +321,8 @@ int ThrusterId = drAircraft.ThrusterId;
 ```
 any function that delivers its result asynchronously, make sure your file have loaded Successfully. Example:
 ```csharp
-GameEntry.GetComponent<ConfigComponent>().Subscribe(LoadDataTableSuccessEventArgs.EventId, OnLoadDataTableSuccess);
-GameEntry.GetComponent<ConfigComponent>().Subscribe(LoadDataTableFailureEventArgs.EventId, OnLoadDataTableFailure);
+GameEntry.GetComponent<EventComponent>().Subscribe(LoadDataTableSuccessEventArgs.EventId, OnLoadDataTableSuccess);
+GameEntry.GetComponent<EventComponent>().Subscribe(LoadDataTableFailureEventArgs.EventId, OnLoadDataTableFailure);
 private void OnLoadDataTableSuccess(object sender, GameEventArgs e){
     //TODO
 }
@@ -348,8 +348,8 @@ string Title = GameEntry.Localization.GetString("AskQuitGame.Title");
 ```
 any function that delivers its result asynchronously, make sure your file have loaded Successfully. Example:
 ```csharp
-GameEntry.GetComponent<ConfigComponent>().Subscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
-GameEntry.GetComponent<ConfigComponent>().Subscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
+GameEntry.GetComponent<EventComponent>().Subscribe(LoadDictionarySuccessEventArgs.EventId, OnLoadDictionarySuccess);
+GameEntry.GetComponent<EventComponent>().Subscribe(LoadDictionaryFailureEventArgs.EventId, OnLoadDictionaryFailure);
 private void OnLoadDictionarySuccess(object sender, GameEventArgs e){
     //TODO
 }
@@ -403,13 +403,13 @@ Files:
 |Namespace                    |UnityGameFramework.Runtime        |
 |Hierarchy                    |GameFrameworkComponent|
 
-|Funtions                     |                                 |
-|:----------------------------|:---------------------------------|
-|ShowEntity()                 |add Entity to EntityManager and Scene.|
-|HideEntity()                 |hide Entity from manager and Scene.|
-|InternalHideEntity()         |hide all Entitis from manager and Scene.|
-|GetEntityGroup()             |find EntityGroup from EntityManager. |
-|GetEntity()                  |find Entiy from EntityManager. |
+| Funtions                |                                     |
+| :---------------------- | :---------------------------------- |
+| ShowEntity()            | add Entity to manager and Scene.    |
+| HideEntity()            | hide Entity from manager and Scene. |
+| HideAllLoadedEntities() | hide all loaded Entitis.            |
+| GetEntityGroup()        | find EntityGroup from mnager.       |
+| GetEntity()             | find Entiy from manager.            |
 
 Files:
 ```
@@ -419,26 +419,46 @@ Files:
 * Hide entity means putting a entity into the recycle queue.
 * Entitis in the recycle queue will be released on Update() in EntityManager.
 
+ShowEntity function that delivers its result asynchronously, make sure entity have loaded Successfully. Example:
+```csharp
+GameEntry.GetComponent<EventComponent>().Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
+GameEntry.GetComponent<EventComponent>().Subscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
+protected virtual void OnShowEntitySuccess(object sender, GameEventArgs e)
+{
+    ShowEntitySuccessEventArgs ne = (ShowEntitySuccessEventArgs)e;
+    if (ne.EntityLogicType == typeof(MyAircraft))
+        {
+            m_MyAircraft = (MyAircraft)ne.Entity.Logic;
+        }
+    }
+
+protected virtual void OnShowEntityFailure(object sender, GameEventArgs e)
+{
+    ShowEntityFailureEventArgs ne = (ShowEntityFailureEventArgs)e;
+    Log.Warning("Show entity failure with error message '{0}'.", ne.ErrorMessage);
+}
+```
+
 ### EntityLogic
 
-Use EntityLogic to write entity game logic.
+Use EntityLogic to add entity game logic.
 
-|Attributes                   |                                 |
-|:----------------------------|:---------------------------------|
-|Namespace                    |UnityGameFramework.Runtime        |
-|Hierarchy                    |MonoBehaviour|
+| Attributes |                            |
+| :--------- | :------------------------- |
+| Namespace  | UnityGameFramework.Runtime |
+| Hierarchy  | MonoBehaviour              |
 
-|Funtions                     |                                 |
-|:----------------------------|:---------------------------------|
-|OnInit()                     |be called when it is being loaded.|
-|OnRecycle()                  |be called when it is in Recycle Queue.|
-|OnShow()                     |be called when it is added to Scene. |
-|OnHide()                     |be called when it is removed from Scene. |
-|OnAttached()                 |be called when a entity is attached to it. |
-|OnDetached()                 |be called when a entity is detached from it. |
-|OnAttachTo()                 |be called when it is attached to a entity. |
-|OnDetachFrom()               |be called when it is detached from a entity. |
-|OnUpdate()                   |be called every frame, if it is enabled. |
+| Funtions       |                                              |
+| :------------- | :------------------------------------------- |
+| OnInit()       | be called when it is being loaded.           |
+| OnRecycle()    | be called when it is in Recycle Queue.       |
+| OnShow()       | be called when it is added to Scene.         |
+| OnHide()       | be called when it is removed from Scene.     |
+| OnAttached()   | be called when a entity is attached to it.   |
+| OnDetached()   | be called when a entity is detached from it. |
+| OnAttachTo()   | be called when it is attached to a entity.   |
+| OnDetachFrom() | be called when it is detached from a entity. |
+| OnUpdate()     | be called every frame, if it is enabled.     |
 
 * Use Visible to Activate or deactivate the entity.
 * Use CachedTransform to modify Position, rotation and scale of an entity.
@@ -448,6 +468,99 @@ Files:
 \StarForce\Assets\GameFramework\Scripts\Runtime\Entity\EntityLogic.cs
 ```
 
+## UIComponent (UGF)
+| Attributes |                            |
+| :--------- | :------------------------- |
+| Namespace  | UnityGameFramework.Runtime |
+| Hierarchy  | GameFrameworkComponent     |
+
+| Funtions                |                                         |
+| :---------------------- | :-------------------------------------- |
+| OpenUIForm()            | add form to manager and Scene.          |
+| CloseUIForm()           | close form from manager and Scene.      |
+| CloseAllLoadedUIForms() | hide all panels from manager and Scene. |
+| GetUIGroup()            | find uiGroup from manager.              |
+| GetUIForm()             | find form from manager.                 |
+
+Files:
+```
+\StarForce\Assets\GameFramework\Scripts\Runtime\UI\UIComponent.cs
+```
+
+* cllose form means putting a panel into the recycle queue.
+* panels in the recycle queue will be released on Update() in UIManager.
+
+OpenUIForm function that delivers its result asynchronously, make sure entity have loaded Successfully. Example:
+```csharp
+GameEntry.GetComponent<EventComponent>().Subscribe(OpenUIFormSuccessEventArgs.EventId, OnOpenUIFormSuccess);
+GameEntry.GetComponent<EventComponent>().Subscribe(OpenUIFormFailureEventArgs.EventId, OnOpenUIFormFailure);
+protected virtual void OnOpenUIFormSuccess(object sender, GameEventArgs e)
+{
+    OpenUIFormSuccessEventArgs ne = (OpenUIFormSuccessEventArgs)e;
+    if (ne.UserData != this)
+    {
+        return;
+    }
+    m_MenuForm = (MenuForm)ne.UIForm.Logic;
+}
+
+protected virtual void OnOpenUIFormFailure(object sender, GameEventArgs e)
+{
+    OpenUIFormFailureEventArgs ne = (OpenUIFormFailureEventArgs)e;
+    Log.Warning("open uiform failure with error message '{0}'.", ne.ErrorMessage);
+}
+```
+
+### UIFormLogic
+
+Use UIFormLogic to add ui logic.
+
+| Attributes |                            |
+| :--------- | :------------------------- |
+| Namespace  | UnityGameFramework.Runtime |
+| Hierarchy  | MonoBehaviour              |
+
+| Funtions         |                                                       |
+| :--------------- | :---------------------------------------------------- |
+| OnInit()         | be called when panel is being loaded.                 |
+| OnRecycle()      | be called when panel is in Recycle Queue.             |
+| OnOpen()         | be called when panel is added to Scene.               |
+| OnClose()        | be called when panel is removed from Scene.           |
+| OnPause()        | be called when interaction with the panel is paused.  |
+| OnResume()       | be called when interaction with the panel is resumed. |
+| OnCover()        | be called when panel is covered by other panel.       |
+| OnReveal()       | be called when panel is Revealed.                     |
+| OnUpdate()       | be called every frame, if it is enabled.              |
+| OnDepthChanged() | be called when the depth of panel is Changed.         |
+
+* Use Visible to Activate or deactivate the panel.
+* Use CachedTransform to modify Position, rotation and scale of an panel.
+* Production of UI panel presets and additions to scripts which need to be inherited from UIFormLogic to achieve the corresponding functionality in scripts 
+
+Files:
+```
+\StarForce\Assets\GameFramework\Scripts\Runtime\UI\UIFormLogic.cs
+```
+
+ShowEntity function that delivers its result asynchronously, make sure entity have loaded Successfully. Example:
+```csharp
+GameEntry.GetComponent<EventComponent>().Subscribe(ShowEntitySuccessEventArgs.EventId, OnShowEntitySuccess);
+GameEntry.GetComponent<EventComponent>().Subscribe(ShowEntityFailureEventArgs.EventId, OnShowEntityFailure);
+protected virtual void OnShowEntitySuccess(object sender, GameEventArgs e)
+{
+    ShowEntitySuccessEventArgs ne = (ShowEntitySuccessEventArgs)e;
+    if (ne.EntityLogicType == typeof(MyAircraft))
+        {
+            m_MyAircraft = (MyAircraft)ne.Entity.Logic;
+        }
+    }
+
+protected virtual void OnShowEntityFailure(object sender, GameEventArgs e)
+{
+    ShowEntityFailureEventArgs ne = (ShowEntityFailureEventArgs)e;
+    Log.Warning("Show entity failure with error message '{0}'.", ne.ErrorMessage);
+}
+```
 ## ProcedureComponent
 |Attributes                   |                                 |
 |:----------------------------|:---------------------------------|
