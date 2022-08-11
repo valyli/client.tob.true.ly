@@ -266,6 +266,13 @@ Attention:
 ## DefaultTextHelper (UGF)
 Use StringBuilder & cache it to reduce memory allocations.
 
+# Agent & TaskPool
+* Which modules use agent now:
+![](assets/GameFramework-cc6145c6.png)
+* Workflow example in paragraph **WebRequestComponent**
+* All *Agent* working **asynchronously**, but **all in one thread now**.
+  - If want to use multi-thread, should start thread in *Agent*.
+
 # GameFrameworkComponent (UGF)
 class GameFrameworkComponent : MonoBehaviour
 
@@ -525,6 +532,44 @@ m_ProcedureManager.StartProcedure(m_EntranceProcedure.GetType());
   - Check return in *UnityWebRequestAgentHelper.Update()*
     - If *m_UnityWebRequest.isDone* is true, will fire an event finally. StackTrace:
       ![](assets/GameFramework-5282f445.png)
+
+## DownloadComponent
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |UGF                              |
+|Hierarchy                    |GameFrameworkComponent|
+
+* Pair with *DownloadManager* (GF)
+* About FlushSize and Timeout
+  ```csharp
+  private void OnDownloadAgentHelperUpdateBytes(object sender, DownloadAgentHelperUpdateBytesEventArgs e)
+  {
+      m_WaitTime = 0f;
+      try
+      {
+          m_FileStream.Write(e.GetBytes(), e.Offset, e.Length);
+          m_WaitFlushSize += e.Length;
+          m_SavedLength += e.Length;
+
+          if (m_WaitFlushSize >= m_Task.FlushSize)
+          {
+              m_FileStream.Flush();
+              m_WaitFlushSize = 0;
+          }
+      }
+  }
+  ```
+* Executed API
+  UnityWebRequestDownloadAgentHelper
+  ```csharp
+  m_UnityWebRequest = new UnityWebRequest(downloadUri);
+  m_UnityWebRequest.SetRequestHeader("Range", Utility.Text.Format("bytes={0}-{1}", fromPosition, toPosition));
+  m_UnityWebRequest.downloadHandler = new DownloadHandler(this);
+  #if UNITY_2017_2_OR_NEWER
+  m_UnityWebRequest.SendWebRequest();
+  ```
+  *UnityWebRequestDownloadAgentHelper.DownloadHandler* inherits from *UnityEngine.Networking.DownloadHandlerScript*
+
 
 
 # Resource Tools
