@@ -535,7 +535,7 @@ Use UIFormLogic to add ui logic.
 
 * Use Visible to Activate or deactivate the panel.
 * Use CachedTransform to modify Position, rotation and scale of an panel.
-* Production of UI panel presets and additions to scripts which need to be inherited from UIFormLogic to achieve the corresponding functionality in scripts 
+* Production of UI panel presets and additions to scripts which need to be inherited from UIFormLogic to achieve the corresponding functionality in scripts
 
 Files:
 ```
@@ -683,6 +683,94 @@ m_ProcedureManager.StartProcedure(m_EntranceProcedure.GetType());
   ```
   *UnityWebRequestDownloadAgentHelper.DownloadHandler* inherits from *UnityEngine.Networking.DownloadHandlerScript*
 
+## ResourceComponent
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |UGF                              |
+|Hierarchy                    |GameFrameworkComponent|
+
+* Pair with *ResourceManager* (GF)
+### Features
+* LoadAsset
+  ```csharp
+  class ResourceManager.ResourceLoader
+  {
+    public void LoadAsset(string assetName, Type assetType, int priority, LoadAssetCallbacks loadAssetCallbacks, object userData)
+    {
+      LoadAssetTask mainTask = LoadAssetTask.Create(assetName, assetType, priority, resourceInfo, dependencyAssetNames, loadAssetCallbacks, userData);
+      m_TaskPool.AddTask(mainTask);
+      if (!resourceInfo.Ready)
+      {
+          m_ResourceManager.UpdateResource(resourceInfo.ResourceName);
+      }
+
+    }
+  }
+  ```
+  TaskPool.Update() to call Agent.Start() at first.
+  ```csharp
+  class ResourceManager.ResourceLoader.LoadResourceAgent
+  {
+    public StartTaskStatus Start(LoadResourceTaskBase task)
+    {
+      m_Helper.ReadFile(fileSystem, resourceInfo.ResourceName.FullName);
+    }
+  }
+  ```
+  Call agent helper in UGF
+  ```csharp
+  class DefaultLoadResourceAgentHelper
+  {
+    public override void ReadFile(IFileSystem fileSystem, string name)
+    {
+      m_FileAssetBundleCreateRequest = AssetBundle.LoadFromFileAsync(fileSystem.FullPath, 0u, (ulong)fileInfo.Offset);
+    }
+  }
+  ```
+
+* Update / Download
+  ```csharp
+  class GameFramework.Resource.ResourceUpdater
+  {
+    private bool DownloadResource(UpdateInfo updateInfo)
+    {
+      m_DownloadManager.AddDownload(updateInfo.ResourcePath, Utility.Path.GetRemotePath(Path.Combine(m_ResourceManager.m_UpdatePrefixUri, resourceFullNameWithCrc32)), updateInfo)
+      {
+        DownloadTask downloadTask = DownloadTask.Create(downloadPath, downloadUri, tag, priority, m_FlushSize, m_Timeout, userData);
+        m_TaskPool.AddTask(downloadTask);
+      }
+    }
+  }
+  ```
+  It has serveral entries in UGF or GF:
+  ```csharp
+  GameEntry.Resource.UpdateResources();
+  m_ResourceManager.UpdateResources(updateResourcesCompleteCallback);
+  ```
+
+* Verify
+  ```csharp
+  class GameFramework.Resource.ResourceVerifier
+  {
+    private bool VerifyResource(VerifyInfo verifyInfo)
+    {
+      fileSystem.ReadFile(fileName, m_ResourceManager.m_CachedStream);
+      // Convert to CRC32 and compare immediately.
+    }
+  }
+  ```
+  Entry points:
+  ```csharp
+  m_ResourceManager.VerifyResources(verifyResourceLengthPerFrame, verifyResourcesCompleteCallback);
+  GameFramework.Resource.ResourceVerifier.Update()
+  {
+    if (m_FailureFlag)
+    {
+        // Will fix version list file
+        GenerateReadWriteVersionList();
+    }
+  }
+  ```
 
 
 # Resource Tools
