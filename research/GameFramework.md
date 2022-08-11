@@ -588,6 +588,57 @@ yield return new WaitForEndOfFrame();
 m_ProcedureManager.StartProcedure(m_EntranceProcedure.GetType());
 ```
 
+## WebRequestComponent
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |UGF                              |
+|Hierarchy                    |GameFrameworkComponent|
+
+|Funtions                     |                                 |
+|:----------------------------|:---------------------------------|
+|Awake()                |m_WebRequestManager = GameFrameworkEntry.GetModule<IWebRequestManager>() |
+|Start()                |AddWebRequestAgentHelper() |
+
+**Use this component work flow to show how does TaskPool running with agent and task.**
+### Init Step
+1. Call *WebRequestComponent.AddWebRequestAgentHelper()* (UGF)
+2. Create several *UnityWebRequestAgentHelper* (UGF)
+  - *Helper.CreateHelper* create by type name.
+    ```csharp
+    WebRequestAgentHelperBase webRequestAgentHelper = Helper.CreateHelper(m_WebRequestAgentHelperTypeName, m_CustomWebRequestAgentHelper, index);
+    ```
+  - *UnityWebRequestAgentHelper* base on *IWebRequestAgentHelper* (GF)
+3. Add *UnityWebRequestAgentHelper* into *WebRequestManager* module:
+  - new *WebRequestAgent* (GF) to include instance of *IWebRequestAgentHelper*.
+  - Register *WebRequestManager* callback funtions to agent event handler.
+  - Add *WebRequestAgent* to *m_TaskPool.m_FreeAgents* (*Stack<ITaskAgent<T>>*) by *AddAgent()*
+
+### Invoke Step
+1. Use case:
+    ```csharp
+    GameEntry.WebRequest.AddWebRequest(Utility.Text.Format(GameEntry.BuiltinData.BuildInfo.CheckVersionUrl, GetPlatformPath()), this);
+    ```
+2. Call *WebRequestComponent.AddWebRequest()* (UGF) until call *WebRequestManager.AddWebRequest()* (GF)
+  - Create *WebRequestTask* base on *TaskBase*
+  - Add *WebRequestTask* to *m_TaskPool.m_WaitingTasks* (*GameFrameworkLinkedList<T>*) by *AddTask()*
+3. Wait to *WebRequestManager.Update()* is called.
+  - Put a waiting task into running task if has free agent. (*TaskPool.ProcessWaitingTasks()*)
+  - Call this agent to start task
+    ```csharp
+    StartTaskStatus status = agent.Start(task);
+    ```
+  - Call *UnityWebRequestAgentHelper.Request()*
+    ```csharp
+    m_Helper.Request(m_Task.WebRequestUri, m_Task.UserData);
+    ```
+  - Invoke Untiy3D function and wait return.
+    ```csharp
+    m_UnityWebRequest = UnityWebRequest.Get(webRequestUri);
+    ```
+  - Check return in *UnityWebRequestAgentHelper.Update()*
+    - If *m_UnityWebRequest.isDone* is true, will fire an event finally. StackTrace:
+      ![](assets/GameFramework-5282f445.png)
+
 
 # Resource Tools
 [vedio](https://www.bilibili.com/video/BV1sE411C7cu?p=4&vd_source=e68deb734011863d4a3f9f42402d920c)
