@@ -14,7 +14,7 @@
 	执行client技术准备工作（一期：GameFramework、editor代码准备）:
 		资源、场景的打包、加载、卸载、升级的代码学习和测试。这部分比开始认为的复杂的多，但使用框架确实可以节省大量的开发时间。	【done】
 		启动流程的完整分析	【done】
-		FileSystem 分析		【done】
+		FileSystem, TaskPool, Agent, WebRequestComponent, DownloadComponent, ResourceComponent 分析		【done】
 	星火链接入开发调研		【done】
 	整理上周server讨论会议结果，以及server集群设计供参考	【done】
 
