@@ -565,6 +565,47 @@ protected virtual void OnShowEntityFailure(object sender, GameEventArgs e)
     Log.Warning("Show entity failure with error message '{0}'.", ne.ErrorMessage);
 }
 ```
+
+## SoundComponent (UGF)
+| Attributes |                            |
+| :--------- | :------------------------- |
+| Namespace  | UnityGameFramework.Runtime |
+| Hierarchy  | GameFrameworkComponent     |
+
+| Funtions      |                                                  |
+| :------------ | :----------------------------------------------- |
+| PlaySound()   | Play the a clip.                                 |
+| StopSound()   | Stop playing the clip.                           |
+| PauseSound()  | Pause playing the clip.                          |
+| ResumeSound() | Unpause the paused playback of this AudioSource. |
+
+Files:
+```
+\StarForce\Assets\GameFramework\Scripts\Runtime\Sound\SoundComponent.cs
+```
+
+### SoundGroup
+
+| Attributes |                            |
+| :--------- | :------------------------- |
+| Namespace  | UnityGameFramework.Runtime |
+| Hierarchy  |                            |
+
+| Properties       |                                                          |
+| :--------------- | :------------------------------------------------------- |
+| Mute             | mute Un- / Mutes the audioSource in the group.           |
+| Volume           | The volume of the audioSource in the group (0.0 to 1.0). |
+| AgentHelperCount | The count of the agent in then group.                    |
+* AgentHelperCount means there are up to the count of sounds will play at the same time. 
+* Agent can set a priority, The Agent with lowest priority will reset first.
+* Agent can play sound at a given worldPosition in world space.
+* Agent can update position by binding a entity loaded in scene and will reset when the binding entity has released.
+
+Files:
+```
+\StarForce\Assets\GameFramework\Scripts\Runtime\UI\UIFormLogic.cs
+```
+
 ## ProcedureComponent
 |Attributes                   |                                 |
 |:----------------------------|:---------------------------------|
