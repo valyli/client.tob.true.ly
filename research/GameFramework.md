@@ -1580,3 +1580,12 @@ ObjectPoolManager.Update()
     "UpdatePrefixUri": "http://127.0.0.1:8080/StarForceAssetBundle/Full/0_1_0_4/Windows",
     ```
 3. Run project & check result in Game View & http logs.
+
+
+## EditorResourceComponent (UGF)
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |UnityGameFramework.Runtime        |
+|Hierarchy                    | MonoBehaviour, IResourceManager |
+Use for *Editor Resource Mode*.
+It implement all of methods of *ResourceComponent* to simulate working flow of package mode.
