@@ -472,6 +472,54 @@ Files:
 \StarForce\Assets\GameFramework\Scripts\Runtime\Entity\EntityLogic.cs
 ```
 
+### Entity asset load flow
+```csharp
+class ResourceManager.ResourceLoader.LoadResourceAgent
+{
+  private void OnLoadResourceAgentHelperLoadComplete(object sender, LoadResourceAgentHelperLoadCompleteEventArgs e)
+  {
+    assetObject = AssetObject.Create(m_Task.AssetName, e.Asset, dependencyAssets, m_Task.ResourceObject.Target, m_ResourceHelper, m_ResourceLoader);
+    m_ResourceLoader.m_AssetPool.Register(assetObject, true);
+    m_ResourceLoader.m_AssetToResourceMap.Add(e.Asset, m_Task.ResourceObject.Target);
+    OnAssetObjectReady(assetObject)
+    {
+      class EntityManager
+      {
+        private void LoadAssetSuccessCallback(string entityAssetName, object entityAsset, float duration, object userData)
+        {
+          EntityInstanceObject entityInstanceObject = EntityInstanceObject.Create(entityAssetName, entityAsset, m_EntityHelper.InstantiateEntity(entityAsset), m_EntityHelper)
+          {
+            class DefaultEntityHelper
+            {
+              public override object InstantiateEntity(object entityAsset)
+              {
+                  return Instantiate((Object)entityAsset);
+              }
+            }
+          }
+          showEntityInfo.EntityGroup.RegisterEntityInstanceObject(entityInstanceObject, true);
+
+          InternalShowEntity(showEntityInfo.EntityId, entityAssetName, showEntityInfo.EntityGroup, entityInstanceObject.Target, true, duration, showEntityInfo.UserData)
+          {
+            class DefaultEntityHelper
+            {
+              public override IEntity CreateEntity(object entityInstance, IEntityGroup entityGroup, object userData)
+              {
+                Transform transform = gameObject.transform;
+                transform.SetParent(((MonoBehaviour)entityGroup.Helper).transform);
+                return gameObject.GetOrAddComponent<Entity>();
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+```
+
+
 ## UIComponent (UGF)
 | Attributes |                            |
 | :--------- | :------------------------- |
@@ -1573,3 +1621,12 @@ ObjectPoolManager.Update()
     "UpdatePrefixUri": "http://127.0.0.1:8080/StarForceAssetBundle/Full/0_1_0_4/Windows",
     ```
 3. Run project & check result in Game View & http logs.
+
+
+## EditorResourceComponent (UGF)
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |UnityGameFramework.Runtime        |
+|Hierarchy                    | MonoBehaviour, IResourceManager |
+Use for *Editor Resource Mode*.
+It implement all of methods of *ResourceComponent* to simulate working flow of package mode.
