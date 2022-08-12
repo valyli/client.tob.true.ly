@@ -274,6 +274,7 @@ Use StringBuilder & cache it to reduce memory allocations.
 * Workflow example in paragraph **WebRequestComponent**
 * All *Agent* working **asynchronously**, but **all in one thread now**.
   - If want to use multi-thread, should start thread in *Agent*.
+* Task priority is smaller running firstly.
 
 # GameFrameworkComponent (UGF)
 class GameFrameworkComponent : MonoBehaviour
