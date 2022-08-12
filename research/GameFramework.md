@@ -686,6 +686,20 @@ m_ProcedureManager.StartProcedure(m_EntranceProcedure.GetType());
   ```
   *UnityWebRequestDownloadAgentHelper.DownloadHandler* inherits from *UnityEngine.Networking.DownloadHandlerScript*
 
+## SceneComponent
+|Attributes                   |                                 |
+|:----------------------------|:---------------------------------|
+|Namespace                    |UGF                              |
+|Hierarchy                    |GameFrameworkComponent|
+
+|Funtions                     |                                 |
+|:----------------------------|:---------------------------------|
+|Awake()                |m_GameFrameworkScene = SceneManager.GetSceneAt(GameEntry.GameFrameworkSceneId); |
+|SetActiveScene()                |SceneManager.SetActiveScene(activeScene);</br>RefreshMainCamera() |
+|RefreshSceneOrder()        | Get max scene, and SetActiveScene(scene);|
+|SetSceneOrder()        | Default order is zero</br> always active max order one</br> |
+
+
 ## ResourceComponent
 |Attributes                   |                                 |
 |:----------------------------|:---------------------------------|
