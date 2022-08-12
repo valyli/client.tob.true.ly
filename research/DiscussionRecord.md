@@ -37,4 +37,7 @@
 |Topic                    |How to design a scalable server cluster|
 
 > ## Meeting Summary
-> 1.
+> 1. Hotspot network traffic: Diverge to various path bye navigation algorithm.
+> 2. Distiguish important of connections between servers. High reliable use MQ / Kafka, the normal use socket connection.
+> 3. Design redundant connections for same peer-to-peer services.
+> 4. Reduce requirements between different IDC / Region.
