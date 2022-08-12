@@ -23,6 +23,7 @@ Code standard
 * Use string.ToLowerInvariant()
 * Never remove / delete **.meta** files in project manually.
 * Should set texture export format when importing. Set by hand or xxxImporter.
+* Use TryGetValue() on Dictionary to test a key, and get a value.
 
 # Compile
 ## Build GameFramework.dll
