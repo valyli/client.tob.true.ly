@@ -1352,6 +1352,15 @@ GameEntry.Scene.LoadScene(AssetUtility.GetSceneAsset(drScene.AssetName), Constan
   }
 }
 ```
+```csharp
+class DefaultLoadResourceAgentHelper
+{
+  public override void LoadAsset(object resource, string assetName, Type assetType, bool isScene)
+  {
+    m_AsyncOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+  }
+}
+```
 
 ## Unload Scene  
 ### Step
