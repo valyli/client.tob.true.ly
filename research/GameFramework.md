@@ -589,7 +589,7 @@ Files:
 ```
 
 * cllose form means putting a panel into the recycle queue.
-* panels in the recycle queue will be released on Update() in UIManager.
+* panels in the recycle queue will be recycled by objectPool  on Update() in UIManager.
 
 OpenUIForm function that delivers its result asynchronously, make sure entity have loaded Successfully. Example:
 ```csharp
