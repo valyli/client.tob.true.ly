@@ -336,6 +336,55 @@ private void OnLoadDataTableFailure(object sender, GameEventArgs e){
 ```
 the file can be text or byte stream.
 
+### Generate data table
+* Menu
+```csharp
+namespace StarForce.Editor.DataTableTools
+{
+    public sealed class DataTableGeneratorMenu
+    {
+        [MenuItem("Star Force/Generate DataTables")]
+        private static void GenerateDataTables()
+        {
+            foreach (string dataTableName in ProcedurePreload.DataTableNames)
+            {
+              DataTableGenerator.GenerateDataFile(dataTableProcessor, dataTableName);
+              DataTableGenerator.GenerateCodeFile(dataTableProcessor, dataTableName);
+
+            }
+```
+* Table names
+```csharp
+namespace StarForce
+{
+    public class ProcedurePreload : ProcedureBase
+    {
+        public static readonly string[] DataTableNames = new string[]
+        {
+            "Aircraft",
+            "Armor",
+            "Asteroid",
+            "Entity",
+            "Music",
+            "Scene",
+            "Sound",
+            "Thruster",
+            "UIForm",
+            "UISound",
+            "Weapon",
+        };
+```
+* Path
+```csharp
+namespace StarForce.Editor.DataTableTools
+{
+    public sealed class DataTableGenerator
+    {
+        private const string DataTablePath = "Assets/GameMain/DataTables";
+        private const string CSharpCodePath = "Assets/GameMain/Scripts/DataTable";
+        private const string CSharpCodeTemplateFileName = "Assets/GameMain/Configs/DataTableCodeTemplate.txt";
+```
+
 ## LocalizationComponent (UGF)
 |Attributes                   |                                 |
 |:----------------------------|:---------------------------------|
