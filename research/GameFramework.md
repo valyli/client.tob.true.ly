@@ -644,7 +644,7 @@ Files:
 | Mute             | mute Un- / Mutes the audioSource in the group.           |
 | Volume           | The volume of the audioSource in the group (0.0 to 1.0). |
 | AgentHelperCount | The count of the agent in then group.                    |
-* AgentHelperCount means there are up to the count of sounds will play at the same time. 
+* AgentHelperCount means there are up to the count of sounds will play at the same time.
 * Agent can set a priority, The Agent with lowest priority will reset first.
 * Agent can play sound at a given worldPosition in world space.
 * Agent can update position by binding a entity loaded in scene and will reset when the binding entity has released.
@@ -961,9 +961,11 @@ class ResourceBuilderController
 3. Check output files:
   a. Build report:
   ![](assets/GameFramework-cf4601ab.png)
-  b. Output packages:
+  b. Output assetbudles of Untiy3D. Those file will be wrote in FileSystem(.dat).
+    ![](assets/GameFramework-4ddfe89e.png)
+  c. Output packages:
   ![](assets/GameFramework-0b5f80a0.png)
-  c. Output & Resource Editor relation:
+  d. Output & Resource Editor relation:
   ![](assets/GameFramework-79619e8c.png)
 ## Core Code of Resource Builder
 ```csharp
