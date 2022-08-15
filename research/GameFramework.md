@@ -306,6 +306,13 @@ private void OnLoadConfigFailure(object sender, GameEventArgs e){
 }
 ```
 the file can be text or byte stream
+* How to return line in XML string:
+  ```
+  &#x000A;
+  ```
+  ```xml
+  <String Key="Menu.StartButton" Value="开始&#x000A; 9" />
+  ```
 
 ## DataTableComponent (UGF)
 |Attributes                   |                                 |
