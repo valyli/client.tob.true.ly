@@ -421,7 +421,7 @@ Files:
 ```
 
 * Hide entity means putting a entity into the recycle queue.
-* Entitis in the recycle queue will be released on Update() in EntityManager.
+* Entitis in the recycle queue will be recycled by entityGroup's objectPool  on Update() in EntityManager and entitiyInfos will be released.
 
 ShowEntity function that delivers its result asynchronously, make sure entity have loaded Successfully. Example:
 ```csharp
