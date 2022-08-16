@@ -1690,3 +1690,19 @@ ObjectPoolManager.Update()
 |Hierarchy                    | MonoBehaviour, IResourceManager |
 Use for *Editor Resource Mode*.
 It implement all of methods of *ResourceComponent* to simulate working flow of package mode.
+
+
+# Tutorial
+## Add Asset to Resource
+
+## Config local http server for Resource update
+
+## Add new Entity
+
+## Add new UGuiForm
+
+
+# Q&A
+## About UGUI
+[Unity3D Doc in 2018.3](https://docs.unity3d.com/2018.3/Documentation/ScriptReference/EventSystems.IPointerDownHandler.html)
+This document can not find in 2021.3. Instead of it, as a [plug-in](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/index.html)
