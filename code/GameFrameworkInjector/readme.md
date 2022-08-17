@@ -1,4 +1,7 @@
 1. Execute injector
+```shell
+injector.bat <Target Project Path>
+```
 2. Set ENABLE_LOG in PlayerSetting:
 ![](vx_images/241901017220858.png)
 3. Add Scenes:

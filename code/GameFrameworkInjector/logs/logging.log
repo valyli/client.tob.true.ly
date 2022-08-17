@@ -34,3 +34,12 @@
 2022-08-17 17:02:48 - injector - 21520 - INFO : 	C:\Users\Administrator\Cap1\Assets/Game Launcher.unity -> D:\temp\prj1\Assets/Game Launcher.unity
 2022-08-17 17:02:48 - injector - 21520 - INFO : 	C:\Users\Administrator\Cap1\ProjectSettings/EditorBuildSettings.asset -> D:\temp\prj1\ProjectSettings/EditorBuildSettings.asset
 2022-08-17 17:02:48 - injector - 21520 - INFO : 	C:\Users\Administrator\Cap1\Assets/StreamingAssets/.gitkeep -> D:\temp\prj1\Assets/StreamingAssets/.gitkeep
+2022-08-17 17:43:16 - injector - 80316 - INFO : Inject from ./Cap1 -> d:\temp\prj2
+2022-08-17 17:43:16 - injector - 80316 - INFO : 	./Cap1\Assets/GameFramework -> d:\temp\prj2\Assets/GameFramework
+2022-08-17 17:44:39 - injector - 106924 - INFO : Inject from D:\git\client.tob.true.ly\code\GameFrameworkInjector\Cap1 -> d:\temp\prj2
+2022-08-17 17:44:39 - injector - 106924 - INFO : 	D:\git\client.tob.true.ly\code\GameFrameworkInjector\Cap1\Assets/GameFramework -> d:\temp\prj2\Assets/GameFramework
+2022-08-17 17:45:29 - injector - 104044 - INFO : Inject from D:\git\client.tob.true.ly\code\GameFrameworkInjector\Cap1 -> d:\temp\prj2
+2022-08-17 17:45:29 - injector - 104044 - INFO : 	D:\git\client.tob.true.ly\code\GameFrameworkInjector\Cap1\Assets/GameFramework -> d:\temp\prj2\Assets/GameFramework
+2022-08-17 17:45:30 - injector - 104044 - INFO : 	D:\git\client.tob.true.ly\code\GameFrameworkInjector\Cap1\Assets/GameMain -> d:\temp\prj2\Assets/GameMain
+2022-08-17 17:45:30 - injector - 104044 - INFO : 	D:\git\client.tob.true.ly\code\GameFrameworkInjector\Cap1\Assets/Game Launcher.unity -> d:\temp\prj2\Assets/Game Launcher.unity
+2022-08-17 17:45:30 - injector - 104044 - INFO : 	D:\git\client.tob.true.ly\code\GameFrameworkInjector\Cap1\Assets/StreamingAssets/.gitkeep -> d:\temp\prj2\Assets/StreamingAssets/.gitkeep

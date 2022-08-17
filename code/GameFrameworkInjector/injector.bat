@@ -3,5 +3,5 @@ cd %~dp0
 title %app_path%injector.py
 
 rem conda activate
-python injector.py %1 %2
+python injector.py %~dp0Cap1 %1
 pause

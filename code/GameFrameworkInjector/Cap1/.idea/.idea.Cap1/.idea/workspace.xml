@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="821515be-2612-4517-930d-b2505ff77347" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.31/UnityEditor.TestRunner/TestLaunchers/PlatformSetup/LuminPlatformSetup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5F5FCE1A-DCE9-4626-8459-FFF5FBF37D45/61/43a6ddff/LayerMask.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://D:/git/GameFramework/GameFramework/Base/Version/Version.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@1.6.4/Editor/treeview/Drawers/ClipDrawer.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/Assets/GameFramework/Scripts/Runtime/Base/BaseComponent.cs" />
+      <option value="$PROJECT_DIR$/Assets/GameFramework/Scripts/Runtime/Utility/UnityExtension.cs" />
+    </changedPaths>
+  </component>
+  <component name="ProjectId" id="2DT0wzAPTsmwy4O9y0g6LRQ0tQN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34995976" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../Desktop/output/cap1\Cap1.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Administrator\Desktop\output\cap1" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="97960">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" value="97960" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor" />
+      <item itemvalue="Attach to Unity Editor.Attach to Unity Editor &amp; Play" />
+      <item itemvalue="Standalone Player.Standalone Player" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="821515be-2612-4517-930d-b2505ff77347" name="Default Changelist" comment="" />
+      <created>1660708011849</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1660708011849</updated>
+      <workItem from="1660708018248" duration="4206000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/GameMain/Scripts/Procedure/ProcedureCheckVersion.cs</url>
+          <line>64</line>
+          <properties documentPath="C:\Users\Administrator\Cap1\Assets\GameMain\Scripts\Procedure\ProcedureCheckVersion.cs" initialLine="64" containingFunctionPresentation="method 'OnUpdate'">
+            <startOffsets>
+              <option value="2226" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2313" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/GameMain/Scripts/Procedure/ProcedureCheckVersion.cs</url>
+          <line>114</line>
+          <properties documentPath="C:\Users\Administrator\Cap1\Assets\GameMain\Scripts\Procedure\ProcedureCheckVersion.cs" initialLine="114" containingFunctionPresentation="method 'OnWebRequestSuccess'">
+            <startOffsets>
+              <option value="4392" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4426" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/GameMain/Scripts/Procedure/ProcedureCheckVersion.cs</url>
+          <line>62</line>
+          <properties documentPath="C:\Users\Administrator\Cap1\Assets\GameMain\Scripts\Procedure\ProcedureCheckVersion.cs" initialLine="62" containingFunctionPresentation="method 'OnUpdate'">
+            <startOffsets>
+              <option value="2171" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2195" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://D:/git/GameFramework/GameFramework/Base/Version/Version.cs</url>
+          <line>57</line>
+          <properties documentPath="D:\git\GameFramework\GameFramework\Base\Version\Version.cs" initialLine="57" containingFunctionPresentation="property 'InternalGameVersion'">
+            <startOffsets>
+              <option value="1406" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1449" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://D:/git/GameFramework/GameFramework/Base/Version/Version.cs</url>
+          <line>52</line>
+          <properties documentPath="D:\git\GameFramework\GameFramework\Base\Version\Version.cs" initialLine="52" containingFunctionPresentation="property 'InternalGameVersion'">
+            <startOffsets>
+              <option value="1294" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1322" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/GameMain/Scripts/Procedure/ProcedureCheckVersion.cs</url>
+          <line>42</line>
+          <properties documentPath="C:\Users\Administrator\Cap1\Assets\GameMain\Scripts\Procedure\ProcedureCheckVersion.cs" initialLine="42" containingFunctionPresentation="method 'OnEnter'">
+            <startOffsets>
+              <option value="1357" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1487" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/GameMain/Scripts/Procedure/ProcedureCheckVersion.cs</url>
+          <line>97</line>
+          <properties documentPath="C:\Users\Administrator\Cap1\Assets\GameMain\Scripts\Procedure\ProcedureCheckVersion.cs" initialLine="97" containingFunctionPresentation="method 'OnWebRequestSuccess'">
+            <startOffsets>
+              <option value="3661" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3685" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/GameMain/Scripts/Definition/DataStruct/BuildInfo.cs</url>
+          <line>26</line>
+          <properties documentPath="C:\Users\Administrator\Cap1\Assets\GameMain\Scripts\Definition\DataStruct\BuildInfo.cs" initialLine="26" containingFunctionPresentation="property 'CheckVersionUrl'">
+            <startOffsets>
+              <option value="599" />
+            </startOffsets>
+            <endOffsets>
+              <option value="603" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

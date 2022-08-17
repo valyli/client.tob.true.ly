@@ -1,0 +1,10 @@
+{
+  "GameVersion": "0.1.0",
+  "InternalGameVersion": 0,
+  "CheckVersionUrl": "http://10.60.80.217:8080/StarForceAssetBundle/Full/{0}Version.txt",
+  "WindowsAppUrl": "http://10.60.80.217:8080",
+  "MacOSAppUrl": "http://10.60.80.217:8080",
+  "IOSAppUrl": "http://10.60.80.217:8080",
+  "AndroidAppUrl": "http://10.60.80.217:8080",
+  "END_OF_JSON": ""
+}

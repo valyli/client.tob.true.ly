@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8f3faaf6-6e5f-48fe-8fd9-75ff7bfaf539" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conf/logging.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/injector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../research/GameFramework.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../research/GameFramework.md" afterDir="false" />
-    </list>
+    <list default="true" id="8f3faaf6-6e5f-48fe-8fd9-75ff7bfaf539" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,12 +211,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1660706293211</updated>
-      <workItem from="1660706295265" duration="8983000" />
+      <workItem from="1660706295265" duration="9577000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8983000" />
+    <option name="totallyTimeSpent" value="9577000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
