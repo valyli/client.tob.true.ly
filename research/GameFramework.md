@@ -1701,6 +1701,26 @@ It implement all of methods of *ResourceComponent* to simulate working flow of p
 
 ## Add new UGuiForm
 
+# Build New Project
+1. Create new project in Untiy3D Hub
+2. Copy *GameFramework* to new project.
+BuildSetting add Scenes
+
+3. Set Layer "Targetable Object" (SetLayerRecursively)
+```
+m_Scenes: []
+
+```
+```
+m_Scenes:
+- enabled: 1
+  path: Assets/StarForce Launcher.unity
+- enabled: 1
+  path: Assets/GameMain/Scenes/Main.unity
+- enabled: 1
+  path: Assets/GameMain/Scenes/Menu.unity
+
+```
 
 # Q&A
 ## About UGUI
