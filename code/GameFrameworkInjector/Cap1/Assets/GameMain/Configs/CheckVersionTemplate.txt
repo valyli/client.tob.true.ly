@@ -1,0 +1,12 @@
+{
+  "ForceUpdateGame": false,
+  "LatestGameVersion": "{LatestGameVersion}",
+  "InternalGameVersion": 1,
+  "InternalResourceVersion": {InternalResourceVersion},
+  "UpdatePrefixUri": "http://127.0.0.1:8080/{ProjectName}/Full/{SubVersionPath}/{Platform}",
+  "VersionListLength": {VersionListLength},
+  "VersionListHashCode": {VersionListHashCode},
+  "VersionListCompressedLength": {VersionListCompressedLength},
+  "VersionListCompressedHashCode": {VersionListCompressedHashCode},
+  "END_OF_JSON": ""
+}

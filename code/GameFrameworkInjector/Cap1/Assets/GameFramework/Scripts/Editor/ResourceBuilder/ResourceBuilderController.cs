@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Xml;
 using UnityEditor;
 using UnityEngine;
@@ -964,6 +965,29 @@ namespace UnityGameFramework.Editor.ResourceTools
                     m_BuildReport.LogInfo("Execute build event handler 'OnOutputUpdatableVersionListData' for '{0}'...", platformName);
                     m_BuildEventHandler.OnOutputUpdatableVersionListData(platform, versionListData.Path, versionListData.Length, versionListData.HashCode, versionListData.CompressedLength, versionListData.CompressedHashCode);
                 }
+                
+                // Output CheckVersionTemplate.txt (Template)   [lijia 2022.8.18]
+                string checkVersionTemplateFileName = "Assets/GameMain/Configs/CheckVersionTemplate.txt";
+                string template = File.ReadAllText(checkVersionTemplateFileName, Encoding.UTF8);
+                Dictionary<string, string> elements = new Dictionary<string, string>()
+                {
+                    {"{Platform}", platformName},
+                    {"{ProjectName}", Application.productName},
+                    {"{VersionListLength}", versionListData.Length.ToString()},
+                    {"{VersionListHashCode}", versionListData.HashCode.ToString()},
+                    {"{VersionListCompressedLength}", versionListData.CompressedLength.ToString()},
+                    {"{VersionListCompressedHashCode}", versionListData.CompressedHashCode.ToString()},
+                    {"{SubVersionPath}", Utility.Text.Format("{0}_{1}", ApplicableGameVersion.Replace('.', '_'), InternalResourceVersion)},
+                    {"{LatestGameVersion}", ApplicableGameVersion},
+                    {"{InternalResourceVersion}", InternalResourceVersion.ToString()},
+                };
+
+                string txt = template;
+                foreach (KeyValuePair<string, string> kv in elements)
+                {
+                    txt = txt.Replace(kv.Key, kv.Value);
+                }
+                File.WriteAllText(Utility.Text.Format("{0}{1}Version.txt", outputFullPath, elements["{Platform}"]), txt);
             }
 
             if (OutputPackedSelected)
