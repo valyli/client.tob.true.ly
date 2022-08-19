@@ -1,3 +1,9 @@
 
 *.bak
 *.log
+
+/code/GameFrameworkInjector/Cap1/Library
+/code/GameFrameworkInjector/Cap1/Temp
+/code/GameFrameworkInjector/Cap1/obj
+/code/GameFrameworkInjector/Cap1/UserSettings
+

@@ -13,3 +13,13 @@ Resolve Error (Optional)
 ![](vx_images/384303309239987.png)
 Add Layer *Targetable Object*
 ![](vx_images/549563409236542.png)
+
+# Build in Command Line 
+Cmd :
+```shell
+"C:\Program Files\Unity\Hub\Editor\2021.3.7f1c1\Editor\Unity.exe" -quit -batchmode -logFile mybuild.log -projectPath d:\git\client.tob.true.ly\code\GameFrameworkInjector\Cap1\ -executeMethod UnityGameFramework.Editor.ResourceTools.ResourceBuilder.CmdBuild
+```
+Output:
+```shell
+file:///D:/output/StarForceAssetBundle/Full/0_1_0_22/AndroidVersion.txt
+```

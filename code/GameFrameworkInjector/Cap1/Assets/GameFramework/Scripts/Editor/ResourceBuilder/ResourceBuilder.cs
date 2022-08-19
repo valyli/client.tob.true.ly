@@ -34,6 +34,15 @@ namespace UnityGameFramework.Editor.ResourceTools
 #endif
         }
 
+        [MenuItem("Game Framework/Resource Tools/Resource Builder (Cmd)", false, 40)]
+        public static void CmdBuild()
+        {
+            ResourceBuilder rb = new ResourceBuilder();
+            rb.OnEnable();
+            rb.m_OrderBuildResources = true;
+            rb.Update();
+        }
+        
         private void OnEnable()
         {
             m_Controller = new ResourceBuilderController();

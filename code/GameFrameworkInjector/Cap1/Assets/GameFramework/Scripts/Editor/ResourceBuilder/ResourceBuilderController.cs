@@ -987,7 +987,7 @@ namespace UnityGameFramework.Editor.ResourceTools
                 {
                     txt = txt.Replace(kv.Key, kv.Value);
                 }
-                File.WriteAllText(Utility.Text.Format("{0}{1}Version.txt", outputFullPath, elements["{Platform}"]), txt);
+                File.WriteAllText(Utility.Text.Format("{0}{1}Version.txt", OutputFullPath, elements["{Platform}"]), txt);
             }
 
             if (OutputPackedSelected)
