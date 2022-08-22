@@ -391,6 +391,14 @@ namespace StarForce.Editor.DataTableTools
         private const string CSharpCodePath = "Assets/GameMain/Scripts/DataTable";
         private const string CSharpCodeTemplateFileName = "Assets/GameMain/Configs/DataTableCodeTemplate.txt";
 ```
+### Data table
+* Path
+```shell
+d:\git\StarForce\Assets\GameMain\DataTables\
+```
+* Numerical value not support NULL. It will cause Exception in *ParseDataRow*
+
+
 
 ## LocalizationComponent (UGF)
 |Attributes                   |                                 |
