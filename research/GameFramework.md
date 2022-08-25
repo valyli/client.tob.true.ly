@@ -530,6 +530,7 @@ Use EntityLogic to add entity game logic.
 
 * Use Visible to Activate or deactivate the entity.
 * Use CachedTransform to modify Position, rotation and scale of an entity.
+* Change transform in onUpdate() may interrupt CachedTransform initialize code in onShow(), delay execution by one frame will be fine.
 
 Files:
 ```
