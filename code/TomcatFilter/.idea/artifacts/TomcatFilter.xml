@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TomcatFilter">
+    <output-path>$PROJECT_DIR$/out/artifacts/TomcatFilter</output-path>
+    <root id="archive" name="TomcatFilter.jar">
+      <element id="module-output" name="TomcatFilter" />
+    </root>
+  </artifact>
+</component>
