@@ -14,13 +14,20 @@
 	1. 支持命令行调用 GameFramework Resource Builder 打包编译。
 	2. 解决 WebGL 在 Tomcat 服务器上报错和报警问题。
 	3. 测试 U3D(URP) 导出 WebGL，在PC和Mobile上执行。成功。
-		（之前查的资料是导出WebGL不支持URP，这次成功后，重新查官方文档，并没有明确说不可以，而且在不断修复URP在WebGL中的BUG。）
+		a） 错误信息修正：之前查的资料是导出WebGL不支持URP，这次成功后，重新查官方文档，并没有明确说不可以，而且在不断修复URP在WebGL中的BUG。
+		b） U3D WebGL裸包是9.8MB，采用 wasm 格式。
 	4. 实现场景传送逻辑。
 	5. 对 GameFramework 做部分修改。
 
 下周：
 	1. 尝试实现 GameFramework 对 WebGL 的支持。
 	2. 用自己找的资源，再测试 WebGL 与 App 的性能差异。
+	3. 待定选择？：
+		a) 美术：选定资源进行性能测试（WebGL或App）
+		b) Server： 
+			i) 网络通讯协议制定
+			ii) Data Entity 流程定义（可自动生成数据库表、前后端代码、客户端DataModule、差量同步、View Layer数据绑定）
+	
 
 本周无面试
 
