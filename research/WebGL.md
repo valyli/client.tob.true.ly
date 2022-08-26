@@ -44,7 +44,8 @@ Disadvantage
 Must be exported WebGL
 ### Achievable
 > * Generate native js script.
-> * U3D framework (include GameFramework) size is 8MB.
+> * U3D framework (include GameFramework) size is 8MB.  
+    (It is 9.8MB of all download resource of an empty project including GameFramework and URP. Code in WASM format.)
 
 ## To do:
 > * Success, but has problem of load remote resource data by GF.
