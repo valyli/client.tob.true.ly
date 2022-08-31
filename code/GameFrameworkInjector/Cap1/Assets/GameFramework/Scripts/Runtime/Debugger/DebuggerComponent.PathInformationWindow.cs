@@ -20,13 +20,13 @@ namespace UnityGameFramework.Runtime
                 GUILayout.Label("<b>Path Information</b>");
                 GUILayout.BeginVertical("box");
                 {
-                    DrawItem("Current Directory", Utility.Path.GetRegularPath(Environment.CurrentDirectory));
-                    DrawItem("Data Path", Utility.Path.GetRegularPath(Application.dataPath));
-                    DrawItem("Persistent Data Path", Utility.Path.GetRegularPath(Application.persistentDataPath));
-                    DrawItem("Streaming Assets Path", Utility.Path.GetRegularPath(Application.streamingAssetsPath));
-                    DrawItem("Temporary Cache Path", Utility.Path.GetRegularPath(Application.temporaryCachePath));
+                    DrawItem("Current Directory", Utility.Path.GetRegularPath(Environment.CurrentDirectory, "OnDrawScrollableWindow"));
+                    DrawItem("Data Path", Utility.Path.GetRegularPath(Application.dataPath, "OnDrawScrollableWindow"));
+                    DrawItem("Persistent Data Path", Utility.Path.GetRegularPath(Application.persistentDataPath, "OnDrawScrollableWindow"));
+                    DrawItem("Streaming Assets Path", Utility.Path.GetRegularPath(Application.streamingAssetsPath, "OnDrawScrollableWindow"));
+                    DrawItem("Temporary Cache Path", Utility.Path.GetRegularPath(Application.temporaryCachePath, "OnDrawScrollableWindow"));
 #if UNITY_2018_3_OR_NEWER
-                    DrawItem("Console Log Path", Utility.Path.GetRegularPath(Application.consoleLogPath));
+                    DrawItem("Console Log Path", Utility.Path.GetRegularPath(Application.consoleLogPath, "OnDrawScrollableWindow"));
 #endif
                 }
                 GUILayout.EndVertical();

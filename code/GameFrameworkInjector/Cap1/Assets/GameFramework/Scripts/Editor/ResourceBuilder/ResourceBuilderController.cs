@@ -42,7 +42,7 @@ namespace UnityGameFramework.Editor.ResourceTools
 
         public ResourceBuilderController()
         {
-            m_ConfigurationPath = Type.GetConfigurationPath<ResourceBuilderConfigPathAttribute>() ?? Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "GameFramework/Configs/ResourceBuilder.xml"));
+            m_ConfigurationPath = Type.GetConfigurationPath<ResourceBuilderConfigPathAttribute>() ?? Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "GameFramework/Configs/ResourceBuilder.xml"), "ResourceBuilderController");
 
             m_ResourceCollection = new ResourceCollection();
             m_ResourceCollection.OnLoadingResource += delegate (int index, int count)
@@ -262,7 +262,7 @@ namespace UnityGameFramework.Editor.ResourceTools
                     return string.Empty;
                 }
 
-                return Utility.Path.GetRegularPath(new DirectoryInfo(Utility.Text.Format("{0}/Working/", OutputDirectory)).FullName);
+                return Utility.Path.GetRegularPath(new DirectoryInfo(Utility.Text.Format("{0}/Working/", OutputDirectory)).FullName, "ResourceBuilderController.WorkingPath");
             }
         }
 
@@ -275,7 +275,7 @@ namespace UnityGameFramework.Editor.ResourceTools
                     return string.Empty;
                 }
 
-                return Utility.Path.GetRegularPath(new DirectoryInfo(Utility.Text.Format("{0}/Package/{1}_{2}/", OutputDirectory, ApplicableGameVersion.Replace('.', '_'), InternalResourceVersion)).FullName);
+                return Utility.Path.GetRegularPath(new DirectoryInfo(Utility.Text.Format("{0}/Package/{1}_{2}/", OutputDirectory, ApplicableGameVersion.Replace('.', '_'), InternalResourceVersion)).FullName, "ResourceBuilderController.OutputPackagePath");
             }
         }
 
@@ -288,7 +288,7 @@ namespace UnityGameFramework.Editor.ResourceTools
                     return string.Empty;
                 }
 
-                return Utility.Path.GetRegularPath(new DirectoryInfo(Utility.Text.Format("{0}/Full/{1}_{2}/", OutputDirectory, ApplicableGameVersion.Replace('.', '_'), InternalResourceVersion)).FullName);
+                return Utility.Path.GetRegularPath(new DirectoryInfo(Utility.Text.Format("{0}/Full/{1}_{2}/", OutputDirectory, ApplicableGameVersion.Replace('.', '_'), InternalResourceVersion)).FullName, "ResourceBuilderController.OutputFullPath");
             }
         }
 
@@ -301,7 +301,7 @@ namespace UnityGameFramework.Editor.ResourceTools
                     return string.Empty;
                 }
 
-                return Utility.Path.GetRegularPath(new DirectoryInfo(Utility.Text.Format("{0}/Packed/{1}_{2}/", OutputDirectory, ApplicableGameVersion.Replace('.', '_'), InternalResourceVersion)).FullName);
+                return Utility.Path.GetRegularPath(new DirectoryInfo(Utility.Text.Format("{0}/Packed/{1}_{2}/", OutputDirectory, ApplicableGameVersion.Replace('.', '_'), InternalResourceVersion)).FullName, "ResourceBuilderController.OutputPackedPath");
             }
         }
 
@@ -314,7 +314,7 @@ namespace UnityGameFramework.Editor.ResourceTools
                     return string.Empty;
                 }
 
-                return Utility.Path.GetRegularPath(new DirectoryInfo(Utility.Text.Format("{0}/BuildReport/{1}_{2}/", OutputDirectory, ApplicableGameVersion.Replace('.', '_'), InternalResourceVersion)).FullName);
+                return Utility.Path.GetRegularPath(new DirectoryInfo(Utility.Text.Format("{0}/BuildReport/{1}_{2}/", OutputDirectory, ApplicableGameVersion.Replace('.', '_'), InternalResourceVersion)).FullName, "ResourceBuilderController.BuildReportPath");
             }
         }
 
@@ -1015,7 +1015,7 @@ namespace UnityGameFramework.Editor.ResourceTools
         {
             string fullName = GetResourceFullName(name, variant);
             ResourceData resourceData = m_ResourceDatas[fullName];
-            string workingName = Utility.Path.GetRegularPath(Path.Combine(workingPath, fullName.ToLowerInvariant()));
+            string workingName = Utility.Path.GetRegularPath(Path.Combine(workingPath, fullName.ToLowerInvariant()), "ResourceBuilderController.ProcessAssetBundle");
 
             byte[] bytes = File.ReadAllBytes(workingName);
             int length = bytes.Length;
@@ -1041,7 +1041,7 @@ namespace UnityGameFramework.Editor.ResourceTools
             string fullName = GetResourceFullName(name, variant);
             ResourceData resourceData = m_ResourceDatas[fullName];
             string assetName = resourceData.GetAssetNames()[0];
-            string assetPath = Utility.Path.GetRegularPath(Application.dataPath.Substring(0, Application.dataPath.Length - AssetsStringLength) + assetName);
+            string assetPath = Utility.Path.GetRegularPath(Application.dataPath.Substring(0, Application.dataPath.Length - AssetsStringLength) + assetName, "ResourceBuilderController.ProcessBinary");
 
             byte[] bytes = File.ReadAllBytes(assetPath);
             int length = bytes.Length;
@@ -1101,7 +1101,7 @@ namespace UnityGameFramework.Editor.ResourceTools
             serializer.RegisterSerializeCallback(0, BuiltinVersionListSerializer.PackageVersionListSerializeCallback_V0);
             serializer.RegisterSerializeCallback(1, BuiltinVersionListSerializer.PackageVersionListSerializeCallback_V1);
             serializer.RegisterSerializeCallback(2, BuiltinVersionListSerializer.PackageVersionListSerializeCallback_V2);
-            string packageVersionListPath = Utility.Path.GetRegularPath(Path.Combine(outputPackagePath, RemoteVersionListFileName));
+            string packageVersionListPath = Utility.Path.GetRegularPath(Path.Combine(outputPackagePath, RemoteVersionListFileName), "ResourceBuilderController.ProcessPackageVersionList");
             using (FileStream fileStream = new FileStream(packageVersionListPath, FileMode.Create, FileAccess.Write))
             {
                 if (!serializer.Serialize(fileStream, versionList))
@@ -1150,7 +1150,7 @@ namespace UnityGameFramework.Editor.ResourceTools
             serializer.RegisterSerializeCallback(0, BuiltinVersionListSerializer.UpdatableVersionListSerializeCallback_V0);
             serializer.RegisterSerializeCallback(1, BuiltinVersionListSerializer.UpdatableVersionListSerializeCallback_V1);
             serializer.RegisterSerializeCallback(2, BuiltinVersionListSerializer.UpdatableVersionListSerializeCallback_V2);
-            string updatableVersionListPath = Utility.Path.GetRegularPath(Path.Combine(outputFullPath, RemoteVersionListFileName));
+            string updatableVersionListPath = Utility.Path.GetRegularPath(Path.Combine(outputFullPath, RemoteVersionListFileName), "ResourceBuilderController.ProcessUpdatableVersionList1");
             using (FileStream fileStream = new FileStream(updatableVersionListPath, FileMode.Create, FileAccess.Write))
             {
                 if (!serializer.Serialize(fileStream, versionList))
@@ -1168,7 +1168,7 @@ namespace UnityGameFramework.Editor.ResourceTools
             int compressedHashCode = Utility.Verifier.GetCrc32(bytes);
             int dotPosition = RemoteVersionListFileName.LastIndexOf('.');
             string versionListFullNameWithCrc32 = Utility.Text.Format("{0}.{2:x8}.{1}", RemoteVersionListFileName.Substring(0, dotPosition), RemoteVersionListFileName.Substring(dotPosition + 1), hashCode);
-            string updatableVersionListPathWithCrc32 = Utility.Path.GetRegularPath(Path.Combine(outputFullPath, versionListFullNameWithCrc32));
+            string updatableVersionListPathWithCrc32 = Utility.Path.GetRegularPath(Path.Combine(outputFullPath, versionListFullNameWithCrc32), "ResourceBuilderController.ProcessUpdatableVersionList2");
             File.Move(updatableVersionListPath, updatableVersionListPathWithCrc32);
 
             return new VersionListData(updatableVersionListPathWithCrc32, length, hashCode, compressedLength, compressedHashCode);
@@ -1198,7 +1198,7 @@ namespace UnityGameFramework.Editor.ResourceTools
             serializer.RegisterSerializeCallback(0, BuiltinVersionListSerializer.LocalVersionListSerializeCallback_V0);
             serializer.RegisterSerializeCallback(1, BuiltinVersionListSerializer.LocalVersionListSerializeCallback_V1);
             serializer.RegisterSerializeCallback(2, BuiltinVersionListSerializer.LocalVersionListSerializeCallback_V2);
-            string readOnlyVersionListPath = Utility.Path.GetRegularPath(Path.Combine(outputPackedPath, LocalVersionListFileName));
+            string readOnlyVersionListPath = Utility.Path.GetRegularPath(Path.Combine(outputPackedPath, LocalVersionListFileName), "ResourceBuilderController.ProcessReadOnlyVersionList");
             using (FileStream fileStream = new FileStream(readOnlyVersionListPath, FileMode.Create, FileAccess.Write))
             {
                 if (!serializer.Serialize(fileStream, versionList))
@@ -1345,7 +1345,7 @@ namespace UnityGameFramework.Editor.ResourceTools
             foreach (string fileSystemName in fileSystemNames)
             {
                 int fileCount = GetResourceIndexesFromFileSystem(resourceDatas, fileSystemName).Length;
-                string fullPath = Utility.Path.GetRegularPath(Path.Combine(outputPath, Utility.Text.Format("{0}.{1}", fileSystemName, DefaultExtension)));
+                string fullPath = Utility.Path.GetRegularPath(Path.Combine(outputPath, Utility.Text.Format("{0}.{1}", fileSystemName, DefaultExtension)), "ResourceBuilderController.CreateFileSystems");
                 string directory = Path.GetDirectoryName(fullPath);
                 if (!Directory.Exists(directory))
                 {
@@ -1365,7 +1365,7 @@ namespace UnityGameFramework.Editor.ResourceTools
             {
                 if (string.IsNullOrEmpty(fileSystem))
                 {
-                    string packagePath = Utility.Path.GetRegularPath(Path.Combine(outputPackagePath, fullNameWithExtension));
+                    string packagePath = Utility.Path.GetRegularPath(Path.Combine(outputPackagePath, fullNameWithExtension), "ResourceBuilderController.ProcessOutput1");
                     string packageDirectoryName = Path.GetDirectoryName(packagePath);
                     if (!Directory.Exists(packageDirectoryName))
                     {
@@ -1387,7 +1387,7 @@ namespace UnityGameFramework.Editor.ResourceTools
             {
                 if (string.IsNullOrEmpty(fileSystem))
                 {
-                    string packedPath = Utility.Path.GetRegularPath(Path.Combine(outputPackedPath, fullNameWithExtension));
+                    string packedPath = Utility.Path.GetRegularPath(Path.Combine(outputPackedPath, fullNameWithExtension), "ResourceBuilderController.ProcessOutput2");
                     string packedDirectoryName = Path.GetDirectoryName(packedPath);
                     if (!Directory.Exists(packedDirectoryName))
                     {
@@ -1408,7 +1408,7 @@ namespace UnityGameFramework.Editor.ResourceTools
             if (OutputFullSelected)
             {
                 string fullNameWithCrc32AndExtension = variant != null ? Utility.Text.Format("{0}.{1}.{2:x8}.{3}", name, variant, hashCode, DefaultExtension) : Utility.Text.Format("{0}.{1:x8}.{2}", name, hashCode, DefaultExtension);
-                string fullPath = Utility.Path.GetRegularPath(Path.Combine(outputFullPath, fullNameWithCrc32AndExtension));
+                string fullPath = Utility.Path.GetRegularPath(Path.Combine(outputFullPath, fullNameWithCrc32AndExtension), "ResourceBuilderController.ProcessOutput3");
                 string fullDirectoryName = Path.GetDirectoryName(fullPath);
                 if (!Directory.Exists(fullDirectoryName))
                 {

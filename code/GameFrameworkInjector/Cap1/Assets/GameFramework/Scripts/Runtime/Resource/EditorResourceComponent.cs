@@ -1612,7 +1612,7 @@ namespace UnityGameFramework.Runtime
                 return false;
             }
 
-            string fileFullName = Utility.Path.GetRegularPath(fileNames[0]);
+            string fileFullName = Utility.Path.GetRegularPath(fileNames[0], "EditorResourceComponent.HasFile");
             if (fileFullName == null)
             {
                 return false;

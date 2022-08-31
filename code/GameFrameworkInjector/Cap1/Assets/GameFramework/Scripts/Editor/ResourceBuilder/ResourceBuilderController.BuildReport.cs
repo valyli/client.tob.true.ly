@@ -50,8 +50,8 @@ namespace UnityGameFramework.Editor.ResourceTools
                     throw new GameFrameworkException("Build report path is invalid.");
                 }
 
-                m_BuildReportName = Utility.Path.GetRegularPath(Path.Combine(buildReportPath, BuildReportName));
-                m_BuildLogName = Utility.Path.GetRegularPath(Path.Combine(buildReportPath, BuildLogName));
+                m_BuildReportName = Utility.Path.GetRegularPath(Path.Combine(buildReportPath, BuildReportName), "ResourceBuilderController1");
+                m_BuildLogName = Utility.Path.GetRegularPath(Path.Combine(buildReportPath, BuildLogName), "ResourceBuilderController");
                 m_ProductName = productName;
                 m_CompanyName = companyName;
                 m_GameIdentifier = gameIdentifier;

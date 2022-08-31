@@ -32,7 +32,7 @@ namespace UnityGameFramework.Editor.ResourceTools
 
         public ResourcePackBuilderController()
         {
-            m_ConfigurationPath = Type.GetConfigurationPath<ResourceBuilderConfigPathAttribute>() ?? Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "GameFramework/Configs/ResourceBuilder.xml"));
+            m_ConfigurationPath = Type.GetConfigurationPath<ResourceBuilderConfigPathAttribute>() ?? Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "GameFramework/Configs/ResourceBuilder.xml"), "ResourcePackBuilderController");
 
             m_UpdatableVersionListSerializer = new UpdatableVersionListSerializer();
             m_UpdatableVersionListSerializer.RegisterDeserializeCallback(0, BuiltinVersionListSerializer.UpdatableVersionListDeserializeCallback_V0);
@@ -168,7 +168,7 @@ namespace UnityGameFramework.Editor.ResourceTools
                     return string.Empty;
                 }
 
-                return Utility.Path.GetRegularPath(new DirectoryInfo(Utility.Text.Format("{0}/Full/", WorkingDirectory)).FullName);
+                return Utility.Path.GetRegularPath(new DirectoryInfo(Utility.Text.Format("{0}/Full/", WorkingDirectory)).FullName, "ResourcePackBuilderController.SourcePath");
             }
         }
 
@@ -181,7 +181,7 @@ namespace UnityGameFramework.Editor.ResourceTools
                     return string.Empty;
                 }
 
-                return Utility.Path.GetRegularPath(new DirectoryInfo(Utility.Text.Format("{0}/Full/*/{1}/", WorkingDirectory, Platform)).FullName);
+                return Utility.Path.GetRegularPath(new DirectoryInfo(Utility.Text.Format("{0}/Full/*/{1}/", WorkingDirectory, Platform)).FullName, "ResourcePackBuilderController.SourcePathForDisplay");
             }
         }
 
@@ -194,7 +194,7 @@ namespace UnityGameFramework.Editor.ResourceTools
                     return string.Empty;
                 }
 
-                return Utility.Path.GetRegularPath(new DirectoryInfo(Utility.Text.Format("{0}/ResourcePack/{1}/", WorkingDirectory, Platform)).FullName);
+                return Utility.Path.GetRegularPath(new DirectoryInfo(Utility.Text.Format("{0}/ResourcePack/{1}/", WorkingDirectory, Platform)).FullName, "ResourcePackBuilderController.OutputPath");
             }
         }
 

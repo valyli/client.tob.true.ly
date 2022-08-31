@@ -34,7 +34,7 @@ namespace UnityGameFramework.Editor.ResourceTools
 
         public ResourceEditorController()
         {
-            m_ConfigurationPath = Type.GetConfigurationPath<ResourceEditorConfigPathAttribute>() ?? Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "GameFramework/Configs/ResourceEditor.xml"));
+            m_ConfigurationPath = Type.GetConfigurationPath<ResourceEditorConfigPathAttribute>() ?? Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "GameFramework/Configs/ResourceEditor.xml"), "ResourceEditorController");
             m_ResourceCollection = new ResourceCollection();
             m_ResourceCollection.OnLoadingResource += delegate (int index, int count)
             {
@@ -588,7 +588,7 @@ namespace UnityGameFramework.Editor.ResourceTools
             {
                 foreach (string sourceAssetSearchRelativePath in m_SourceAssetSearchRelativePaths)
                 {
-                    m_SourceAssetSearchPaths.Add(Utility.Path.GetRegularPath(Path.Combine(m_SourceAssetRootPath, sourceAssetSearchRelativePath)));
+                    m_SourceAssetSearchPaths.Add(Utility.Path.GetRegularPath(Path.Combine(m_SourceAssetRootPath, sourceAssetSearchRelativePath), "ResourceEditorController.RefreshSourceAssetSearchPaths"));
                 }
             }
             else

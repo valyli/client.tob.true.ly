@@ -2,6 +2,7 @@
 *.bak
 *.log
 
+/code/GameFrameworkInjector/Cap1/.idea
 /code/GameFrameworkInjector/Cap1/Library
 /code/GameFrameworkInjector/Cap1/Temp
 /code/GameFrameworkInjector/Cap1/obj

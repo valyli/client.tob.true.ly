@@ -25266,18 +25266,20 @@
             路径相关的实用函数。
             </summary>
         </member>
-        <member name="M:GameFramework.Utility.Path.GetRegularPath(System.String)">
+        <member name="M:GameFramework.Utility.Path.GetRegularPath(System.String,System.String)">
             <summary>
             获取规范的路径。
             </summary>
             <param name="path">要规范的路径。</param>
+            <param name="debugPosition">调试定位。为了方便 java script 调试。</param> 2022.08.31
             <returns>规范的路径。</returns>
         </member>
-        <member name="M:GameFramework.Utility.Path.GetRemotePath(System.String)">
+        <member name="M:GameFramework.Utility.Path.GetRemotePath(System.String,System.String)">
             <summary>
             获取远程格式的路径（带有file:// 或 http:// 前缀）。
             </summary>
             <param name="path">原始路径。</param>
+            <param name="debugPosition">调试定位。为了方便 java script 调试。</param> 2022.08.31
             <returns>远程格式路径。</returns>
         </member>
         <member name="M:GameFramework.Utility.Path.RemoveEmptyDirectory(System.String)">
