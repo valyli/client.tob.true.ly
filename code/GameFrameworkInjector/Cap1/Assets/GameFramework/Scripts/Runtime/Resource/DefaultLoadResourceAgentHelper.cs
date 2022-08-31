@@ -142,6 +142,7 @@ namespace UnityGameFramework.Runtime
         /// <param name="fullPath">要加载资源的完整路径名。</param>
         public override void ReadFile(string fullPath)
         {
+            Log.Debug("---> DefaultLoadResourceAgentHelper.ReadFile:1 {0}", fullPath);
             if (m_LoadResourceAgentHelperReadFileCompleteEventHandler == null || m_LoadResourceAgentHelperUpdateEventHandler == null || m_LoadResourceAgentHelperErrorEventHandler == null)
             {
                 Log.Fatal("Load resource agent helper handler is invalid.");
@@ -159,6 +160,7 @@ namespace UnityGameFramework.Runtime
         /// <param name="name">要加载资源的名称。</param>
         public override void ReadFile(IFileSystem fileSystem, string name)
         {
+            Log.Debug("> DefaultLoadResourceAgentHelper.ReadFile:2 {0} {1}", fileSystem.FullPath, name);
 #if UNITY_5_3_5 || UNITY_5_3_6 || UNITY_5_3_7 || UNITY_5_3_8 || UNITY_5_4_OR_NEWER
             if (m_LoadResourceAgentHelperReadFileCompleteEventHandler == null || m_LoadResourceAgentHelperUpdateEventHandler == null || m_LoadResourceAgentHelperErrorEventHandler == null)
             {
@@ -181,6 +183,7 @@ namespace UnityGameFramework.Runtime
         /// <param name="fullPath">要加载资源的完整路径名。</param>
         public override void ReadBytes(string fullPath)
         {
+            Log.Debug("---> DefaultLoadResourceAgentHelper.ReadBytes:1 {0}", fullPath);
             if (m_LoadResourceAgentHelperReadBytesCompleteEventHandler == null || m_LoadResourceAgentHelperUpdateEventHandler == null || m_LoadResourceAgentHelperErrorEventHandler == null)
             {
                 Log.Fatal("Load resource agent helper handler is invalid.");
@@ -189,7 +192,7 @@ namespace UnityGameFramework.Runtime
 
             m_BytesFullPath = fullPath;
 #if UNITY_5_4_OR_NEWER
-            m_UnityWebRequest = UnityWebRequest.Get(Utility.Path.GetRemotePath(fullPath));
+            m_UnityWebRequest = UnityWebRequest.Get(Utility.Path.GetRemotePath(fullPath, "DefaultLoadResourceAgentHelper.ReadBytes"));
 #if UNITY_2017_2_OR_NEWER
             m_UnityWebRequest.SendWebRequest();
 #else
@@ -207,6 +210,7 @@ namespace UnityGameFramework.Runtime
         /// <param name="name">要加载资源的名称。</param>
         public override void ReadBytes(IFileSystem fileSystem, string name)
         {
+            Log.Debug("---> DefaultLoadResourceAgentHelper.ReadBytes:2 {0} {1}", fileSystem.FullPath, name);
             if (m_LoadResourceAgentHelperReadBytesCompleteEventHandler == null || m_LoadResourceAgentHelperUpdateEventHandler == null || m_LoadResourceAgentHelperErrorEventHandler == null)
             {
                 Log.Fatal("Load resource agent helper handler is invalid.");
@@ -243,6 +247,7 @@ namespace UnityGameFramework.Runtime
         /// <param name="isScene">要加载的资源是否是场景。</param>
         public override void LoadAsset(object resource, string assetName, Type assetType, bool isScene)
         {
+            Log.Debug("---> DefaultLoadResourceAgentHelper.LoadAsset {0} {1}", resource, assetName);
             if (m_LoadResourceAgentHelperLoadCompleteEventHandler == null || m_LoadResourceAgentHelperUpdateEventHandler == null || m_LoadResourceAgentHelperErrorEventHandler == null)
             {
                 Log.Fatal("Load resource agent helper handler is invalid.");
@@ -269,6 +274,7 @@ namespace UnityGameFramework.Runtime
             m_AssetName = assetName;
             if (isScene)
             {
+                Log.Debug("---> DefaultLoadResourceAgentHelper.LoadAsset(Scene) {0} {1}", resource, assetName);
                 int sceneNamePositionStart = assetName.LastIndexOf('/');
                 int sceneNamePositionEnd = assetName.LastIndexOf('.');
                 if (sceneNamePositionStart <= 0 || sceneNamePositionEnd <= 0 || sceneNamePositionStart > sceneNamePositionEnd)
@@ -284,6 +290,7 @@ namespace UnityGameFramework.Runtime
             }
             else
             {
+                Log.Debug("---> DefaultLoadResourceAgentHelper.LoadAssetAsync.assetBundle.LoadAssetAsyn {0}", assetName);
                 if (assetType != null)
                 {
                     m_AssetBundleRequest = assetBundle.LoadAssetAsync(assetName, assetType);

@@ -104,6 +104,7 @@ namespace UnityGameFramework.Runtime
             {
                 using (FileStream fileStream = new FileStream(m_FilePath, FileMode.Create, FileAccess.Write))
                 {
+                    Log.Debug("8888888888 > {0}", m_FilePath);
                     return m_Serializer.Serialize(fileStream, m_Settings);
                 }
             }
@@ -365,7 +366,7 @@ namespace UnityGameFramework.Runtime
 
         private void Awake()
         {
-            m_FilePath = Utility.Path.GetRegularPath(Path.Combine(Application.persistentDataPath, SettingFileName));
+            m_FilePath = Utility.Path.GetRegularPath(Path.Combine(Application.persistentDataPath, SettingFileName), "DefaultSettingHelper.Awake");
             m_Settings = new DefaultSetting();
             m_Serializer = new DefaultSettingSerializer();
             m_Serializer.RegisterSerializeCallback(0, SerializeDefaultSettingCallback);
@@ -374,12 +375,14 @@ namespace UnityGameFramework.Runtime
 
         private bool SerializeDefaultSettingCallback(Stream stream, DefaultSetting defaultSetting)
         {
+            Log.Debug("---> m_Settings.Serialize(stream);");
             m_Settings.Serialize(stream);
             return true;
         }
 
         private DefaultSetting DeserializeDefaultSettingCallback(Stream stream)
         {
+            Log.Debug("<--- m_Settings.Deserialize(stream);");
             m_Settings.Deserialize(stream);
             return m_Settings;
         }
