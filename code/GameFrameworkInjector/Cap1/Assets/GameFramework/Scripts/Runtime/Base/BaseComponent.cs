@@ -196,6 +196,7 @@ namespace UnityGameFramework.Runtime
             Log.Info("Game Framework Version: {0}", Version.GameFrameworkVersion);
             Log.Info("Game Version: {0} ({1})", Version.GameVersion, Version.InternalGameVersion);
             Log.Info("Unity Version: {0}", Application.unityVersion);
+            Log.Info("persistentDataPath: {0}", Application.persistentDataPath);
 
 #if UNITY_5_3_OR_NEWER || UNITY_5_3
             InitCompressionHelper();
