@@ -41,6 +41,9 @@
     1. IndexedDB snapshot:
         ![](vx_images/279801617220872.png)
 
+* GameFramework fork:
+https://github.com/valyli/GameFramework
+
 
 # Other Problems:
 1. Should disable ***Strip Engine Code*** in Untiy setting.
