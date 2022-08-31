@@ -33,8 +33,13 @@
         ```
         D:\output\Cap1AssetBundle\Full\0_1_0_2\WebGL
         ```
+     5. Settings:
+     ![](vx_images/245481917227165.png)
+     ![](vx_images/384141817239298.png)
 * Result:
     This solution is OK.
+    1. IndexedDB snapshot:
+        ![](vx_images/279801617220872.png)
 
 
 # Other Problems:
