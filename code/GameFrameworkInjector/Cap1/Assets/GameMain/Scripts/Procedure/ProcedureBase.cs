@@ -5,6 +5,9 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
+using UnityGameFramework.Runtime;
+using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
+
 namespace StarForce
 {
     public abstract class ProcedureBase : GameFramework.Procedure.ProcedureBase
@@ -14,6 +17,12 @@ namespace StarForce
         public abstract bool UseNativeDialog
         {
             get;
+        }
+
+        protected override void OnEnter(ProcedureOwner procedureOwner)
+        {
+            Log.Debug("Procedure.OnEnter() {0}", this.GetType());
+            base.OnEnter(procedureOwner);
         }
     }
 }
