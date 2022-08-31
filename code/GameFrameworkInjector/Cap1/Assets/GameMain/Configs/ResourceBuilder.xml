@@ -9,7 +9,7 @@
       <AdditionalCompressionSelected>True</AdditionalCompressionSelected>
       <ForceRebuildAssetBundleSelected>False</ForceRebuildAssetBundleSelected>
       <BuildEventHandlerTypeName>StarForce.Editor.StarForceBuildEventHandler</BuildEventHandlerTypeName>
-      <OutputDirectory>D:/output/StarForceAssetBundle</OutputDirectory>
+      <OutputDirectory>D:/output/Cap1AssetBundle</OutputDirectory>
       <OutputPackageSelected>True</OutputPackageSelected>
       <OutputFullSelected>True</OutputFullSelected>
       <OutputPackedSelected>True</OutputPackedSelected>

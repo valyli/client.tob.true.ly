@@ -130,7 +130,7 @@ namespace StarForce
             }
 
             // 设置资源更新下载地址
-            GameEntry.Resource.UpdatePrefixUri = Utility.Path.GetRegularPath(m_VersionInfo.UpdatePrefixUri);
+            GameEntry.Resource.UpdatePrefixUri = Utility.Path.GetRegularPath(m_VersionInfo.UpdatePrefixUri, "ProcedureCheckVersion.OnWebRequestSuccess");
 
             m_CheckVersionComplete = true;
             m_NeedUpdateVersion = GameEntry.Resource.CheckVersionList(m_VersionInfo.InternalResourceVersion) == CheckVersionListResult.NeedUpdate;
@@ -164,6 +164,9 @@ namespace StarForce
 
                 case RuntimePlatform.Android:
                     return "Android";
+
+                case RuntimePlatform.WebGLPlayer:
+                    return "WebGL";
 
                 default:
                     throw new System.NotSupportedException(Utility.Text.Format("Platform '{0}' is not supported.", Application.platform));

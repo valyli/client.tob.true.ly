@@ -7,6 +7,7 @@
 
 using GameFramework.FileSystem;
 using System;
+using UnityEngine;
 
 namespace UnityGameFramework.Runtime
 {
@@ -32,6 +33,10 @@ namespace UnityGameFramework.Runtime
             }
             else
             {
+                if (Application.platform == RuntimePlatform.WebGLPlayer)
+                {
+                    fullPath = PathTranslator.GetIndexedDBPath(fullPath);
+                }
                 return new CommonFileSystemStream(fullPath, access, createNew);
             }
         }

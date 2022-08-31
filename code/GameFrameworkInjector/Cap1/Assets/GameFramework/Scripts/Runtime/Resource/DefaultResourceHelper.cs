@@ -8,6 +8,7 @@
 using GameFramework.Resource;
 using System;
 using System.Collections;
+using System.IO;
 using UnityEngine;
 #if UNITY_5_4_OR_NEWER
 using UnityEngine.Networking;
@@ -29,7 +30,14 @@ namespace UnityGameFramework.Runtime
         /// <param name="userData">用户自定义数据。</param>
         public override void LoadBytes(string fileUri, LoadBytesCallbacks loadBytesCallbacks, object userData)
         {
-            StartCoroutine(LoadBytesCo(fileUri, loadBytesCallbacks, userData));
+            if (Application.platform == RuntimePlatform.WebGLPlayer)
+            {
+                LoadBytesFromIndexedDB(fileUri, loadBytesCallbacks, userData);
+            }
+            else
+            {
+                StartCoroutine(LoadBytesCo(fileUri, loadBytesCallbacks, userData));
+            }
         }
 
         /// <summary>
@@ -108,6 +116,45 @@ namespace UnityGameFramework.Runtime
         {
         }
 
+        private void LoadBytesFromIndexedDB(string fileUri, LoadBytesCallbacks loadBytesCallbacks, object userData)
+        {
+            if (Application.platform == RuntimePlatform.WebGLPlayer)
+            {
+                fileUri = PathTranslator.GetIndexedDBPath(fileUri);
+            }
+
+            bool isError = false;
+            byte[] bytes = null;
+            string errorMessage = null;
+            DateTime startTime = DateTime.UtcNow;
+
+            try
+            {
+                Log.Debug("---> DefaultResourceHelper.LoadBytesFromIndexedDB {0}", fileUri);
+                using (FileStream fileStream = new FileStream(fileUri, FileMode.Open, FileAccess.Read))
+                {
+                    bytes = new byte[fileStream.Length];
+                    fileStream.Read(bytes, 0, (int) fileStream.Length);
+                    Log.Debug("---> DefaultResourceHelper.LoadBytesFromIndexedDB {0} {1}", fileUri, bytes == null ? "null" : bytes.Length.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                isError = true;
+                errorMessage = e.Message;
+            }
+            
+            if (!isError)
+            {
+                float elapseSeconds = (float)(DateTime.UtcNow - startTime).TotalSeconds;
+                loadBytesCallbacks.LoadBytesSuccessCallback(fileUri, bytes, elapseSeconds, userData);
+            }
+            else if (loadBytesCallbacks.LoadBytesFailureCallback != null)
+            {
+                loadBytesCallbacks.LoadBytesFailureCallback(fileUri, errorMessage, userData);
+            }
+        }
+
         private IEnumerator LoadBytesCo(string fileUri, LoadBytesCallbacks loadBytesCallbacks, object userData)
         {
             bool isError = false;
@@ -116,6 +163,7 @@ namespace UnityGameFramework.Runtime
             DateTime startTime = DateTime.UtcNow;
 
 #if UNITY_5_4_OR_NEWER
+            Log.Debug("---> DefaultResourceHelper.LoadBytesCo {0}", fileUri);
             UnityWebRequest unityWebRequest = UnityWebRequest.Get(fileUri);
 #if UNITY_2017_2_OR_NEWER
             yield return unityWebRequest.SendWebRequest();
@@ -145,6 +193,7 @@ namespace UnityGameFramework.Runtime
 
             if (!isError)
             {
+                Log.Debug("---> DefaultResourceHelper.LoadBytesCo {0} success", fileUri);
                 float elapseSeconds = (float)(DateTime.UtcNow - startTime).TotalSeconds;
                 loadBytesCallbacks.LoadBytesSuccessCallback(fileUri, bytes, elapseSeconds, userData);
             }
