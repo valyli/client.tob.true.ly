@@ -28,6 +28,11 @@
 * Step:
     1. *FileStream* of C# could visit data in IndexedDB after compiled to java script. 
     2. Modify *DefaultResourceHelper* class loading function on Web GL. Use *FileStream* in asynchronizing mode instead of *UnityWebRequest* in synchronizing mode. But also use *callback* to simulate synchronizing.
+    3. Set *Resource Mode* of GameFramework on *Updatable*.
+    ~~4. Copy resource packages into HTTP server.~~
+        ```
+        D:\output\Cap1AssetBundle\Full\0_1_0_2\WebGL
+        ```
 * Result:
     This solution is OK.
 
