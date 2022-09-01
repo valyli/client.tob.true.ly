@@ -1,0 +1,48 @@
+【王磊】
+
+本周：
+	1.完善演示demo功能，增加虚拟摇杆操作方式。
+	2.为演示demo增加控制角色与自由视角摄像头。
+下周：
+	分析完善需求，为演示demo扩展功能。
+	
+【李佳】
+
+本周：
+	1. 修改 GameFramework 源码，增加 FileSystem 对 WebGL 的支持。【done。原计划2天，实际延误2天。原因：跨语言，资料少，GF框架的文件系统限制】
+	2. 用自己找的资源，再测试 WebGL 与 App 的性能差异。【未开始，顺延】
+	3. 待定选择：
+		a) 美术：选定资源进行性能测试（WebGL或App）	【以确定由美术提供资源，然后打包测试。进行中】
+		b) Server：					【以完成协议和实现讨论。未开发，见王磊报告部分】
+			i) 网络通讯协议制定
+			ii) Data Entity 流程定义（可自动生成数据库表、前后端代码、客户端DataModule、差量同步、View Layer数据绑定）
+
+
+下周：
+	1. 继续完成 Web GL 支持工作，目前已知12项，下周预计能完成一半。
+		How to upgrade client resource?
+		How to upgrade client code?
+		How to resolve strip code problem?
+		Enhance download speed.
+		Open gzip for resources. ref
+		Check is there have IndexedDB flush problem?ref
+		Catch url parameters.ref
+		Interact between Unity and Java script. ref ref2
+		Review on official troubleshooting. ref
+		How to debug webgl via unity tools on pc and mobile?
+		Support https protocal.
+		Verify webgl on iOS. [OK, on iOS 15.6]
+		
+	2. 测试 WebGL 与 App 的性能差异。【顺延，待1完成，并合并如demo1】
+
+	3. 美术资源的性能测试，及渲染方案含shader的筛选。
+		a) 先App测试。
+		b) WebGL 需要等demo1与webgl合并完成。
+
+	4. 与Server的协议开发：		【视情况进行】
+		i) 网络通讯协议制定
+		ii) Data Entity 流程定义（可自动生成数据库表、前后端代码、客户端DataModule、差量同步、View Layer数据绑定）
+	
+
+本周面试3人，1人待定
+
