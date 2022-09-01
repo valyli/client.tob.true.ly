@@ -44,6 +44,20 @@
 * GameFramework fork:
 https://github.com/valyli/GameFramework
 
+* Next to do:
+    1. How to upgrade client resource?
+    2. How to upgrade client code?
+    3. How to resolve strip code problem?
+    4. Enhance download speed.
+    5. Open gzip for resources. [ref](https://zhuanlan.zhihu.com/p/475307249)
+    6. Check is there have IndexedDB flush problem?[ref](https://gamedev.stackexchange.com/questions/184369/file-saved-to-indexeddb-lost-unless-we-change-scenes)
+    7. Catch url parameters.[ref](https://blog.csdn.net/xunideshijie/article/details/123795652)
+    8.  Interact between Unity and Java script. [ref](https://docs.unity3d.com/Manual/webgl-interactingwithbrowserscripting.html) [ref2](https://www.cnblogs.com/littleperilla/p/15640464.html)
+    9. Review on official troubleshooting. [ref](https://docs.unity3d.com/2019.2/Documentation/Manual/webgl-debugging.html)
+    10. How to debug webgl via unity tools on pc and mobile?
+    11. Support https protocal.
+    12. Verify webgl on iOS. [OK, on iOS 15.6]
+
 
 # Other Problems:
 1. Should disable ***Strip Engine Code*** in Untiy setting.
