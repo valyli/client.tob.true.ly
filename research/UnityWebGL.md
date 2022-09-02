@@ -8,6 +8,7 @@
 [WebGL memory & Asset Data in U3D](https://docs.unity3d.com/2020.1/Documentation/Manual/webgl-memory.html)
 [Customize the WebGL Cache behavior](https://docs.unity3d.com/2022.2/Documentation/Manual/webgl-caching.html)
 [Deploy template of Http Server](https://docs.unity3d.com/2022.2/Documentation/Manual/webgl-server-configuration-code-samples.html)
+[Unity-StripCode](https://www.cnblogs.com/littleperilla/p/15997214.html)
 
 ## Fully shared generic
 [What is?](https://blog.unity.com/technology/feature-preview-il2cpp-full-generic-sharing-in-unity-20221-beta)
