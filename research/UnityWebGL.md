@@ -9,6 +9,24 @@
 [Customize the WebGL Cache behavior](https://docs.unity3d.com/2022.2/Documentation/Manual/webgl-caching.html)
 [Deploy template of Http Server](https://docs.unity3d.com/2022.2/Documentation/Manual/webgl-server-configuration-code-samples.html)
 
+## Fully shared generic
+[What is?](https://blog.unity.com/technology/feature-preview-il2cpp-full-generic-sharing-in-unity-20221-beta)
+```
+Wouldn’t it be great to have just one, fully shared generic implementation for any List<T>? Well, check out the IL2CPP Code Generation option “Faster (smaller) builds” in Player Settings. 
+```
+
+## WebAssembly
+[About WebAssembly](https://www.zhihu.com/question/304577684)
+[WebAssembly vs Javascript](https://zhuanlan.zhihu.com/p/57001874)
+[Official website](https://webassembly.org/)
+> * Not support multi-threads in WebAssembly
+> * Compatibility
+![](vx_images/213625713247401.png)
+
+## Unity WebGL Templates 
+```
+C:\Program Files\Unity\Hub\Editor\2021.3.8f1c1\Editor\Data\PlaybackEngines\WebGLSupport\BuildTools\WebGLTemplates
+```
 # Resolution Test
 # Use browser file-cache
 * Step:
@@ -36,6 +54,7 @@
      5. Settings:
      ![](vx_images/245481917227165.png)
      ![](vx_images/384141817239298.png)
+    ![](vx_images/590835214220942.png)
 * Result:
     This solution is OK.
     1. IndexedDB snapshot:
@@ -57,6 +76,14 @@ https://github.com/valyli/GameFramework
     10. How to debug webgl via unity tools on pc and mobile?
     11. Support https protocal.
     12. Verify webgl on iOS. [OK, on iOS 15.6]
+    13. Resolve striping of code. [OK, by Fully shared generic]
+    14. Should we catch exception at outside of WebAssembly and How?
+    15. Resovle warning: 
+        ```
+        warning: 2 FS.syncfs operations in flight at once, probably just doing extra work
+        ```
+    16. Rendering Limitation on WebGL. [ref](https://www.cnblogs.com/littleperilla/p/15673963.html)
+    17. Remove white loading bar. [ref](https://www.cnblogs.com/littleperilla/p/15673963.html)
 
 
 # Other Problems:
