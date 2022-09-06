@@ -6,6 +6,7 @@
 
 # Get git lib URL
 1. Visit [Gitblit](http://10.60.80.2:10101/)
+    * Get account and password from programmer at first.
 2. Find repository you want. And click it.
 ![](vx_images/266215915239373.png)
 3. Click URL. If you want to fill repository URL by yourself, copy it and jump to next phrase.
@@ -34,8 +35,9 @@ git config --global core.autocrlf false
 # Pull 
 Click this button
 ![](vx_images/86542016232384.png)
+* You could pull new commits from remote server everytime you want.
 
-# Commit & Push
+# Commit
 1. Select files want to commit.
 2. You could see the change of this file in the right section.
 3. Write comment of this commit.
@@ -44,6 +46,18 @@ Click this button
 Another sample:
 ![](vx_images/214135616247868.png)
 
+# Push
+1. Click History label, could see which commits wait to push.
+2. Click the push button. 
+![](vx_images/408065716245370.png)
+* Sometimes it will pull new commits from others first.
+* If others modify the same file with you and commit before than yours. You will see a merge log. It is normal workflow, do not worry about that.
+![](vx_images/298850617226611.png)
+
+# Attention
+* If you meet **conflict**, call programmer to help you resolve it.
+* Never do **revert** or **reset**. If you want to do that, call a programmer to do with you together. This is a danger-operation.
 
 # Refer
-[Why should disable autocrlf and commit .meta](https://blog.csdn.net/u012169685/article/details/46378993)
+* Why should commit .meta? [ref](https://blog.csdn.net/u012169685/article/details/46378993)
+* Why should disable autocrlf? [ref1](https://blog.csdn.net/u013037336/article/details/121541008)  [ref2](https://markentier.tech/posts/2021/10/autocrlf-true-considered-harmful/)
