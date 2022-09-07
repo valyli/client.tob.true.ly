@@ -1,8 +1,8 @@
-# Download
+# Download GitHubDesktop
 [Internal Network](http://10.60.80.2:8099/ftp/tools/GitHubDesktopSetup-x64.exe)
 [Official](https://desktop.github.com/)
 
-# Install 
+# Install GitHubDesktop
 
 # Get git lib URL
 1. Visit [Gitblit](http://10.60.80.2:10101/)
@@ -25,8 +25,21 @@
 2. Fill URL.  Local path will be filled automatically.
 ![](vx_images/199660616240075.png)
 
+# Install Git
+1. Download and install. 
+    [Git-2.30.2-64-bit.exe](http://10.60.80.2:8099/ftp/tools/Git-2.30.2-64-bit.exe)
+2. Press Next buttons to the end in install wizard.
+3. Press Ctrl + R, and Input **cmd** and press Return key.
+![](vx_images/548363011249052.png)
+4. Input command to check Git version.
+```shell 
+git --version
+```
+![](vx_images/318524511244188.png)
+
+
 # Disable auto crlf (Important)
-1. Press Ctrl + R
+1. Press Ctrl + R, and Input **cmd** and press Return key.
 2. Input command and run.
 ```shell 
 git config --global core.autocrlf false
