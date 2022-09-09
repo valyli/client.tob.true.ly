@@ -20,6 +20,7 @@
 
 
 # Fill repository URL by yourself
+(If you Web Browser can not open GitHub automatically at before. You could clone with next steps.)
 1. Choose clone from menu.
 ![](vx_images/3085715220947.png)
 2. Fill URL.  Local path will be filled automatically.
@@ -74,3 +75,4 @@ Another sample:
 # Refer
 * Why should commit .meta? [ref](https://blog.csdn.net/u012169685/article/details/46378993)
 * Why should disable autocrlf? [ref1](https://blog.csdn.net/u013037336/article/details/121541008)  [ref2](https://markentier.tech/posts/2021/10/autocrlf-true-considered-harmful/)
+
