@@ -49,6 +49,11 @@ Abc$1234
 http://10.60.80.2:10101/repositories/
 D:\soft\gitblit-1.9.3
 
+# SVN
+VisualSVN
+https://10.60.80.2:456
+http://10.60.80.2:8099/ftp/tools/TortoiseSVN-1.14.3.29387-x64-svn-1.14.2.msi
+
 # JDK & JRE
 D:\Program Files\Java
 | Version    | Purpose    |
