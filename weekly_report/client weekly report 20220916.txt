@@ -11,6 +11,8 @@
 【李佳】
 
 本周：
+	因增加 Cloth System具体需求，原计划调整。
+
 	1. Version 1： Foundation
 		a) 美术的资源管理和对接	【结果：美术可以使用独立的svn存储原始素材，使用git上传版本资源】
 		b) 程序的资源规则 【未开始】
@@ -22,26 +24,19 @@
 			b) 效果需求工作流
 		尝试Test UI【未开始】
 
-	3. demo1 性能测试，初步确定一些标准：
-		特效：已下载测试特效，实际影响待确认。
-		摄像机：需要与美术讨论确认摄像机FOV。
+	3. demo1 性能测试：
+		特效：已经加入场景，需要美术进一步确定数量。
+		摄像机：demo中添加第一人称视角与第三人称视角切换功能。
 
 
 下周：
 	1. Version 1： Foundation
-		a) 美术的资源管理和对接
-		b) 程序的资源规则
-		b) 策划模板表使用。（未来需求是否包含大量的数据属性界面？）
+		a) 程序的资源规则
 
 	2. Cloth System
-		Shader Graph
-		尝试Test UI
-
-	3. demo1 性能测试，初步确定一些标准：
-		特效：已下载测试特效，实际影响待确认。
-		摄像机：需要与美术讨论确认摄像机FOV。
-
+		Shader Graph: Pattern(position, rotation, color, smoothness blend, normal vector blend)
+		New shaders performance testing
 	
 
-本周面试1人
+本周面试0人
 
