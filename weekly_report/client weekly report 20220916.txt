@@ -1,0 +1,63 @@
+【王磊】
+
+本周：
+	分析demo运行性能，测试调整人物光照等效果参数，总结场景设计注意事项
+	结论：
+	渲染：建议使用shadowmask模式mixed lighting渲染方式，反射探针和光照探针建议使用烘培模式(相对realtime更节省计算资源)。
+	阴影：动态物体阴影最大距离建议设置在20到50之间，cascade count建议不大于2，shadow type建议使用hard shadows，
+	控制shadow casters在3000以内(可根据实际动态物体数量做适当调整)。
+	材质：谨慎使用透明材质，尽量减少同一mesh renderer下材质数量(对性能影响占比在20%左右)，
+	发光材质的global lllumination属性建议选择关闭或选择烘培模式。
+	待验证：
+	特效：已下载测试特效，实际影响待确认。
+	摄像机：需要与美术讨论确认摄像机FOV。
+下周：
+	待验证：
+	特效：已下载测试特效，实际影响待确认。
+	摄像机：需要与美术讨论确认摄像机FOV。
+	
+【李佳】
+
+本周：
+	1. 重新调整工作计划。
+
+	2. Version 1： Foundation
+		目标：
+			让策划、美术可以参与到版本制作过程中。
+			初步确立：数据（静态、动态）、美术资源的整合规则
+		内容（已完成）：
+			Jenkins(Standalone),
+			Redmine
+			Git tutorial
+		http://10.60.80.2:8077/redmine/projects/demo1/roadmap
+
+	3. demo1 性能测试，初步确定一些标准：
+		结论：
+			渲染：建议使用shadowmask模式mixed lighting渲染方式，反射探针和光照探针建议使用烘培模式(相对realtime更节省计算资源)。
+			阴影：动态物体阴影最大距离建议设置在20到50之间，cascade count建议不大于2，shadow type建议使用hard shadows，
+			控制shadow casters在3000以内(可根据实际动态物体数量做适当调整)。
+			材质：谨慎使用透明材质，尽量减少同一mesh renderer下材质数量(对性能影响占比在20%左右)，
+			发光材质的global lllumination属性建议选择关闭或选择烘培模式。
+		待验证：
+			特效：已下载测试特效，实际影响待确认。
+			摄像机：需要与美术讨论确认摄像机FOV。
+
+
+下周：
+	1. Version 1： Foundation
+		a) 美术的资源管理和对接
+		b) 程序的资源规则
+		b) 策划模板表使用。（未来需求是否包含大量的数据属性界面？）
+
+	2. Cloth System
+		Shader Graph
+		尝试Test UI
+
+	3. demo1 性能测试，初步确定一些标准：
+		特效：已下载测试特效，实际影响待确认。
+		摄像机：需要与美术讨论确认摄像机FOV。
+
+	
+
+本周面试1人
+
