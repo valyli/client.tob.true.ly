@@ -19,28 +19,20 @@
 【李佳】
 
 本周：
-	1. 重新调整工作计划。
+	1. Version 1： Foundation
+		a) 美术的资源管理和对接	【结果：美术可以使用独立的svn存储原始素材，使用git上传版本资源】
+		b) 程序的资源规则 【未开始】
 
-	2. Version 1： Foundation
-		目标：
-			让策划、美术可以参与到版本制作过程中。
-			初步确立：数据（静态、动态）、美术资源的整合规则
-		内容（已完成）：
-			Jenkins(Standalone),
-			Redmine
-			Git tutorial
-		http://10.60.80.2:8077/redmine/projects/demo1/roadmap
+	2. Cloth System
+		Shader Graph 【已完成基础，并实现：颜色调整、花纹贴图、光泽度、颗粒形状（法线）、柔软度质感、Logo（位置）、绘制印花】
+		待确认：
+			a) 光效、装饰物多个叠加
+			b) 效果需求工作流
+		尝试Test UI【未开始】
 
 	3. demo1 性能测试，初步确定一些标准：
-		结论：
-			渲染：建议使用shadowmask模式mixed lighting渲染方式，反射探针和光照探针建议使用烘培模式(相对realtime更节省计算资源)。
-			阴影：动态物体阴影最大距离建议设置在20到50之间，cascade count建议不大于2，shadow type建议使用hard shadows，
-			控制shadow casters在3000以内(可根据实际动态物体数量做适当调整)。
-			材质：谨慎使用透明材质，尽量减少同一mesh renderer下材质数量(对性能影响占比在20%左右)，
-			发光材质的global lllumination属性建议选择关闭或选择烘培模式。
-		待验证：
-			特效：已下载测试特效，实际影响待确认。
-			摄像机：需要与美术讨论确认摄像机FOV。
+		特效：已下载测试特效，实际影响待确认。
+		摄像机：需要与美术讨论确认摄像机FOV。
 
 
 下周：
