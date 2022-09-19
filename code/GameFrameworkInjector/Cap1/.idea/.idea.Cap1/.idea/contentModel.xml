@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\Administrator\AppData\Local\JetBrains\Rider2020.3\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Administrator\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_Cap1.-1289341042.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Administrator\Cap1" t="IncludeRecursive">
+    <e p="C:\Users\Administrator\AppData\Local\JetBrains\Rider2020.3\resharper-host\Local\Transient\Rider\v203\SolutionCaches\_Cap1.724525588.00" t="ExcludeRecursive" />
+    <e p="D:\git\client.tob.true.ly\code\GameFrameworkInjector\Cap1" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
@@ -109,6 +109,7 @@
                 <e p="BaseComponent.cs" t="Include" />
                 <e p="GameEntry.cs" t="Include" />
                 <e p="GameFrameworkComponent.cs" t="Include" />
+                <e p="MonoBehaviourHelper.cs" t="Include" />
                 <e p="ShutdownType.cs" t="Include" />
               </e>
               <e p="Config" t="Include">
@@ -324,6 +325,7 @@
                 <e p="DefaultVersionHelper.cs" t="Include" />
                 <e p="Helper.cs" t="Include" />
                 <e p="Log.cs" t="Include" />
+                <e p="PathTranslator.cs" t="Include" />
                 <e p="StringExtension.cs" t="Include" />
                 <e p="UnityExtension.cs" t="Include" />
               </e>
@@ -376,6 +378,7 @@
           <e p="Configs" t="Include">
             <e p="BuildInfo.txt" t="Include" />
             <e p="BuildSettings.xml" t="Include" />
+            <e p="CheckVersionTemplate.txt" t="Include" />
             <e p="DataTableCodeTemplate.txt" t="Include" />
             <e p="DefaultConfig.txt" t="Include" />
             <e p="DefaultDictionary.xml" t="Include" />
