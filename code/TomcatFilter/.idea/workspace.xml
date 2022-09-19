@@ -7,12 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4aa7feb9-e56e-4f91-9747-1b67cdd88bff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/TomcatFilter.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/servlet_api.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HttpResponseHeaderFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GameFrameworkInjector/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GameFrameworkInjector/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GameFrameworkInjector/Cap1/.idea/.idea.Cap1/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GameFrameworkInjector/Cap1/.idea/.idea.Cap1/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../GameFrameworkInjector/Cap1/.idea/.idea.Cap1/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../GameFrameworkInjector/Cap1/.idea/.idea.Cap1/.idea/indexLayout.xml" afterDir="false" />
@@ -45,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="19">
+              <first_editor relative-caret-position="-1">
                 <caret line="1" column="62" selection-start-line="1" selection-start-column="62" selection-end-line="1" selection-end-column="62" />
               </first_editor>
               <second_editor />
@@ -120,7 +114,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1661398981595" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1661398988820" />
     <property name="last_opened_file_path" value="C:/Program Files/Apache Software Foundation/Tomcat 9.0/lib/servlet-api.jar!/" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -149,16 +143,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1661392439744</updated>
-      <workItem from="1661392442596" duration="5280000" />
+      <workItem from="1661392442596" duration="5879000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5280000" />
+    <option name="totallyTimeSpent" value="5879000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" />
       <window_info id="Image Layers" />
@@ -214,7 +207,7 @@
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="19">
+          <first_editor relative-caret-position="-1">
             <caret line="1" column="62" selection-start-line="1" selection-start-column="62" selection-end-line="1" selection-end-column="62" />
           </first_editor>
           <second_editor />

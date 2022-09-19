@@ -1,0 +1,12 @@
+{
+  "ForceUpdateGame": false,
+  "LatestGameVersion": "0.1.0",
+  "InternalGameVersion": 1,
+  "InternalResourceVersion": 13,
+  "UpdatePrefixUri": "http://127.0.0.1:8080/StarForceAssetBundle/Full/0_1_0_13/Windows",
+  "VersionListLength": 7355,
+  "VersionListHashCode": -1800294673,
+  "VersionListCompressedLength": 2746,
+  "VersionListCompressedHashCode": -2073561516,
+  "END_OF_JSON": ""
+}
