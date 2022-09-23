@@ -10,30 +10,31 @@
 【李佳】
 
 本周：
-	1. 新Avatar demo：
-		动态换 CustomPBR shader
+	1. 新Avatar Demo：
 		随机 Avatar
 		让随机 Avatar 支持： Blink animation, Blend shape 动画随机播放
-		Performance testing 
-
+		动态换 CustomPBR shader
+		Performance testing (30*Avatar FPS: 48~53)
+		导入新人物到 demo1 场景，更换控制角色
+		学习Blend Shape
 
 	2. Cloth System
-		Shader Graph: Logo: position, rotation, color(HSV)
-		New shaders performance testing
-	
-
+		Logo: 实现添加logo功能。实现logo位移，旋转，缩放功能。实现修改色相，饱和度，明度功能(HSV)
+		New shaders performance testing (50 Avatar * 35 sub mesh FPS: 60)
 
 下周：
 	1. 新Avatar demo：
 		Material 修复: glass
-		memory
+		Memory 优化 (当前 5G)
+		blend shape 制作、导入
+		验证 Blend shape 性能
 
 	2. Cloth System
-		Shader Graph: Pattern(position, rotation, color, smoothness blend, normal vector blend)
+		研究logo材质变化功能实现 (smoothness blend, normal vector blend)
 		New shaders performance testing
 	
-	Material: glass
-	memory
 
-本周面试0人
+招聘：
+	面试： 0
+	简历： 1
 
