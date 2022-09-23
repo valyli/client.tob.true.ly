@@ -1,0 +1,38 @@
+【王磊】
+
+本周：
+	1.demo演示场景测试增加特效后性能表现并优化。移除少量场景装饰后，帧率维持在60附近。
+	2.学习shadergragh，尝试制作各种用于实现服装变化功能。目前已实现变色和贴画等功能。
+	3.demo中添加第一人称视角与第三人称视角切换功能。
+下周：
+	研究服装变化需求功能的实现。
+	研究服装变化UI实现。
+	
+【李佳】
+
+本周：
+	1. 新Avatar demo：
+		动态换 CustomPBR shader
+		随机 Avatar
+		让随机 Avatar 支持： Blink animation, Blend shape 动画随机播放
+
+
+	2. Cloth System
+		Shader Graph: Logo: position, rotation, color(HSV)
+		New shaders performance testing
+	
+
+
+下周：
+	1. Version 1： Foundation
+		a) 程序的资源规则
+
+	2. Cloth System
+		Shader Graph: Pattern(position, rotation, color, smoothness blend, normal vector blend)
+		New shaders performance testing
+	
+	Material: glass
+	memory
+
+本周面试0人
+
