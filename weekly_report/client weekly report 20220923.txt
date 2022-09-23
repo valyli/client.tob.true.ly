@@ -15,6 +15,7 @@
 		动态换 CustomPBR shader
 		随机 Avatar
 		让随机 Avatar 支持： Blink animation, Blend shape 动画随机播放
+		Performance testing 
 
 
 	2. Cloth System
@@ -24,8 +25,9 @@
 
 
 下周：
-	1. Version 1： Foundation
-		a) 程序的资源规则
+	1. 新Avatar demo：
+		Material 修复: glass
+		memory
 
 	2. Cloth System
 		Shader Graph: Pattern(position, rotation, color, smoothness blend, normal vector blend)
