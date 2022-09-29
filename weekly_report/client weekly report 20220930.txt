@@ -1,0 +1,33 @@
+【王磊】
+
+本周：
+	1.服装系统：实现添加logo功能。实现logo位移，旋转，缩放功能。实现修改色相，饱和度，明度功能。
+	2.导入新人物与场景，更换控制角色，研究变形功能实现。
+下周：
+	1.服装系统：研究logo材质变化功能实现
+	2.演示demo镜头，操作方法，屏幕方向切换功能调整
+	
+【李佳】
+
+本周：
+	1. 新Avatar demo：
+		Memory 优化 【330MB android】
+		Material 修复: glass
+		验证 Blend shape 性能	【46~47fps: Vivo x70, 31 avatars, skeleton + blendshape, UI】
+		http://10.60.80.2:8099/ftp/build_output/android/NewAvatar/BlendShapeTestResult.pdf
+
+	2. Cloth System
+		无
+	
+下周：
+	1. 新Avatar demo：
+		blend shape 制作、导入
+
+	2. Cloth System
+		研究logo材质变化功能实现 (smoothness blend, normal vector blend)
+	
+
+招聘：
+	面试： 1
+	简历： 1
+
