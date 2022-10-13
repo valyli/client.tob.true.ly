@@ -1,0 +1,36 @@
+【王磊】
+
+本周：
+	1.演示demo增加竖版UI，操作方式适配。
+	2.虚拟摇杆操作优化。
+	3.摄像头增加默认角度与最大最小角度限制。
+	4.第一人称与第三人称控制方式切换功能。
+下周：
+	1.研究HandheldCamera与MultipurposeCameraRig摄像头功能实现，设计固定视角摄像头。
+	
+【李佳】
+
+本周：
+	1. 新Avatar demo：
+		验证 Blend shape 性能	【46~47fps: Vivo x70, 31 avatars, skeleton + blendshape, UI】
+		http://10.60.80.2:8099/ftp/build_output/android/NewAvatar/BlendShapeTestResult.pdf
+		Memory 优化 【330MB android】
+		Material 修复: glass
+
+	2. 针对设计的性能建议（初稿）
+	http://10.60.80.2:8099/ftp/doc/%E6%80%A7%E8%83%BD%E5%8F%82%E8%80%83%E5%BB%BA%E8%AE%AE.pdf
+	
+下周：
+	1. 新Avatar demo：
+		blend shape 制作、导入
+
+	2. 对demo场景资源做进一步优化
+
+	3. Cloth System
+		研究logo材质变化功能实现 (smoothness blend, normal vector blend)
+	
+
+招聘：
+	面试： 1
+	简历： 1
+
