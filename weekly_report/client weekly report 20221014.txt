@@ -22,6 +22,7 @@
 		迁移demo1通用代码
 		修复GF datatable生成文件bug
 		重写avatar拼装逻辑：迁移部分资源，重组数据格式
+	2. 找TA重写确认BS问题
 
 招聘：
 	面试： 1
