@@ -18,11 +18,10 @@
 	3. 切分Avatar submesh，尝试使用修改Avatar demo
 	
 下周：
-	1. 重建框架demo：
+	1. 重起框架demo：
 		迁移demo1通用代码
 		修复GF datatable生成文件bug
-		avatar拼装逻辑：迁移部分资源，重组数据格式
-	
+		重写avatar拼装逻辑：迁移部分资源，重组数据格式
 
 招聘：
 	面试： 1
