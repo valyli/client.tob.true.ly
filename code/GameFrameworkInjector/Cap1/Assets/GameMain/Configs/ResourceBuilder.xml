@@ -2,14 +2,14 @@
 <UnityGameFramework>
   <ResourceBuilder>
     <Settings>
-      <InternalResourceVersion>25</InternalResourceVersion>
+      <InternalResourceVersion>1</InternalResourceVersion>
       <Platforms>33</Platforms>
       <AssetBundleCompression>1</AssetBundleCompression>
       <CompressionHelperTypeName>UnityGameFramework.Runtime.DefaultCompressionHelper</CompressionHelperTypeName>
       <AdditionalCompressionSelected>True</AdditionalCompressionSelected>
       <ForceRebuildAssetBundleSelected>False</ForceRebuildAssetBundleSelected>
-      <BuildEventHandlerTypeName>StarForce.Editor.StarForceBuildEventHandler</BuildEventHandlerTypeName>
-      <OutputDirectory>D:/output/Cap1AssetBundle</OutputDirectory>
+      <BuildEventHandlerTypeName>Truely.Editor.TruelyBuildEventHandler</BuildEventHandlerTypeName>
+      <OutputDirectory>D:/ftp/build_output/TruelyAssetBundle</OutputDirectory>
       <OutputPackageSelected>True</OutputPackageSelected>
       <OutputFullSelected>True</OutputFullSelected>
       <OutputPackedSelected>True</OutputPackedSelected>

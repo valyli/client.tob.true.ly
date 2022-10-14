@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace StarForce
+namespace Truely
 {
     [AddComponentMenu("GameMain/Trigger")]
     public class Trigger : MonoBehaviour

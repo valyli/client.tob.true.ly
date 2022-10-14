@@ -9,7 +9,7 @@ using GameFramework;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace Truely
 {
     public class BuiltinDataComponent : GameFrameworkComponent
     {

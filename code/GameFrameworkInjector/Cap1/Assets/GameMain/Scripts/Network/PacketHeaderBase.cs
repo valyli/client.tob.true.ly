@@ -8,7 +8,7 @@
 using GameFramework;
 using GameFramework.Network;
 
-namespace StarForce
+namespace Truely
 {
     public abstract class PacketHeaderBase : IPacketHeader, IReference
     {

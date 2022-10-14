@@ -8,7 +8,7 @@
 using GameFramework.DataTable;
 using UnityEngine.Assertions;
 
-namespace StarForce
+namespace Truely
 {
     /// <summary>
     /// AI 工具类。

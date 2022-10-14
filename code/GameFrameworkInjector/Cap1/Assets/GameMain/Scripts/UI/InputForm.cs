@@ -10,7 +10,7 @@ using UnityEngine.UI;
 using UnityGameFramework.Runtime;
 // using UnityStandardAssets.Cameras;
 
-namespace StarForce
+namespace Truely
 {
     public class InputForm : UGuiForm
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace StarForce
+namespace Truely
 {
     public class UpdateResourceForm : MonoBehaviour
     {

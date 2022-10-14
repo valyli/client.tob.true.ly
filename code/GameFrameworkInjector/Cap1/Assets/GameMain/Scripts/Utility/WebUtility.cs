@@ -7,7 +7,7 @@
 
 using System;
 
-namespace StarForce
+namespace Truely
 {
     public static class WebUtility
     {

@@ -5,7 +5,7 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-namespace StarForce
+namespace Truely
 {
     /// <summary>
     /// 触发器类型。

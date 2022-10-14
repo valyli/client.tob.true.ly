@@ -16,7 +16,7 @@ using System.Text;
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace Truely
 {
     /// <summary>
     /// 声音配置表。

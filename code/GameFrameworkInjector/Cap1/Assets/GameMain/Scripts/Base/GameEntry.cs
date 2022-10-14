@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-namespace StarForce
+namespace Truely
 {
     /// <summary>
     /// 游戏入口。

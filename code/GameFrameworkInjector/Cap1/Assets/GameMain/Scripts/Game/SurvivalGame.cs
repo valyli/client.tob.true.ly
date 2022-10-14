@@ -9,7 +9,7 @@ using GameFramework;
 using GameFramework.DataTable;
 using UnityEngine;
 
-namespace StarForce
+namespace Truely
 {
     public class SurvivalGame : GameBase
     {

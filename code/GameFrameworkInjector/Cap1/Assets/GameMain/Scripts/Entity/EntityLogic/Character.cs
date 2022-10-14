@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityGameFramework.Runtime;
 // using UnityStandardAssets.Cameras;
 
-namespace StarForce
+namespace Truely
 {
     /// <summary>
     /// 特效类。

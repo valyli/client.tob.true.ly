@@ -11,9 +11,9 @@ using UnityEditor;
 using UnityEngine;
 using UnityGameFramework.Editor.ResourceTools;
 
-namespace StarForce.Editor
+namespace Truely.Editor
 {
-    public sealed class StarForceBuildEventHandler : IBuildEventHandler
+    public sealed class TruelyBuildEventHandler : IBuildEventHandler
     {
         public bool ContinueOnFailure
         {
@@ -27,7 +27,7 @@ namespace StarForce.Editor
             Platform platforms, AssetBundleCompressionType assetBundleCompression, string compressionHelperTypeName, bool additionalCompressionSelected, bool forceRebuildAssetBundleSelected, string buildEventHandlerTypeName, string outputDirectory, BuildAssetBundleOptions buildAssetBundleOptions,
             string workingPath, bool outputPackageSelected, string outputPackagePath, bool outputFullSelected, string outputFullPath, bool outputPackedSelected, string outputPackedPath, string buildReportPath)
         {
-            string streamingAssetsPath = Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "StreamingAssets"), "StarForceBuildEventHandler.OnPreprocessAllPlatforms");
+            string streamingAssetsPath = Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "StreamingAssets"), "TruelyBuildEventHandler.OnPreprocessAllPlatforms");
             string[] fileNames = Directory.GetFiles(streamingAssetsPath, "*", SearchOption.AllDirectories);
             foreach (string fileName in fileNames)
             {
@@ -72,11 +72,11 @@ namespace StarForce.Editor
                 return;
             }
 
-            string streamingAssetsPath = Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "StreamingAssets"), "StarForceBuildEventHandler.OnPostprocessPlatform1");
+            string streamingAssetsPath = Utility.Path.GetRegularPath(Path.Combine(Application.dataPath, "StreamingAssets"), "TruelyBuildEventHandler.OnPostprocessPlatform1");
             string[] fileNames = Directory.GetFiles(outputPackagePath, "*", SearchOption.AllDirectories);
             foreach (string fileName in fileNames)
             {
-                string destFileName = Utility.Path.GetRegularPath(Path.Combine(streamingAssetsPath, fileName.Substring(outputPackagePath.Length)), "StarForceBuildEventHandler.OnPostprocessPlatform2");
+                string destFileName = Utility.Path.GetRegularPath(Path.Combine(streamingAssetsPath, fileName.Substring(outputPackagePath.Length)), "TruelyBuildEventHandler.OnPostprocessPlatform2");
                 FileInfo destFileInfo = new FileInfo(destFileName);
                 if (!destFileInfo.Directory.Exists)
                 {

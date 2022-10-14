@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-namespace StarForce
+namespace Truely
 {
     public class ScrollableBackground : MonoBehaviour
     {

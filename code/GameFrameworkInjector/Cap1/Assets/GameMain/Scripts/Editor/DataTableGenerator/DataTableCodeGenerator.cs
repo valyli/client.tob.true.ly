@@ -7,7 +7,7 @@
 
 using System.Text;
 
-namespace StarForce.Editor.DataTableTools
+namespace Truely.Editor.DataTableTools
 {
     public delegate void DataTableCodeGenerator(DataTableProcessor dataTableProcessor, StringBuilder codeContent, object userData);
 }

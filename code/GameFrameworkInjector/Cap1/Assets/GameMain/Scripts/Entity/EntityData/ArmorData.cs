@@ -9,7 +9,7 @@ using GameFramework.DataTable;
 using System;
 using UnityEngine;
 
-namespace StarForce
+namespace Truely
 {
     [Serializable]
     public class ArmorData : AccessoryObjectData

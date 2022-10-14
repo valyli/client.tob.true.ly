@@ -8,7 +8,7 @@
 using UnityGameFramework.Runtime;
 using ProcedureOwner = GameFramework.Fsm.IFsm<GameFramework.Procedure.IProcedureManager>;
 
-namespace StarForce
+namespace Truely
 {
     public abstract class ProcedureBase : GameFramework.Procedure.ProcedureBase
     {

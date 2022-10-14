@@ -7,7 +7,7 @@
 
 using GameFramework.Network;
 
-namespace StarForce
+namespace Truely
 {
     public abstract class PacketHandlerBase : IPacketHandler
     {

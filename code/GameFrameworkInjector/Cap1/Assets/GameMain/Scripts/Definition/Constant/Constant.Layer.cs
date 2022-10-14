@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-namespace StarForce
+namespace Truely
 {
     public static partial class Constant
     {

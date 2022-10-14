@@ -8,7 +8,7 @@
 using UnityEngine;
 using UnityGameFramework.Runtime;
 
-namespace StarForce
+namespace Truely
 {
     /// <summary>
     /// 可作为目标的实体类。

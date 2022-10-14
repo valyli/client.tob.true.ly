@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace StarForce
+namespace Truely
 {
     [AddComponentMenu("GameMain/TransferPoint")]
     public class TransferPoint : MonoBehaviour
