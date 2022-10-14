@@ -14,7 +14,7 @@ namespace StarForce
 {
     public class ProcedureChangeScene : ProcedureBase
     {
-        private const int MenuSceneId = 1;
+        private const int MenuSceneId = 100;
 
         private bool m_ChangeToMenu = false;
         private bool m_IsChangeSceneComplete = false;

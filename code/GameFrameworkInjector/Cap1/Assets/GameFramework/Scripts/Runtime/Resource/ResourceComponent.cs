@@ -715,6 +715,16 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
+        /// Set Resource Mode in Editor lijia 2022.9.8
+        /// </summary>
+        /// <param name="resourceMode"></param>
+        public void SetResourceModeEditor(ResourceMode resourceMode)
+        {
+            Debug.Log(string.Format("SetResourceModeEditor {0} -> {1}", m_ResourceMode, resourceMode));
+            m_ResourceMode = resourceMode;
+        }
+        
+        /// <summary>
         /// 设置资源模式。
         /// </summary>
         /// <param name="resourceMode">资源模式。</param>

@@ -32,6 +32,7 @@ namespace StarForce
             public const int BulletAsset = 80;
             public const int AsteroiAsset = 80;
             public const int EffectAsset = 80;
+            public const int CharacterAsset = 80;
         }
     }
 }

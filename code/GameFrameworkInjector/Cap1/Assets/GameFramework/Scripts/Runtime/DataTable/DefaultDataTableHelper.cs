@@ -103,7 +103,7 @@ namespace UnityGameFramework.Runtime
             }
             catch (Exception exception)
             {
-                Log.Warning("Can not parse data table string with exception '{0}'.", exception);
+                Log.Error("Can not parse data table string with exception '{0}'.", exception);
                 return false;
             }
         }

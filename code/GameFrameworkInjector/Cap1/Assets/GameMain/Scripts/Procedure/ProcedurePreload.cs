@@ -30,6 +30,9 @@ namespace StarForce
             "UIForm",
             "UISound",
             "Weapon",
+            "Trigger",
+            "TransferPoint",
+            "TransferPath"
         };
 
         private Dictionary<string, bool> m_LoadedFlag = new Dictionary<string, bool>();
@@ -119,7 +122,7 @@ namespace StarForce
 
         private void LoadConfig(string configName)
         {
-            string configAssetName = AssetUtility.GetConfigAsset(configName, true);
+            string configAssetName = AssetUtility.GetConfigAsset(configName, false);
             m_LoadedFlag.Add(configAssetName, false);
             GameEntry.Config.ReadData(configAssetName, this);
         }

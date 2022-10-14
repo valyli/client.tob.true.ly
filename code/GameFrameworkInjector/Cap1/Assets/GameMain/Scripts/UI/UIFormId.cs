@@ -33,5 +33,26 @@ namespace StarForce
         /// 关于。
         /// </summary>
         AboutForm = 102,
+
+        /// <summary>
+        /// 输入。
+        /// </summary>
+        InputForm = 103,
+        
+        /// <summary>
+        /// 输入。
+        /// </summary>
+        InputFormPortrait = 104,
+        
+        /// <summary>
+        /// 操作。
+        /// </summary>
+        OperateUI = 105,
+        
+        /// <summary>
+        /// 操作（竖屏)。
+        /// </summary>
+        OperateUIPortrait = 106,
+        
     }
 }

@@ -186,8 +186,11 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         protected override void Awake()
         {
-            Log.Info("Sleep 10s for debug in Awake");
-            Thread.Sleep(5000);
+            if (false)
+            {
+                Log.Warning("Sleep 10s for debug in Awake");
+                Thread.Sleep(5000);
+            }
             base.Awake();
 
             InitTextHelper();

@@ -48,6 +48,15 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
+        /// [lijia 2022.8.23]
+        /// </summary>
+        public Scene LastActiveScene
+        {
+            get;
+            private set;
+        }
+
+        /// <summary>
         /// 游戏框架组件初始化。
         /// </summary>
         protected override void Awake()
@@ -425,6 +434,7 @@ namespace UnityGameFramework.Runtime
         private void SetActiveScene(Scene activeScene)
         {
             Scene lastActiveScene = SceneManager.GetActiveScene();
+            LastActiveScene = lastActiveScene;
             if (lastActiveScene != activeScene)
             {
                 SceneManager.SetActiveScene(activeScene);

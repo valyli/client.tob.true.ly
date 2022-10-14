@@ -2,8 +2,8 @@
 <UnityGameFramework>
   <ResourceBuilder>
     <Settings>
-      <InternalResourceVersion>22</InternalResourceVersion>
-      <Platforms>32</Platforms>
+      <InternalResourceVersion>25</InternalResourceVersion>
+      <Platforms>33</Platforms>
       <AssetBundleCompression>1</AssetBundleCompression>
       <CompressionHelperTypeName>UnityGameFramework.Runtime.DefaultCompressionHelper</CompressionHelperTypeName>
       <AdditionalCompressionSelected>True</AdditionalCompressionSelected>

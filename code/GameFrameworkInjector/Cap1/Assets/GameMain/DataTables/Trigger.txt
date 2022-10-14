@@ -1,0 +1,7 @@
+#	触发器表					
+#	Id		SceneId	Radius	EffectorType	EffectedId
+#	int		int	float	string	int
+#	触发器编号	策划备注	场景编号	触发半径	触发类型	被触发id
+	10101	主城出生点	101	1.1	Unknown	0
+	10102	主城 角落	101	1.1	Transfer	10102
+	10201	第2演示场景 默认进入点	102	1.1	Transfer	10201
