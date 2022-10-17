@@ -39,13 +39,17 @@ git --version
 ```
 ![](vx_images/318524511244188.png)
 
-
-# Disable auto crlf (Important)
+# Set line separator (Important)
 1. Press Ctrl + R, and Input **cmd** and press Return key.
 2. Input command and run.
-```shell
-git config --global core.autocrlf false
-```
+    a. On Windows:
+    ```shell
+    git config --global core.autocrlf true
+    ```
+    b. On Mac:
+    ```shell
+    git config --global core.autocrlf input
+    ```
 
 # Pull
 Click this button
@@ -75,4 +79,4 @@ Another sample:
 
 # Refer
 * Why should commit .meta? [ref](https://blog.csdn.net/u012169685/article/details/46378993)
-* Why should disable autocrlf? [ref1](https://blog.csdn.net/u013037336/article/details/121541008)  [ref2](https://markentier.tech/posts/2021/10/autocrlf-true-considered-harmful/)
+* Why should disable autocrlf? [ref1](https://blog.csdn.net/u013037336/article/details/121541008)  [ref2](https://markentier.tech/posts/2021/10/autocrlf-true-considered-harmful/) [ref3](https://blog.csdn.net/weixin_41056807/article/details/114368489)
