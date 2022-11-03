@@ -6,6 +6,9 @@ MEM: 16GB
 DISK: C(SSD 256G) D(HD 1T)
 It is property of Xing Chong.
 
+Administrator
+Abc$1234
+
 # FTP
 FileZilla Server
 
@@ -61,3 +64,8 @@ D:\Program Files\Java
 | jdk1.8.0_45    |     |
 | jdk1.8.0_45    |  For Tomcat 9   |
 | jdk1.8.0_45    |     |
+
+# Untiy Accelerator
+[metrics-page](http://10.60.80.2/dashboard/#/metrics-page)
+10.60.80.2:10080
+![](vx_images/590535510247603.png)
