@@ -66,7 +66,7 @@ https://github.com/valyli/GameFramework
 
 * Next to do:
     1. How to upgrade client resource?
-    2. How to upgrade client code?
+    2. How to upgrade client code? (or use HybridCLR useGlobalIl2cpp=true)
     3. How to resolve strip code problem?
     4. Enhance download speed.
     5. Open gzip for resources. [ref](https://zhuanlan.zhihu.com/p/475307249)

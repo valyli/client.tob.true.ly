@@ -15,7 +15,7 @@ Features
 - Memory efficient. The classes defined in the hot update script occupy the same memory space as ordinary C# classes, which is far superior to other hot update solutions. [Memory usage report](https://focus-creative-games.github.io/hybridclr/benchmark/#Memory usage report)
 - Native support for hotfix to repair part of AOT code. Adds almost no development and runtime overhead.
 
-## install
+## Install
 - Set Scoped Registeries。
  name hybridclr_unity
  URL https://package.openupm.cn
@@ -45,8 +45,8 @@ Features
 
 ## Code
 AOT Generics may cause problem, HybridCLR solve it by use HybridCLR.RuntimeApi.LoadMetadataForAOTAssembly, make sure call the function before Load hot update script
-
-public static readonly string[] AOTDllNames =
+```csharp
+        public static readonly string[] AOTDllNames =
         {
             "mscorlib.dll",
             "System.dll",
@@ -54,7 +54,7 @@ public static readonly string[] AOTDllNames =
             "UnityGameFramework.Runtime.dll"
         };
         
- private static unsafe void OnLoadAOTDllSuccess(string assetName, object asset, float duration, object userdata)
+        private static unsafe void OnLoadAOTDllSuccess(string assetName, object asset, float duration, object userdata)
         {
             TextAsset dll = (TextAsset) asset;
             byte[] dllBytes = dll.bytes;
@@ -70,3 +70,7 @@ public static readonly string[] AOTDllNames =
                 StartHotfix();
             }
         }
+```
+
+## Performance
+* To avoid intensive calculations on Interpreter on HybridCLR. Should put them on AOT also.
