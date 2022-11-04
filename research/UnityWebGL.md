@@ -65,6 +65,7 @@ C:\Program Files\Unity\Hub\Editor\2021.3.8f1c1\Editor\Data\PlaybackEngines\WebGL
 https://github.com/valyli/GameFramework
 
 * Next to do:
+    0. HybridCLR does not to support WebGL now. [ref](https://focus-creative-games.github.io/hybridclr/supported_platform/#ios)
     1. How to upgrade client resource?
     2. How to upgrade client code? (or use HybridCLR useGlobalIl2cpp=true)
     3. How to resolve strip code problem?

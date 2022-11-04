@@ -72,5 +72,10 @@ AOT Generics may cause problem, HybridCLR solve it by use HybridCLR.RuntimeApi.L
         }
 ```
 
-## Performance
-* To avoid intensive calculations on Interpreter on HybridCLR. Should put them on AOT also.
+## Attention
+* Performance: To avoid intensive calculations on Interpreter on HybridCLR. Should put them on AOT also.
+* 已知问题: GameObject.GetComponent(string name) 接口无法获得组件
+    这是已知bug,跟unity的代码实现有关，只有挂载在热更新资源上热更新脚本才会有这个问题，通过代码中AddComponent添加的热更新脚本是可以用这个方法查找到。如果遇到这个问题请改用 GameObject.GetComponent<T>() 或 GameObject.GetComponent(typeof(T))[ref](https://focus-creative-games.github.io/hybridclr/monobehaviour/#gameobject-getcomponent-string-name-接口无法获得组件)
+* 建议打AB时不要禁用TypeTree，否则普通的AB加载方式会失败。 [ref](https://focus-creative-games.github.io/hybridclr/monobehaviour/#其它)
+* MonoPInvokeCallback Preservation [ref](https://focus-creative-games.github.io/hybridclr/monopinvokecallback/#预留-reversepinvokewrapper-函数)
+* 原生与解释器部分性能敏感的场合不要用反射来交互，应该通过Delegate或虚函数 [ref](https://focus-creative-games.github.io/hybridclr/best_practices/#原生与解释器部分性能敏感的场合不要用反射来交互-应该通过delegate或虚函数)
