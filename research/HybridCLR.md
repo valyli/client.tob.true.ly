@@ -79,3 +79,15 @@ AOT Generics may cause problem, HybridCLR solve it by use HybridCLR.RuntimeApi.L
 * 建议打AB时不要禁用TypeTree，否则普通的AB加载方式会失败。 [ref](https://focus-creative-games.github.io/hybridclr/monobehaviour/#其它)
 * MonoPInvokeCallback Preservation [ref](https://focus-creative-games.github.io/hybridclr/monopinvokecallback/#预留-reversepinvokewrapper-函数)
 * 原生与解释器部分性能敏感的场合不要用反射来交互，应该通过Delegate或虚函数 [ref](https://focus-creative-games.github.io/hybridclr/best_practices/#原生与解释器部分性能敏感的场合不要用反射来交互-应该通过delegate或虚函数)
+
+# Building workflow
+1. Complie Dll
+    ![](vx_images/330424018240273.png)
+
+2. 
+    ![](vx_images/44814118236828.png)
+3.  Copy dll -> Asset
+    ![](vx_images/234204218232582.png)
+
+4. Build Resources
+    ![](vx_images/19384418250462.png)
