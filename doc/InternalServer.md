@@ -69,3 +69,5 @@ D:\Program Files\Java
 [metrics-page](http://10.60.80.2/dashboard/#/metrics-page)
 10.60.80.2:10080
 ![](vx_images/590535510247603.png)
+admin
+Abc$1234
