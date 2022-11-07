@@ -84,8 +84,8 @@ AOT Generics may cause problem, HybridCLR solve it by use HybridCLR.RuntimeApi.L
 1. Complie Dll
     ![](vx_images/330424018240273.png)
 
-2. 
-    ![](vx_images/44814118236828.png)
+2. Set code stripping
+    ![Unity_qE6HyxkgId](vx_images/39563509248069.png)
 3.  Copy dll -> Asset
     ![](vx_images/234204218232582.png)
 
