@@ -23,3 +23,37 @@ Output:
 ```shell
 file:///D:/output/StarForceAssetBundle/Full/0_1_0_22/AndroidVersion.txt
 ```
+
+# Build WebGL
+1. Change IP address you wanted.
+    ```
+    Assets/GameMain/Configs/BuildInfo.txt
+    Assets/GameMain/Configs/CheckVersionTemplate.txt
+    ```
+2. Build Resource (GameFramework Resource Builder). Output path:
+    ```
+    D:\ftp\build_output\webgl\Cap1AssetBundle
+    ```
+    * Should check WebGL in **Platforms** section.
+3. Build WebGL package (Unity build setting). Output path:
+    ```
+    D:\ftp\build_output\webgl\Cap1
+    ```
+4. Visit from URL.
+    * Web server root:
+    ```
+    D:\ftp\build_output
+    ```
+    * URL
+    ```
+    http://10.60.81.220:8080/webgl/Cap1/index.html
+    ```
+    * Should use same IP Address in *BuildInfo.txt* to visit in URL. If not, it will be fault. For example:
+        Visit via:
+        ```
+        http://127.0.0.1:8080/webgl/Cap1/index.html
+        ```
+        ![](vx_images/230110016245572.png)
+4. Update version
+    Just execute GF Resource Builder only.
+    And Refresh Web Browser again.

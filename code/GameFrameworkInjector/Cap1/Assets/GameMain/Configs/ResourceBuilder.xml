@@ -2,14 +2,14 @@
 <UnityGameFramework>
   <ResourceBuilder>
     <Settings>
-      <InternalResourceVersion>1</InternalResourceVersion>
-      <Platforms>33</Platforms>
+      <InternalResourceVersion>3</InternalResourceVersion>
+      <Platforms>161</Platforms>
       <AssetBundleCompression>1</AssetBundleCompression>
       <CompressionHelperTypeName>UnityGameFramework.Runtime.DefaultCompressionHelper</CompressionHelperTypeName>
       <AdditionalCompressionSelected>True</AdditionalCompressionSelected>
       <ForceRebuildAssetBundleSelected>False</ForceRebuildAssetBundleSelected>
       <BuildEventHandlerTypeName>Truely.Editor.TruelyBuildEventHandler</BuildEventHandlerTypeName>
-      <OutputDirectory>D:/ftp/build_output/TruelyAssetBundle</OutputDirectory>
+      <OutputDirectory>D:\ftp\build_output\webgl\Cap1AssetBundle</OutputDirectory>
       <OutputPackageSelected>True</OutputPackageSelected>
       <OutputFullSelected>True</OutputFullSelected>
       <OutputPackedSelected>True</OutputPackedSelected>

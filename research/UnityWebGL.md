@@ -86,6 +86,12 @@ https://github.com/valyli/GameFramework
         ```
     16. Rendering Limitation on WebGL. [ref](https://www.cnblogs.com/littleperilla/p/15673963.html)
     17. Remove white loading bar. [ref](https://www.cnblogs.com/littleperilla/p/15673963.html)
+    18. Unity not support MicroPhone on WebGL. [github](https://github.com/tgraupmann/UnityWebGLMicrophone)
+    19. Exception of AOT:
+        ```
+        d273a9ed-24f7-4e27-88b5-c1e4e13a7d73:3 ExecutionEngineException: Attempting to call method 'UnityGameFramework.Runtime.DefaultTextHelper::Format<System.String, System.String, System.String, System.String, System.String, System.String, System.Single, System.String, System.Exception>' for which no ahead of time (AOT) code was generated.  Consider increasing the --generic-virtual-method-iterations=1 argument
+
+        ```
 
 
 # Other Problems:
