@@ -186,7 +186,12 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         protected override void Awake()
         {
-            if (false)
+            // Bug #128 Strip code (AOT) error
+            DefaultTextHelper defaultTextHelper = new DefaultTextHelper();
+            defaultTextHelper.Format("", "", "", "", "", "", (Single) 1.0f, "", new Exception());
+            defaultTextHelper.Format("", "", "", "", "", "", "", (Single) 1.0f, "", new Exception());
+
+            if (true)
             {
                 Log.Warning("Sleep 10s for debug in Awake");
                 Thread.Sleep(5000);
