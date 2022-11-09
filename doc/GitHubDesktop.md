@@ -31,7 +31,7 @@ If already cloned git repository, skip this step.
 1. Download and install.
     [Git-2.30.2-64-bit.exe](http://10.60.80.2:8099/ftp/tools/Git-2.30.2-64-bit.exe)
 2. Press Next buttons to the end in install wizard.
-3. Press Ctrl + R, and Input **cmd** and press Return key.
+3. Press Win + R, and Input **cmd** and press Return key.
 ![](vx_images/548363011249052.png)
 4. Input command to check Git version.
 ```shell
@@ -40,7 +40,7 @@ git --version
 ![](vx_images/318524511244188.png)
 
 # Set line separator (Important)
-1. Press Ctrl + R, and Input **cmd** and press Return key.
+1. Press Win + R, and Input **cmd** and press Return key.
 2. Input command and run.
     a. On Windows:
     ```shell
