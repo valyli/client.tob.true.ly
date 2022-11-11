@@ -1,10 +1,15 @@
 【李宜源】
 
 本周：
-	导入火车用Avatar资源
+	1. 啫喱模型资源处理：身体部件替换骨骼；头部装饰替换节点
+	2. 场景中背景图的uv动态修改offset
+	3. 语音识别后角色的头顶emoji表情
+	4. 角色头顶名字、micphone展示
 
-
-下周：
+下周
+	1. unity中播放视频研究(本地视频、url等)
+	2. 研究图片、视频转动作工程
+	3. 分担火车Demo相关的任务
 
 
 【王磊】
@@ -31,16 +36,26 @@
 	代码热更测试。包括：仅代码、资源内嵌代码的更新。
 	确定已开发、能实现清单。http://10.60.80.2:8099/ftp/plan/todo%20list.xlsx
 
+	Other:
 	动捕 BVH 文件格式研究及推证。【doing】
 	确认Particle无法加入Event Trigger，但是可以使用Collision Event。
 
 
-
 下周：
+	火车demo支持
 
+	WebGL：
+	Try to schedule plan. 已知还有17项待研究。
+	Auto build
+	Interact with JS
+
+	App(Truely)：暂停
+
+	Other:
+	动捕 BVH 文件格式研究及推证
 
 
 招聘：
-	面试： 个
-	简历： 个
+	面试：1 个
+	简历：0 个
 
