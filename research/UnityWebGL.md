@@ -75,7 +75,7 @@ https://github.com/valyli/GameFramework
     7. Catch url parameters.[ref](https://blog.csdn.net/xunideshijie/article/details/123795652)
     8.  Interact between Unity and Java script. [ref](https://docs.unity3d.com/Manual/webgl-interactingwithbrowserscripting.html) [ref2](https://www.cnblogs.com/littleperilla/p/15640464.html)
     9. Review on official troubleshooting. [ref](https://docs.unity3d.com/2019.2/Documentation/Manual/webgl-debugging.html)
-    10. How to debug webgl via unity tools on pc and mobile?
+    10. How to debug webgl via unity tools on pc and mobile? [Not support debug in browser. Can use Profiler to analyze performance]
     11. Support https protocal.
     12. Verify webgl on iOS. [OK, on iOS 15.6]
     13. Resolve striping of code. [OK, by Fully shared generic]
