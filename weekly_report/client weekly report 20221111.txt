@@ -1,6 +1,8 @@
 【李宜源】
 
 本周：
+	导入火车用Avatar资源
+
 
 下周：
 
@@ -20,10 +22,21 @@
 
 本周：
 	火车demo支持
-	以下待定：
-		WebGL重启准备
-		动画文件格式研究
-	
+
+	WebGL：
+	重启准备。已经能重新运行框架，但是与代码热更冲突。所以WebGL与App拆分工程，不再能够复用。
+		确定WebGL性能分析工具
+	确定设备兼容标准。 http://10.60.80.2:8099/ftp/doc/MobileDeviceCompatibility.html
+
+	App(Truely)：
+	代码热更测试。包括：仅代码、资源内嵌代码的更新。
+	确定已开发、能实现清单。http://10.60.80.2:8099/ftp/plan/todo%20list.xlsx
+
+	动捕 BVH 文件格式研究及推证。【doing】
+	确认Particle无法加入Event Trigger，但是可以使用Collision Event。
+
+
+
 下周：
 
 
