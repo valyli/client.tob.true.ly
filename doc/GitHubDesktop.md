@@ -3,6 +3,8 @@
 [Official](https://desktop.github.com/)
 
 # Install GitHubDesktop
+1. Download [URL](http://10.60.80.2:8099/ftp/tools/GitHubDesktopSetup-x64.exe)
+2. Install
 
 # Get git lib URL
 1. Visit [Gitblit](http://10.60.80.2:10101/)
