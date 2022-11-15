@@ -20,3 +20,7 @@ Version: 2021.3.8f1
 # Download Android Install Package (APK)
 [website](http://10.60.80.2:8099/ftp/build_output/android/)
 ![](vx_images/571415218236633.png)
+
+# Fix DNS
+DNS of company will forbidden Android Checking at package building.
+![](vx_images/488652416244396.png)
