@@ -23,13 +23,15 @@
 
 	WebGL：
 	Try to schedule plan. 已知还有17项待研究。
-	Auto build
+	Auto build	【doing block at 360】
 	Interact with JS
 
 	App(Truely)：暂停
 
 	Other:
-	动捕 BVH 文件格式研究及推证
+	动捕 BVH 文件格式研究及推证 【done】
+	?Integrating Unity into Android applications
+
 
 下周：
 
