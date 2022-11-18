@@ -23,21 +23,41 @@
 【李佳】
 
 本周：
-	火车demo支持
+	火车demo 3天
+	webgl + 其他 2天
 
 	WebGL：
-	Try to schedule plan. 已知还有17项待研究。
-	Auto build	【doing block at 360】
-	Interact with JS
+		自动构建
+		测试 WebGL debug 工具。结果：不能使用
+		测试 WebGL 性能分析工具。结果：可以使用
+		代码热更框架。结果：无法使用
+		资源更新流程。进行中：分布式下载资源（UpdatableWhilePlaying）测试遇到问题，可能要重构一部分GF代码。
+		新问题：现在代码体积 32MB，需要清理工程
 
-	App(Truely)：暂停
+	App(Truely)：
+		Protobuf 王磊
 
 	Other:
-	动捕 BVH 文件格式研究及推证 【done】
-	?Integrating Unity into Android applications
+		动捕 BVH 文件格式研究。结果：http://10.60.80.2:8099/ftp/doc/BVH.html
+		调研 Memory Leak Profiler 工具。
 
 
 下周：
+	火车demo
+		资源分配待定
+
+	WebGL：
+		资源更新流程。分布式下载资源（UpdatableWhilePlaying）尝试小代价修改。
+
+	App(Truely)：
+		Protobuf联调 王磊
+
+	Other：
+		AI相关接入终止：
+			情绪、动捕、T-shirt
+			相关工程 demo1、Truely，以后要考虑屏蔽或清理代码
+		SuperTextMesh测试（功能、性能） 李宜源
+		WebGL、Truely工程代码同步方案。降低2个工程维护代价。
 
 
 招聘：
