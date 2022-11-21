@@ -93,7 +93,48 @@ https://github.com/valyli/GameFramework
 
         ```
 
+# Http Server Config
+1. Install Tomcat [url](http://10.60.80.2:8099/ftp/tools/webserver/apache-tomcat-9.0.65.exe)
+2. Install special JVM for Tomcat [url](http://10.60.80.2:8099/ftp/tools/webserver/jdk-18_windows-x64_bin.exe)
+3. Configure JVM path for Tomcat
+![](vx_images/339513019245585.png)
+4. Copy jar files to Tomcat lib path
+    [download jar file](http://10.60.80.2:8099/ftp/tools/webserver/TomcatFilter.jar)
+    To path:
+    ```shell
+    C:\Program Files\Apache Software Foundation\Tomcat 9.0\lib
+    ```
+5. Configure web.xml in Tomcat conf:
+    ```xml
+            <param-name>listings</param-name>
+            <param-value>true</param-value>
+    ```
+    
+    ```xml
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 
+
+    <filter>
+        <filter-name>httpResponseHeaderFilter</filter-name>
+        <filter-class>com.vking.power.web.filter.HttpResponseHeaderFilter</filter-class>
+    </filter>
+
+	<filter-mapping>
+        <filter-name>httpResponseHeaderFilter</filter-name>
+        <url-pattern>*.wasm</url-pattern>
+    </filter-mapping>
+    ```
+6. Configure server.xml in Tomcat conf:
+    ```xml
+    	<Context path="" docBase="D:/ftp/build_output/" debug="0" reloadable="true" crossContext="true" />
+    ```
+7. Start Tomcat server.
+
+    
 # Other Problems:
 1. Should disable ***Strip Engine Code*** in Untiy setting.
     ```
