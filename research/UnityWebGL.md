@@ -134,7 +134,39 @@ https://github.com/valyli/GameFramework
     ```
 7. Start Tomcat server.
 
+
+# Limitation & Peculiarity
+[ref1](https://docs.unity3d.com/2021.3/Documentation/Manual/webgl-assetbundles.html)
+1. WebGL does not support threading. 
+2. Because 1, Unity WebGL builds need to decompress AssetBundle data on the main thread when the download is done, blocking the main thread. 
+3. Because 2, AssetBundles are compressed using LZ4 instead.
+4. If you need smaller compression sizes than LZ4 delivers, you can configure your web server to use gzip or Brotli compression (on top of LZ4 compression) on your AssetBundles
     
+# Optimization
+## 1. Reduce code size
+> Preparing before testing:
+>* To avoid code stripping impact building reuslt, disable *Strip Engine Code* before testing.
+>* *GameFramework.dll* must be release version.
+> Basic output size:
+>     ![](vx_images/582421609227457.png)
+
+    [ref](https://docs.unity3d.com/2021.3/Documentation/Manual/webgl-building.html)
+
+1. Select *Faster(smaller) builds* option. *[code size reduced]* *[impact runtime speed]*
+    ![](vx_images/329000509221164.png)
+    ![](vx_images/142240609239590.png)
+
+2. Remove *Package* and modify some code use this package. *[code size not to change]*
+    ![](vx_images/250395409247623.png)
+    ![](vx_images/444755409240292.png)
+3. *Code Optimization* select *Size*. *[code size reduced]* *[impact runtime speed]*
+    ![](vx_images/112302010236847.png)
+    ![](vx_images/336853210232601.png)
+4. *Compression Format* select *Gzip*. *[code size reduced]*  
+    ![](vx_images/215781611250481.png)
+    ![](vx_images/411701611248085.png)
+    ![](vx_images/574171711245587.png)
+
 # Other Problems:
 1. Should disable ***Strip Engine Code*** in Untiy setting.
     ```
@@ -142,3 +174,6 @@ https://github.com/valyli/GameFramework
     ```
 2. ExecutionEngineException: Attempting to call method 'Test::OnMessage<Test+AnyEnum>' for which no ahead of time (AOT) code was generated.  Consider increasing the --generic-virtual-method-iterations=1 argument
 [feature-preview-il2cpp-full-generic-sharing-in-unity-20221-beta](https://blog.unity.com/technology/feature-preview-il2cpp-full-generic-sharing-in-unity-20221-beta)
+
+3. Sometimes maybe can not save persistent files such as SelfAvatar.json.
+    ![](vx_images/249052612226828.png)
