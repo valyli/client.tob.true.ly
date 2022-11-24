@@ -25,6 +25,7 @@
 
 	WebGL：
 		分布式下载资源（UpdatableWhilePlaying。不包括UGC资源）【done】
+		减小代码尺寸，从 33MB -> 10MB 【done】
 		资源更新流程流程【50%】
 
 	App(Truely)：
@@ -32,7 +33,8 @@
 
 	Other：
 		SuperTextMesh测试（功能、性能）	【?%】 李宜源
-		WebGL、Truely工程代码同步方案。降低2个工程维护代价。【取消，差异越来越大】
+		WebGL、Truely工程代码同步方案。降低2个工程维护代价。【正在考虑改手动合并，差异越来越大】
+		excel2txt工具植入demo1 【done】
 
 下周：
 	火车demo
@@ -47,6 +49,7 @@
 
 	Other：
 		SuperTextMesh测试（功能、性能） 李宜源
+		WebGL、Truely工程代码同步（手动一次）
 
 
 
