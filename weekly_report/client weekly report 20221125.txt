@@ -27,17 +27,20 @@
 		资源分配待定
 
 	WebGL：
-		资源更新流程。分布式下载资源（UpdatableWhilePlaying）尝试小代价修改。
+		分布式下载资源（UpdatableWhilePlaying。不包括UGC资源）【done】
+		资源更新流程流程【doing】
 
 	App(Truely)：
 		Protobuf联调 王磊
 
 	Other：
-		AI相关接入终止：
-			情绪、动捕、T-shirt
-			相关工程 demo1、Truely，以后要考虑屏蔽或清理代码
 		SuperTextMesh测试（功能、性能） 李宜源
 		WebGL、Truely工程代码同步方案。降低2个工程维护代价。
+
+	Meeting:
+		周一周会			0.5h
+		周二B端核心卖点，todolist会议	1h
+		周三B端核心卖点，todolist会议 2次会议	0.5h+
 
 
 下周：
