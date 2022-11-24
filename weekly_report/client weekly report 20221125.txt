@@ -21,26 +21,33 @@
 
 本周：
 	火车demo
-		资源分配待定
+		交互功能开发【?%】李宜源
 
 	WebGL：
 		分布式下载资源（UpdatableWhilePlaying。不包括UGC资源）【done】
-		资源更新流程流程【doing】
+		资源更新流程流程【50%】
+
+	App(Truely)：
+		Protobuf	【完成代码，等联调】 王磊
+
+	Other：
+		SuperTextMesh测试（功能、性能）	【?%】 李宜源
+		WebGL、Truely工程代码同步方案。降低2个工程维护代价。【取消，差异越来越大】
+
+下周：
+	火车demo
+		交互功能开发	李宜源
+
+	WebGL：
+		资源更新流程流程
+		JS交互
 
 	App(Truely)：
 		Protobuf联调 王磊
 
 	Other：
 		SuperTextMesh测试（功能、性能） 李宜源
-		WebGL、Truely工程代码同步方案。降低2个工程维护代价。
 
-	Meeting:
-		周一周会			0.5h
-		周二B端核心卖点，todolist会议	1h
-		周三B端核心卖点，todolist会议 2次会议	0.5h+
-
-
-下周：
 
 
 招聘：
