@@ -177,3 +177,17 @@ https://github.com/valyli/GameFramework
 
 3. Sometimes maybe can not save persistent files such as SelfAvatar.json.
     ![](vx_images/249052612226828.png)
+
+4. Log.Info() cause a fault.
+    The code is:
+    ![](vx_images/318534710233067.png)
+    Will cause the fault as below:
+    ![](vx_images/229433210237952.png)
+    OR
+    ![](vx_images/415824510221616.png)
+    But if enable *Development Build* and *Full With Stacktrace* to debug this bug, this fault will be disappeared. Everything is OK.
+    ![](vx_images/368713410231086.png)
+    ![](vx_images/341504610224120.png)
+    So I do not not the reason of it now.
+    * Now, I know this fault reason. Forgot to clear cache files in Browser. 
+        How to clear it in this [doc](WebGLUpdatable.md)
