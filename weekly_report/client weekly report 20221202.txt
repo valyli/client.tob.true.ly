@@ -1,0 +1,50 @@
+【李宜源】
+
+本周：
+	1. unity中播放视频研究(本地视频、url等)
+	2. 研究图片、视频转动作工程
+	3. 分担火车Demo相关的任务
+
+下周
+
+
+【王磊】
+
+本周：
+	1.demo场景固定视角第一，第三人称修改【done】
+	2.protobuffer网络连接开发与联调,待测试【75%】
+
+下周：
+	1.demo场景后续开发工作
+	
+【李佳】
+
+本周：
+	火车demo
+		交互功能开发	李宜源
+
+	WebGL：
+		资源更新流程流程
+		JS交互
+		link.xml? use log.info to check result
+		clear automatically on mobile, but not on pc browser. This maybe happen on app container again
+		so how to avoid this? auto generate url in html?
+
+
+	App(Truely)：
+		Protobuf联调 王磊
+
+	Other：
+		SuperTextMesh测试（功能、性能） 李宜源
+		WebGL、Truely工程代码同步（手动一次）
+
+下周：
+
+
+
+
+招聘：
+	面试：0 个
+	简历：0 个
+
+
