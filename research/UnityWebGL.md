@@ -166,7 +166,9 @@ https://github.com/valyli/GameFramework
     ![](vx_images/215781611250481.png)
     ![](vx_images/411701611248085.png)
     ![](vx_images/574171711245587.png)
-
+5. *Strip Engine Code* and not to set *link.xml*. Just save 1MB.
+    ![](vx_images/268850411236851.png)
+    ![](vx_images/288960311240296.png)
 # Other Problems:
 1. Should disable ***Strip Engine Code*** in Untiy setting.
     ```
