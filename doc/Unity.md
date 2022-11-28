@@ -24,3 +24,9 @@ Version: 2021.3.8f1
 # Fix DNS
 DNS of company will forbidden Android Checking at package building.
 ![](vx_images/488652416244396.png)
+
+# Attention
+* **Not to remove any *.meta*** file in project. Because this type of file is used to save the project data. Remove or re-generate it will lost data or impact resource updating. 
+* **Not to remove the directory include file of name **.gitkeep**.
+> Wrong example:
+![](vx_images/598601019245592.png)
