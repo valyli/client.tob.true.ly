@@ -40,8 +40,8 @@ http://10.60.80.2:8099
 
 # Redmine
 http://10.60.80.2:8077/redmine/
-lijia
-Qaz123456
+admin
+Abc$1234
 
 # Jenkins
 http://localhost:8088/
