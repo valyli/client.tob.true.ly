@@ -37,6 +37,11 @@
 	Other：
 		SuperTextMesh测试（功能、性能） 李宜源
 		WebGL、Truely工程代码同步（手动一次）
+		创建文档库、知识库
+	
+	UGC PGC Tools：
+		【腾讯文档】IMVU  Roblox  VRchat 三平台工具对比	
+		https://docs.qq.com/doc/DQXJGSGtrd0ttenVq		读文档
 
 下周：
 
@@ -48,9 +53,5 @@
 	简历：0 个
 
 
-周末
-	评价
-	改简历，刷boss
-	* WebGL publish
-	调整睡眠
-	* 测核算
+
+
