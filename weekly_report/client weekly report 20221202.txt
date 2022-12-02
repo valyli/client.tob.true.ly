@@ -26,28 +26,38 @@
 		交互功能开发	李宜源
 
 	WebGL：
-		资源更新流程流程	【done】
-		JS交互
-		link.xml? use log.info to check result
-		clear automatically on mobile, but not on pc browser. This maybe happen on app container again
-		so how to avoid this? auto generate url in html?
+		资源更新流程		【done】
+		Unity & Javascript交互	【done】
+		抓取浏览器URL		【done】
+		操作浏览器cookie	【done】
+		确认浏览器更新规则	【done PC不能自动更新local storage, mobile会自动更新local storage。mobile删除indexdb必须通过remote dev tool】
 
+		新坑：
+		JS弹窗造成Unity停止工作。只在mobile上
+		WebGL在手机上运行20FPS。需要在其他手机上验证。
 
 	App(Truely)：
 		Protobuf联调 王磊
 
 	Other：
 		SuperTextMesh测试（功能、性能） 李宜源
-		WebGL、Truely工程代码同步（手动一次）
-		创建文档库、知识库
 	
-	UGC PGC Tools：
-		【腾讯文档】IMVU  Roblox  VRchat 三平台工具对比	
-		https://docs.qq.com/doc/DQXJGSGtrd0ttenVq		读文档
 
 下周：
 
+	火车demo
+		等周一需求
 
+	WebGL：
+		开发webgl http server本地部署工具
+		性能测试准备（需要设备支援测试）
+		移植protobuf（websocket）	王磊
+
+	App(Truely)：
+		完成Protobuf联调	王磊
+
+	Tools:
+		继续跟进、学习
 
 
 招聘：
