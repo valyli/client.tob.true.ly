@@ -1,0 +1,48 @@
+【李宜源】
+
+本周：
+	1. unity中播放视频研究(本地视频、url等)
+	2. 研究图片、视频转动作工程
+	3. 分担火车Demo相关的任务
+
+下周
+
+
+【王磊】
+
+本周：
+	1.demo场景视角人称优化，触控范围优化
+	2.protobuffer网络连接联调
+
+下周：
+	1.demo场景后续开发工作
+	2.protobuffer网络连接联调
+	3.框架websocket支持
+	
+【李佳】
+
+本周：
+	火车demo
+		等周一需求
+
+	WebGL：
+		开发webgl http server本地部署工具
+		性能测试准备（需要设备支援测试）
+		移植protobuf（websocket）	王磊
+
+	App(Truely)：
+		完成Protobuf联调	王磊
+
+	Tools:
+		继续跟进、学习
+	
+
+下周：
+
+
+
+招聘：
+	面试：0 个
+	简历：0 个
+
+
