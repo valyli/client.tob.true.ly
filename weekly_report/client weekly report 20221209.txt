@@ -4,6 +4,7 @@
 	1. unity中播放视频研究(本地视频、url等)
 	2. 研究图片、视频转动作工程
 	3. 分担火车Demo相关的任务
+	4. 
 
 下周
 
@@ -11,13 +12,13 @@
 【王磊】
 
 本周：
-	1.demo场景视角人称优化，触控范围优化
+	1.WebGL工程移植protobuffer代码
 	2.protobuffer网络连接联调
 
 下周：
-	1.demo场景后续开发工作
-	2.protobuffer网络连接联调
-	3.框架websocket支持
+	1.WebGL工程移植protobuffer代码
+	2.network框架替换为webSocket实现
+	3.WebSocket网络连接联调
 	
 【李佳】
 
