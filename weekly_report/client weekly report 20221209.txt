@@ -27,9 +27,12 @@
 		等周一需求
 
 	WebGL：
-		开发webgl http server本地部署工具
-		性能测试准备（需要设备支援测试）
+		开发webgl http server本地部署工具	【done】
 		移植protobuf（websocket）	王磊
+
+		问题：
+			WebGL 2.0 在 iOS新版本中有bug，造成帧率比WebGL 1.0下降50%。
+			应该只能选用1.0开发，不能使用URP管线，后处理等效果需要自己开发。
 
 	App(Truely)：
 		完成Protobuf联调	王磊
