@@ -23,25 +23,32 @@
 【李佳】
 
 本周：
-	火车demo
-		等周一需求
-
 	WebGL：
 		开发webgl http server本地部署工具	【done】
 		移植protobuf（websocket）	王磊
 
-		问题：
+		性能测试遇到问题：
 			WebGL 2.0 在 iOS新版本中有bug，造成帧率比WebGL 1.0下降50%。
 			应该只能选用1.0开发，不能使用URP管线，后处理等效果需要自己开发。
 
 	App(Truely)：
 		完成Protobuf联调	王磊
+		Avatar模型动态合并（解决iOS bug的准备）	李宜源
 
 	Tools:
 		继续跟进、学习
 	
 
 下周：
+	WebGL：
+		在1.0下做性能测试，确认是否需要退回Build-in
+		移植protobuf（websocket）	王磊
+
+	App(Truely)：
+		
+
+	Tools:
+		继续跟进、学习
 
 
 
