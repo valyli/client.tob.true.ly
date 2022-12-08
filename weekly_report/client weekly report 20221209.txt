@@ -18,7 +18,7 @@
 下周：
 	1.WebGL工程移植protobuffer代码
 	2.network框架替换为webSocket实现
-	2.WebSocket网络连接联调
+	3.WebSocket网络连接联调
 	
 【李佳】
 
