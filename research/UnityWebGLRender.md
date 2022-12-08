@@ -146,6 +146,7 @@ console.info("renderer.isWebGL1Renderer = " + renderer.isWebGL1Renderer );
 > Note: 
 >    * Meshes are black on Vivo x70pro in WebGL 1.0. And slow in WebGL 2.0
 >    * Test on Xiaomi 11 again. And HIGH >= LOW + 40%, all above 100 FPS.
+>    * Sometimes, it could hit 60 fps on iOS in WebGL2.0 in Safari. And not stable. Sometimes just 15 fps.
 
 * Unity
 
@@ -202,6 +203,8 @@ BuildPipeline.BuildPlayer(GetScenePaths(), "webgl", BuildTarget.WebGL, option);
 * Bugs are not relevant to browsers used. Such as *Safari*, *Edge*, *FireFox* or *Chrome*. They show those bugs at all.
 
 # Conclusion
+* iOS Metal has bug on WebGL 2.0 in some versions. The FPS is too low. 
+* So we should use 
 2 factions: Metal, ??
 Which version update to Metal driver?
 android try to use urp
