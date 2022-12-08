@@ -158,16 +158,6 @@ console.info("renderer.isWebGL1Renderer = " + renderer.isWebGL1Renderer );
 |         | Android  |   NA   |   60   |
 
 
-* WebGL 2.0
-* iOS:
-    * Safari: 30 fps
-    * Chrome: 60 fps
-* The bug same as Unity.
-    * PC: 60 fps
-    * iOS: 30 fps
-    * Android: 30~60 fps, and un-stable.
-
-
 # About Safari / iOS
 ## Reference
 [SAFARI 15.2 WEBGL performance disaster](https://developer.apple.com/forums/thread/696821)
@@ -203,19 +193,6 @@ BuildPipeline.BuildPlayer(GetScenePaths(), "webgl", BuildTarget.WebGL, option);
 * Bugs are not relevant to browsers used. Such as *Safari*, *Edge*, *FireFox* or *Chrome*. They show those bugs at all.
 
 # Conclusion
-* iOS Metal has bug on WebGL 2.0 in some versions. The FPS is too low. 
-* So we should use 
-2 factions: Metal, ??
-Which version update to Metal driver?
-android try to use urp
-add vconsole in test
-check batch on webgl or render debug
-control webgl in js or c# code
-must combine avatar meshes
+* iOS Metal has bug on WebGL 2.0 in some versions. The FPS is too low, and not stable.
+* So we should use WebGL 1.0.
 
-resolution:
-webgl 1.0
-self browser ?
-
-
-? force to webgl 1.0 in unity by javascript. because 1.0 is twice of 2.0 in three.js on ios.
