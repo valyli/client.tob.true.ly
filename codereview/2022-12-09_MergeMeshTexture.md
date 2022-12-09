@@ -23,3 +23,4 @@
  
 ## Todo
 * Test memory leaking.
+* Test launching time on mobile.
