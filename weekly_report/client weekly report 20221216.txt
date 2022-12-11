@@ -1,0 +1,57 @@
+【李宜源】
+
+本周：
+	1. debugpanel 移植
+	2. SuperTextMesh 研究并写文档
+	3. 动态换装Mesh合并(Mesh合并+骨骼刷新+贴图合并)
+
+下周
+
+
+【王磊】
+
+本周：
+	1.WebGL工程移植protobuffer代码
+	2.protobuffer网络连接联调
+
+下周：
+	1.WebGL工程移植protobuffer代码
+	2.network框架替换为webSocket实现
+	3.WebSocket网络连接联调
+	
+【李佳】
+
+本周：
+	WebGL：
+		在1.0下做性能测试，确认是否需要退回Build-in, or URP fall back.
+		移植protobuf（websocket）	王磊
+
+	App(Truely)：
+		#175 Mesh合并的code review + 优化	李宜源(wait)
+
+	Tools:
+		继续跟进、学习
+
+	Next:
+		#174 UI performance on build-in
+		#162 Research: Load .fbx dynamically
+	
+	WebGL开发注意事项:
+		WebGL not support multi-threads
+		WebGL1.0 not support URP (If use URP, it will fall back and maybe lost some effects. i.e. PostProcess-Volume)
+		WebGL1.0 not support SRP batcher.
+		Attention shadow batching in WebGL1.0. 
+
+		Should test webgl in browsers. Not to test in Editor, because it is running on the Windows Platform.
+		Finial test & record should on mobile.
+		IPhone is in my drawer, and the key under the napkin in front of the display.
+
+下周：
+
+
+
+招聘：
+	面试：0 个
+	简历：0 个
+
+
