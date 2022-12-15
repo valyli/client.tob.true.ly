@@ -21,6 +21,7 @@ Build-in:
 * Lost Light Probe Group.
 * Lost Post-Processing Volume.
 * Different lighting model.
+* Can not use Shader Graph.
     ![](vx_images/272343013240384.png)
     ![](vx_images/426993013236939.png)
 
