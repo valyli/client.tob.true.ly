@@ -1,10 +1,9 @@
 【李宜源】
 
 本周：
-	1. unity中播放视频研究(本地视频、url等)
-	2. 研究图片、视频转动作工程
-	3. 分担火车Demo相关的任务
-	4. 
+	1. debugpanel 移植
+	2. SuperTextMesh 研究并写文档
+	3. 动态换装Mesh合并(Mesh合并+骨骼刷新+贴图合并)
 
 下周
 
@@ -45,7 +44,7 @@
 		移植protobuf（websocket）	王磊
 
 	App(Truely)：
-		
+		Mesh合并的code review + 优化	李宜源
 
 	Tools:
 		继续跟进、学习
