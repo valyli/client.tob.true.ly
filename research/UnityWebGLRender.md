@@ -196,3 +196,35 @@ BuildPipeline.BuildPlayer(GetScenePaths(), "webgl", BuildTarget.WebGL, option);
 * iOS Metal has bug on WebGL 2.0 in some versions. The FPS is too low, and not stable.
 * So we should use WebGL 1.0.
 
+# Additional Testing
+## Test 1: Turn off "WebGL via Metal"
+### How to
+* Turn off "Develop" -> "Experimental Features" -> "WebGL via Metal"
+    ![](vx_images/110271610221711.png)
+### Record
+
+| WebGL | Test Version | Safari | Chrome |
+| :---- | :----------: | :----: | :----: |
+| 1.0   |      11      | 41-58  |   30   |
+| 2.0   |      12      | 30-34  |   5    |
+
+### Reference
+[SAFARI 15.2 WEBGL performance disaster](https://developer.apple.com/forums/thread/696821)
+[Material issues on Mac/iOS with Metal](https://groups.google.com/g/webgl-dev-list/c/cOgNG0ZieME)
+[iOS 15.4 Webgl via Metal issue](https://github.com/openlayers/openlayers/issues/13486)
+
+## Test 2: Change Unity Setting
+* Resume "WebGL via Metal" to ON.
+* Change *Additional Lights* to *Per Vertex*.
+
+### Record
+
+| WebGL |  Test Version   | Safari | Chrome |
+| :---- | :-------------: | :----: | :----: |
+| 2.0   |  16 (standard)  |   5    |   5    |
+| 2.0   | 17 (Per Vertex) |   60   |   60   |
+
+
+### Reference
+[Poor performance of WebGL 2.0 on iOS 15](https://forum.unity.com/threads/poor-performance-of-webgl-2-0-on-ios-15.1316232/)
+![](vx_images/490420611224215.png)
