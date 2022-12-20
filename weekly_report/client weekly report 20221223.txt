@@ -1,0 +1,76 @@
+【李宜源】
+
+本周：
+	1. debugpanel 移植
+	2. SuperTextMesh 研究并写文档
+	3. 动态换装Mesh合并(Mesh合并+骨骼刷新+贴图合并)
+
+下周
+
+
+【王磊】
+
+本周：
+	1.WebGL工程移植protobuffer代码
+	2.protobuffer网络连接联调
+
+下周：
+	1.WebGL工程移植protobuffer代码
+	2.network框架替换为webSocket实现
+	3.WebSocket网络连接联调
+	
+【李佳】
+
+本周：
+	WebGL：
+	12~16日：
+		在1.0下做性能测试，确认是否需要退回Build-in, or URP fall back.	【done】
+		【结论：】
+		一、关于 iOS：
+			1. iOS 对 WebGL2.0 支持有bug，性能是 WebGL1.0的 1/6
+			2. iOS 新版本对 WebGL1.0 支持性能下降 50%，从15往后。14及以前性能同 Android。
+			3. 苹果在未来趋势上，要去除 WebGL 技术（苹果曾经是WebGL发起方）。原因：安全因素；绕过AppStore发行的云游戏。
+			4. MacOS 上问题同 iOS。
+		二、制作方案考虑：
+			WebGL 版本直接影响使用 OpenGL ES版本，影响渲染管线选择。
+			1. 使用 URP，利用Fallback机制在 iOS上降级运行。不同平台美术效果差异大。
+			2. 使用 Build-in。失去SRP特性支撑，按照传统游戏进行渲染控制，降低美术丰富性，能保证不同平台效果一致性。
+			3. iOS单独制作。制作成本应该太高。
+			4. 改成内嵌到App。自己未实验，原理成立。限制：合作厂商要负责代码集成、发布、提审。
+	19~23日：
+		iOS WebGL 2.0 性能bug解决。可以使用URP。【done】
+		原定：和美术一起选定制作方案。【取消】
+		在选定的制作方案上，做模拟压测。
+
+
+
+		移植protobuf（websocket）	王磊
+
+	App(Truely)：
+		#175 Mesh合并的code review + 优化	李宜源
+
+	Tools:
+		继续跟进、学习
+
+	Next:
+		#174 UI performance on build-in		李宜源
+		#162 Research: Load .fbx dynamically	？
+	
+
+下周：
+	WebGL：
+
+	App(Truely)：
+
+	Tools:
+		继续跟进、学习
+
+	Next:
+
+
+
+招聘：
+	面试：0 个
+	简历：0 个
+
+
