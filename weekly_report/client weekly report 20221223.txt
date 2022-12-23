@@ -39,11 +39,27 @@
 	19~23日：
 		iOS WebGL 2.0 性能bug解决。可以使用URP。【done】
 		原定：和美术一起选定制作方案。【取消】
-		在选定的制作方案上，做模拟压测。
+		在选定的制作方案上，做模拟压测。【进行中，正在解决新的bug】
 
 
 
 		移植protobuf（websocket）	王磊
+
+	App(Truely)：
+		#175 Mesh合并的code review + 优化	李宜源【缺员，未进行】
+
+	Tools:
+		继续跟进、学习
+
+	Next:
+		#174 UI performance on build-in		李宜源【进行中】
+		#162 Research: Load .fbx dynamically	？
+	
+
+下周：
+	WebGL：
+		继续URP的场景压测准备工作。
+		完成websocket测试		王磊
 
 	App(Truely)：
 		#175 Mesh合并的code review + 优化	李宜源
@@ -52,19 +68,8 @@
 		继续跟进、学习
 
 	Next:
-		#174 UI performance on build-in		李宜源
+		#174 UI performance on build-in		李宜源【进行中】
 		#162 Research: Load .fbx dynamically	？
-	
-
-下周：
-	WebGL：
-
-	App(Truely)：
-
-	Tools:
-		继续跟进、学习
-
-	Next:
 
 
 
