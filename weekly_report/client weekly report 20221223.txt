@@ -1,9 +1,8 @@
 【李宜源】
 
 本周：
-	1. debugpanel 移植
-	2. SuperTextMesh 研究并写文档
-	3. 动态换装Mesh合并(Mesh合并+骨骼刷新+贴图合并)
+	1. 研究UI性能并写文档
+	2. 研究SuperTextMesh源码，图文一个DrawCall渲染
 
 下周
 
