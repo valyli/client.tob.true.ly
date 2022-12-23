@@ -1,9 +1,9 @@
 【李宜源】
 
 本周：
-	1. debugpanel 移植
-	2. SuperTextMesh 研究并写文档
-	3. 动态换装Mesh合并(Mesh合并+骨骼刷新+贴图合并)
+	1. 研究unityUGUI合批方式（图文渲染、同图集合批）【90%】
+	2. UGUI性能测试文档【40%】
+	3. 了解动态加载模型Trilib
 
 下周
 
