@@ -5,7 +5,7 @@
 	2. 研究SuperTextMesh源码，图文一个DrawCall渲染
 
 下周
-
+	1. Mesh合并CodeReview+优化
 
 【王磊】
 
