@@ -1,0 +1,53 @@
+【李宜源】
+
+本周：
+	1. 研究UI性能并写文档
+	2. 研究SuperTextMesh源码，图文一个DrawCall渲染
+
+下周
+	1. Mesh合并CodeReview+优化
+
+【王磊】
+
+本周：
+	1.WebGL工程移植protobuffer代码
+	2.protobuffer网络连接联调
+
+下周：
+	1.WebGL工程移植protobuffer代码
+	2.network框架替换为webSocket实现
+	3.WebSocket网络连接联调
+	
+【李佳】
+
+本周：
+	WebGL：
+		URP压测（Avatars）。【部分结论：10个avatar，帧率：？？？报告】
+		完成websocket测试		王磊 【完成】
+
+	App(Truely)：
+		#175 Mesh合并的code review + 优化	李宜源【缺员，未进行】
+
+	Next:
+		#174 尝试优化 SuperTextMesh 组件的图文混合	李宜源【暂停】
+		#162 Research: Load .fbx dynamically	王磊 【进行中】
+	
+
+下周：
+	WebGL：
+		URP压测（Scene）。
+		完成websocket测试		王磊
+
+	App(Truely)：
+		#175 Mesh合并的code review + MeshBaker调研目标设定	全员
+
+	Next:
+		#162 Research: Load .fbx dynamically	王磊
+
+
+
+招聘：
+	面试：1 个 二面已通过
+	简历：0 个
+
+
