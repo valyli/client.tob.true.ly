@@ -22,7 +22,7 @@
 
 本周：
 	WebGL：
-		URP压测（Avatars）。【部分结论：10个avatar，帧率：？？？报告】
+		URP压测（Avatars）。【10个avatar，结果正在统计中，又发现新的崩溃问题】
 		完成websocket测试		王磊 【完成】
 
 	App(Truely)：
