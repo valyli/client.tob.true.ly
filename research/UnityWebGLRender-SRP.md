@@ -4,6 +4,7 @@ To research SRP working on different platform.
 # Environment
 Same as in *UnityWebGLRender.md*
 Project: *UrpRenderTest*
+Should check *Development Build* in *Build Setting* before testing.
 
 # SRP Batcher (Is it enable?)
 
