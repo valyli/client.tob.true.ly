@@ -228,3 +228,11 @@ BuildPipeline.BuildPlayer(GetScenePaths(), "webgl", BuildTarget.WebGL, option);
 ### Reference
 [Poor performance of WebGL 2.0 on iOS 15](https://forum.unity.com/threads/poor-performance-of-webgl-2-0-on-ios-15.1316232/)
 ![](vx_images/490420611224215.png)
+
+# Crash on iOS 15.4
+[Unity form about this bug](https://forum.unity.com/threads/fatal-error-with-webgl-running-on-15-4.1244374/)
+[A unity WebGL game](https://virtual-akihabara-web.com/)
+![](vx_images/9873515249272.png)
+![](vx_images/401114715259461.png)
+![](vx_images/29793615245827.png)
+![](vx_images/113373615241581.png)
