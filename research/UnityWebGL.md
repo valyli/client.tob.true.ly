@@ -9,6 +9,7 @@
 [Customize the WebGL Cache behavior](https://docs.unity3d.com/2022.2/Documentation/Manual/webgl-caching.html)
 [Deploy template of Http Server](https://docs.unity3d.com/2022.2/Documentation/Manual/webgl-server-configuration-code-samples.html)
 [Unity-StripCode](https://www.cnblogs.com/littleperilla/p/15997214.html)
+[nginx](https://blog.csdn.net/iningwei/article/details/128303670)
 
 ## Fully shared generic
 [What is?](https://blog.unity.com/technology/feature-preview-il2cpp-full-generic-sharing-in-unity-20221-beta)
