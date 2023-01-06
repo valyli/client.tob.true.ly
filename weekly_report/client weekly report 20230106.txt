@@ -1,0 +1,41 @@
+
+【王磊】
+
+本周：
+	1.WebGL工程移植protobuffer代码
+	2.protobuffer网络连接联调
+
+下周：
+	1.WebGL工程移植protobuffer代码
+	2.network框架替换为webSocket实现
+	3.WebSocket网络连接联调
+	
+【李佳】
+
+本周：
+	WebGL：
+		URP压测（Avatars）。【发现iOS 15.4 Crash等问题，详见 http://10.60.80.2:10101/blob/doc.tob.true.ly.git/master/research%2FUnityWebGL%2FUnityWebGL-Conclusion.md】
+
+	App(Truely)：
+
+	Next:
+		#162 Research: Load .fbx dynamically	王磊 【完成】
+		# 5 Mesh Baker			王磊【进行中】
+	
+
+下周：
+	WebGL：
+		继续延续 Unity WebGL方向，尝试优化稳定性、帧率等问题，找新的解决方案。
+
+	App(Truely)：
+
+	Next:
+		# 5 Mesh Baker			王磊【进行中】
+
+
+
+招聘：
+	面试：0 个
+	简历：0 个
+
+
