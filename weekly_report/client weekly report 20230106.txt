@@ -30,7 +30,7 @@
 	App(Truely)：
 
 	Next:
-		# 5 Mesh Baker			王磊【进行中】
+		# 5 Mesh Baker 详细分析，研究使用方法、与unity配合的性能分析			王磊【进行中】
 
 
 
