@@ -2,13 +2,12 @@
 【王磊】
 
 本周：
-	1.WebGL工程移植protobuffer代码
-	2.protobuffer网络连接联调
+	1.研究TriLib实现外部模型加载功能
+	2.研究MeshBaker插件，实现纹理与模型合并功能
 
 下周：
-	1.WebGL工程移植protobuffer代码
-	2.network框架替换为webSocket实现
-	3.WebSocket网络连接联调
+	1.测试MeshBaker合并模型渲染效率测试
+	2.研究其他模型合并插件
 	
 【李佳】
 
