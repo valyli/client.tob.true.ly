@@ -5,13 +5,15 @@
 * [webreport.com](https://webglreport.com/?v=1)
     * Check browser's compatibility with WebGL versions.
     * Check compatibility results:
-    
+
+
         | OS      | Browser | WebGL 1.0 | WebGL 2.0 |
         | :------ | :------ | :-------: | :-------: |
         | Windows | Chrome  |     Y     |     Y     |
         | Android | Chrome  |     Y     |     Y     |
         | iOS     | Chrome  |     Y     |     Y     |
         | iOS     | Safari  |     Y     |     Y     |
+        
     * Those result above conflict with Unity document.
 
 # Prepare Environment
