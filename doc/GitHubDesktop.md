@@ -1,13 +1,12 @@
 # Download GitHubDesktop
-[Internal Network](http://10.60.80.2:8099/ftp/tools/GitHubDesktopSetup-x64.exe)
+[Internal Network](http://http.tob.yidian-inc.com:8099/ftp/tools/GitHubDesktopSetup-x64.exe)
 [Official](https://desktop.github.com/)
 
 # Install GitHubDesktop
-1. Download [URL](http://10.60.80.2:8099/ftp/tools/GitHubDesktopSetup-x64.exe)
-2. Install
+
 
 # Get git lib URL
-1. Visit [Gitblit](http://10.60.80.2:10101/)
+1. Visit [Gitblit](http://gitblit.tob.yidian-inc.com:10101/)
     * Get account and password from programmer at first.
 2. Find repository you want. And click it.
 ![](vx_images/266215915239373.png)
@@ -31,7 +30,7 @@ If already cloned git repository, skip this step.
 
 # Install Git
 1. Download and install.
-    [Git-2.30.2-64-bit.exe](http://10.60.80.2:8099/ftp/tools/Git-2.30.2-64-bit.exe)
+    [Git-2.30.2-64-bit.exe](http://http.tob.yidian-inc.com:8099/ftp/tools/Git-2.30.2-64-bit.exe)
 2. Press Next buttons to the end in install wizard.
 3. Press Win + R, and Input **cmd** and press Return key.
 ![](vx_images/548363011249052.png)
@@ -82,3 +81,7 @@ Another sample:
 # Refer
 * Why should commit .meta? [ref](https://blog.csdn.net/u012169685/article/details/46378993)
 * Why should disable autocrlf? [ref1](https://blog.csdn.net/u013037336/article/details/121541008)  [ref2](https://markentier.tech/posts/2021/10/autocrlf-true-considered-harmful/) [ref3](https://blog.csdn.net/weixin_41056807/article/details/114368489)
+
+# 
+![](vx_images/347034612245834.png)
+![](vx_images/246614712259468.png)
