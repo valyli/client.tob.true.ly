@@ -1,0 +1,39 @@
+
+【王磊】
+
+本周：
+	1.研究MeshBaker合并模型
+	2.测试合并后模型在WebGL的性能表现
+
+下周：
+	1.研究MeshBaker源码，减小合并后纹理大小
+	
+【李佳】
+
+本周：
+	WebGL：
+		iOS Crash问题。目前仍在尝试解决中，已经定位到问题：Unity在iOS的WebGL中，加载资源时随机崩溃。
+		尝试通过JS层加载绕过这个bug，还在调试中。
+
+	App(Truely)：
+
+	Next:
+		# 5 Mesh Baker			王磊【进行中，有明显效果】
+	
+
+下周：
+	WebGL：
+		继续尝试解决iOS crash问题。只剩最后2个方法：减小连续读取文件尺寸（或连续内存区）、AssetBundle.LoadFromStream
+
+	App(Truely)：
+
+	Next:
+		# 5 Mesh Baker			王磊【继续改进和加深研究】
+
+
+
+招聘：
+	面试：0 个
+	简历：0 个
+
+
