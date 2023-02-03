@@ -24,6 +24,11 @@
 下周：
 	WebGL：
 		继续尝试解决iOS crash问题。只剩最后2个方法：减小连续读取文件尺寸（或连续内存区）、AssetBundle.LoadFromStream
+		1. Check js memory & show in profiler
+		2. Upgrade 2023 & increase memory again.		unity loadasset ios webgl crash		https://forum.unity.com/threads/webgl-memory-increment-issue-and-crash-on-ios.1338191/
+		2. AssetBundle.LoadFromStream			https://docs.unity3d.com/2021.3/Documentation/ScriptReference/AssetBundle.LoadFromStream.html
+		3. Read Papers of Memory in iOS webgl		https://forum.unity.com/threads/webgl-builds-crash-issue-on-ios-browsers-unity3d.518240/	https://forum.unity.com/threads/webgl-safari-crashes-after-ios-upgrade-to-15-4-1.1269779/
+		4. Read papers for js byte -> unity		https://forum.unity.com/threads/send-byte-array-from-js-to-unity.1252413/	https://forum.unity.com/threads/solved-webgl-returning-a-byte-from-jslib-to-unity.334222/
 
 	App(Truely)：
 
