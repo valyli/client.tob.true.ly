@@ -2,11 +2,11 @@
 【王磊】
 
 本周：
-	1.研究MeshBaker合并模型
-	2.测试合并后模型在WebGL的性能表现
+	1.研究Ultimate LOD system与PolyFlew插件，对比自动LOD功能效果与使用方法。
+	2.研究UGUI渲染原理和性能性能方法。
 
 下周：
-	1.研究MeshBaker源码，减小合并后纹理大小
+	1.研究DOTween插件，学习补间动画的制作方法。
 	
 【李佳】
 
