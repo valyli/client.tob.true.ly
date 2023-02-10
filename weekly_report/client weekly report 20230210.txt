@@ -2,11 +2,12 @@
 【王磊】
 
 本周：
-	1.研究Ultimate LOD system与PolyFlew插件，对比自动LOD功能效果与使用方法。
+	1.研究DOTween插件，学习补间动画的制作方法。
 	2.研究UGUI渲染原理和性能性能方法。
 
 下周：
-	1.研究DOTween插件，学习补间动画的制作方法。
+	1.研究URP Water与StylizedWater插件，对比水效果功能与使用方法。
+	2.研究Cinemachine虚拟相机插件
 	
 【李佳】
 
