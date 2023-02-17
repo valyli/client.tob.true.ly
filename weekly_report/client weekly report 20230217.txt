@@ -2,11 +2,12 @@
 【王磊】
 
 本周：
-	1.研究MeshBaker合并模型
-	2.测试合并后模型在WebGL的性能表现
-
+	1.研究URP Water与StylizedWater插件，对比水效果功能与使用方法。
+	2.开发球型UI操作demo。
 下周：
-	1.研究MeshBaker源码，减小合并后纹理大小
+	1.球型UI操作demo后续开发。
+	2.研究Cinemachine虚拟相机插件。
+	3.研究terrain地形编辑，研究树与草环境shader。
 	
 【李佳】
 
