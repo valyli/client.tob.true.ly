@@ -12,29 +12,26 @@
 
 本周：
 	WebGL：
-		iOS Crash问题。目前仍在尝试解决中，已经定位到问题：Unity在iOS的WebGL中，加载资源时随机崩溃。
-		尝试通过JS层加载绕过这个bug，还在调试中。
-
-	App(Truely)：
-
-	Next:
-		# 5 Mesh Baker			王磊【进行中，有明显效果】
+		iOS WebGL（wasm） crash问题收尾：
+			结论：
+			1. iOS系统在WebGL内存分配上存在bug，当分配较大内存时，有较高几率崩溃
+			2. iOS系统为WebGL程序分配的内存比Android系统少，大致在300~500MB，Unity有效获得100~300MB。
+			3. iOS系统版本约高，如硬件内存未增加，分配给WebGL的越少。大概没升级1个大版本，减少100MB。
+			4. iOS系统长时间不重启，分配的内存有可能进一步减少至200MB，此时测试程序必然崩溃。
+			如必须在iOS系统上，运行WebGL程序。必须将资源切分粒度控制在<2MB，并尽量使运行时Unity内存占用<200MB。
+		
+		球形UI实验：
+			操控参考：UI List组件的滑动特性和操作效率。
+			方案：通过线性滑动+物理惯性的组合方式。
+			问题：无法看到球的背面，使用时可能迷失。
 	
 
 下周：
-	WebGL：
-		继续尝试解决iOS crash问题。只剩最后2个方法：减小连续读取文件尺寸（或连续内存区）、AssetBundle.LoadFromStream
-		1. Check js memory & show in profiler		? maybe should upgrade to 2023 first.https://www.likecs.com/show-205295412.html#sc=3360
-		2. Upgrade 2023 & increase memory again.		unity loadasset ios webgl crash		https://forum.unity.com/threads/webgl-memory-increment-issue-and-crash-on-ios.1338191/
-		2. [Done failed]	AssetBundle.LoadFromStream				https://docs.unity3d.com/2021.3/Documentation/ScriptReference/AssetBundle.LoadFromStream.html
-		3. Read Papers of Memory in iOS webgl		https://forum.unity.com/threads/webgl-builds-crash-issue-on-ios-browsers-unity3d.518240/	https://forum.unity.com/threads/webgl-safari-crashes-after-ios-upgrade-to-15-4-1.1269779/
-		4. Read papers for js byte -> unity		https://forum.unity.com/threads/send-byte-array-from-js-to-unity.1252413/	https://forum.unity.com/threads/solved-webgl-returning-a-byte-from-jslib-to-unity.334222/
-		5. Reduce pixel resolution.
-
-	App(Truely)：
-
-	Next:
-		# 5 Mesh Baker			王磊【继续改进和加深研究】
+		球形UI实验：
+			进一步优化手感。
+			优化相机等展示效果。
+			讨论应用场景，选择调试目标。
+			方案：通过线性滑动+物理惯性的组合方式。
 
 
 
