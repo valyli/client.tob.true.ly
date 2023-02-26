@@ -1,0 +1,32 @@
+
+【王磊】
+
+本周：
+	1.研究URP Water与StylizedWater插件，对比水效果功能与使用方法。
+	2.开发球型UI操作demo。
+下周：
+	1.球型UI操作demo后续开发。
+	2.研究Cinemachine虚拟相机插件。
+	3.研究terrain地形编辑，研究树与草环境shader。
+	
+【李佳】
+
+本周：
+	球形UI实验进一步改进：
+		球体展示自适应屏幕尺寸。
+		avatar移动支持球面的地形凹凸。
+		解决方向迷失：指南针、后视镜、重置按钮。
+		相机动画：idle、zoomin、zoomout
+		平滑avatar转向
+		镜头跟随
+
+	Unity嵌入app的准备
+
+下周：
+	Unity嵌入app
+
+
+招聘：
+	面试：1 个
+
+
