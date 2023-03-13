@@ -91,3 +91,6 @@ AOT Generics may cause problem, HybridCLR solve it by use HybridCLR.RuntimeApi.L
 
 4. Build Resources
     ![](vx_images/19384418250462.png)
+    
+# Build *libil2cpp.a* for iOS
+[#libil2cpp-a-编译](https://focus-creative-games.github.io/hybridclr/build_ios_libil2cpp/#libil2cpp-a-编译)
