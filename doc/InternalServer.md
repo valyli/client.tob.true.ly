@@ -43,6 +43,15 @@ http://10.60.80.2:8077/redmine/
 admin
 Abc$1234
 
+* database account
+    > root
+    > 11111111
+
+* Local path
+```shell
+D:\Bitnami\redmine-5.0.0-1
+```
+
 # Jenkins
 http://localhost:8088/
 admin
