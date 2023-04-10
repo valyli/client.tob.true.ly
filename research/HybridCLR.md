@@ -100,3 +100,56 @@ AOT Generics may cause problem, HybridCLR solve it by use HybridCLR.RuntimeApi.L
 It will cause AOT missing error.
 [ref](https://focus-creative-games.github.io/hybridclr/aot_generic/#示例1)
 ![](vx_images/59031911236648.png)
+
+
+# Code Review
+* Use Breakpoint Probes
+
+## Find invoking of *HybridCLRData\AssembliesPostIl2CppStrip*  
+
+```csharp  
+        public static string GetAssembliesPostIl2CppStripDir(BuildTarget target)
+        {
+            return $"{AssembliesPostIl2CppStripDir}/{target}";
+        }
+```
+
+![](vx_images/385113110248790.png)
+    
+* LinkGeneratorCommand.GenerateLinkXml
+* StripAOTDllCommand.GenerateStripedAOTDlls
+    ![](vx_images/291602210230364.png)
+    
+    * [BuildPipeline.BuildPlayer.html](https://docs.unity3d.com/2021.3/Documentation/ScriptReference/BuildPipeline.BuildPlayer.html)
+        * Note: Be aware that changes to scripting symbols only take effect at the next domain reload, when scripts are recompiled.
+    * HybridCLR.MonoHook.CopyStrippedAOTAssembliesHook.OverrideStripAssembliesTo()
+        * Copy dll files to *HybridCLRData/AssembliesPostIl2CppStrip*
+        * Example: 
+            ```shell
+            D:\git\client.star.hsbc\project\Star\Temp\StagingArea\Data\Managed\tempStrip\Assembly-CSharp.dll
+            ==> 
+            HybridCLRData/AssembliesPostIl2CppStrip/iOS/Assembly-CSharp.dll
+            ```
+* MethodBridgeGeneratorCommand.GenerateMethodBridge
+    * Example:
+        ```shell
+        D:\git\client.star.hsbc\project\Star/HybridCLRData/LocalIl2CppData-WindowsEditor/il2cpp/libil2cpp/hybridclr/generated/MethodBridge_Universal32.cpp
+        ```
+    * This path is same as *LocalIl2CppDir* .
+    * **Here will generate .cpp into LocalIl2CppData-{Platform}. Those code will be compiled at Unity Building Phrase**.
+        > So because of that, If compile Android Dll at first, and build iOS at next, it will cause code un-matched.
+
+## Find invoking of *LocalIl2CppDir*  
+```csharp
+        public static string LocalIl2CppDir => $"{LocalUnityDataDir}/il2cpp";
+```
+* **Here will generate .cpp into *LocalIl2CppData-{Platform}* **
+
+## Hook *IFilterBuildAssemblies*
+```csharp
+internal class FilterHotFixAssemblies : IFilterBuildAssemblies
+```
+
+# Reference
+## [HybridCLR Build Introduction](https://focus-creative-games.github.io/hybridclr/build_pipeline)
+* > 对于每个target，必须使用目标平台编译开关下编译出的热更新dll，否则会出现热更新代码与AOT主包或者热更新资源的代码信息不匹配的情况。
