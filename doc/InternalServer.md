@@ -1,3 +1,17 @@
+# 20231012
+原打包机ip地址更换为域名：
+10.60.70.4 -> tob.spatio-inc.com
+打包机从工位搬入机房（小会议隐藏门内）
+
+相关常用地址变更如下：
+FTP (HTTP protocol):  http://tob.spatio-inc.com:8099/ftp/
+H5 plant latest building:  http://tob.spatio-inc.com:8099/ftp/build_output/cocos/plant/latest/?mode=dev&user-id=001
+Jenkins: http://tob.spatio-inc.com:8088/
+Redmine: http://tob.spatio-inc.com:8077/redmine/
+Gitblit: http://tob.spatio-inc.com:10101/repositories/
+
+
+
 # Computer Infomation
 IP: 10.60.80.2
 Location: B-12-1
@@ -60,6 +74,9 @@ Abc$1234
 # Gitblit
 http://10.60.80.2:10101/repositories/
 D:\soft\gitblit-1.9.3
+
+admin
+Abc$1234
 
 # SVN
 VisualSVN
