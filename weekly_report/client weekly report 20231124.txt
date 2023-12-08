@@ -1,0 +1,16 @@
+【王磊】
+请假
+
+【李佳】
+1. 汇丰二期
+配合确认给汇丰的：开发周期、修复响应周期、维保、日活的成本梯度
+
+2. zheli H5
+确认H5开发计划。
+会员权益变动大，重新评估开发时间。
+
+Wednes:
+create branch of 1215	【done】
+讨论：折扣标签（liuyijia）	【done】
+dev oss server outdate （delay developing）	【resolving -> give up】
+send test mail	【done】
