@@ -1,5 +1,5 @@
 【王磊】
-请假
+
 
 【李佳】
 一、汇丰二期：
@@ -7,12 +7,10 @@
 
 
 二、啫喱 H5：
-1. 0107，版本测试修复
+1. 0107版本，bug修复、分析。协助iOS分析prod环境疑难问题
+2. H5文案工程（spatio-clotho-h5），加入vconsole日志工具
+3. H5业务工程（spatio-clotho-hybrid），开发数据回放插件
 
-推进其他制作方法优化：
-1. 发现UI设计方法问题，因工程和设计使用字体不一致，导致布局对齐误差。http://ydwiki.yidian-inc.com/pages/viewpage.action?pageId=120968462
-2. 是否影响设计标准：调整系统字体大小，会影响H5中字体大小。 http://ydjira.yidian-inc.com/browse/ZLGN-3454
-3. 工作流程问题：figma修改缺少人工通知，也没用历史比较方法。有些文案没有使用wiki，无历史记录，缺少人工通知。
 
 
 
