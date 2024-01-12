@@ -7,8 +7,7 @@
 二、啫喱 H5：
 1. H5业务工程（spatio-clotho-hybrid），数据导出插件	【done】
 2. 处理历史遗留问题：
-	a) spatio-clotho-h5 工程随机丢失导航栏 [BUG 4482]	【done】
-	b) 工程清理，为iOS bug 修复加入的临时代码
+	a) spatio-clotho-h5 工程随机丢失导航栏 [BUG 4482]	【done，生命周期问题】
 
 
 推进其他制作方法优化（待选择）：
@@ -18,5 +17,6 @@
 4. 整理H5 文案流程 （产品key，研发加，产品改文案，研发publish，qa验证）
 5. 埋点文档修改，通知不到位造成测试效率低。
 6. Support Promise.All return []
+7. 工程清理，为iOS bug 修复加入的临时代码
 
 
