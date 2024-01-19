@@ -9,6 +9,11 @@
 2. 协助新人接手H5商城需求
 3. 学习Go
 
+unity embed prepare
+write formula of gray scale in h5
+bug check : payment success go back path wrong to payment page again
+change protocol in h5
+
 推进其他制作方法优化（待选择）：
 1. 发现UI设计方法问题，因工程和设计使用字体不一致，导致布局对齐误差。http://ydwiki.yidian-inc.com/pages/viewpage.action?pageId=120968462
 2. 是否影响设计标准：调整系统字体大小，会影响H5中字体大小。 http://ydjira.yidian-inc.com/browse/ZLGN-3454
