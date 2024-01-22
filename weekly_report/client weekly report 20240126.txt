@@ -1,0 +1,25 @@
+
+【李佳】
+一、汇丰二期：
+支持跟进
+
+
+二、啫喱 H5：
+修复H5 bug，疑难杂症
+学习Go
+问题：
+
+物理碰撞性能测试
+
+是否申请外包Git?
+
+推进其他制作方法优化（待选择）：
+1. 发现UI设计方法问题，因工程和设计使用字体不一致，导致布局对齐误差。http://ydwiki.yidian-inc.com/pages/viewpage.action?pageId=120968462
+2. 是否影响设计标准：调整系统字体大小，会影响H5中字体大小。 http://ydjira.yidian-inc.com/browse/ZLGN-3454
+3. 工作流程问题：figma修改缺少人工通知，也没用历史比较方法。有些文案没有使用wiki，无历史记录，缺少人工通知。
+4. 整理H5 文案流程 （产品key，研发加，产品改文案，研发publish，qa验证）
+5. 埋点文档修改，通知不到位造成测试效率低。
+6. Support Promise.All return []
+7. 工程清理，为iOS bug 修复加入的临时代码
+
+
